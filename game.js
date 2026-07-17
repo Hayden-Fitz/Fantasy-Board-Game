@@ -103,7 +103,7 @@ async function loadGame(){
 
         if (game.host === playerID) {
 
-            let map = generateMap(playerCount);
+            let map = generateMap(players);
 
             await set(
                 ref(database, "games/" + gameCode + "/map"),

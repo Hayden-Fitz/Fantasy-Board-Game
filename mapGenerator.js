@@ -7,7 +7,7 @@ import { generateTerrain } from "./terrain.js";
 
 
 
-export function generateMap(playerCount){
+export function generateMap(players){
 
     let map = {
 
@@ -17,7 +17,29 @@ export function generateMap(playerCount){
 
         tiles:{},
 
-        playerCount:playerCount
+        playerCount: players.length,
+
+        activeKingdoms: players.map(player => {
+
+            let kingdom = player.kingdom.toLowerCase();
+
+            // Convert display names into IDs
+            for(let id in kingdoms){
+
+                if(
+                    kingdoms[id].name.toLowerCase() === kingdom
+                ){
+
+                    return id;
+
+                }
+
+            }
+
+            // Already an ID
+            return kingdom;
+
+        })
 
     };
 
@@ -371,8 +393,7 @@ function generateLand(map){
 function placeCapitals(map){
 
     const activeKingdoms =
-    Object.keys(map.kingdoms)
-    .slice(0,map.playerCount);
+    map.activeKingdoms.filter(k => kingdoms[k]);
 
 
     const radius =
@@ -509,8 +530,7 @@ function expandKingdoms(map){
 
 
     const kingdoms =
-    Object.keys(map.kingdoms)
-    .slice(0,map.playerCount);
+    map.activeKingdoms;
 
     let frontiers = {};
 
@@ -1114,7 +1134,8 @@ function renderMap(map){
 
     // Border uses kingdom color
 
-    let borderColor = kingdomBorder[tile.kingdom];
+    let borderColor =
+    map.kingdoms[tile.kingdom]?.color || "#777777";
 
 
 
@@ -1347,8 +1368,7 @@ function makeCenterGrass(map){
 function convertUnusedKingdoms(map){
 
     const activeKingdoms =
-    Object.keys(map.kingdoms)
-    .slice(0,map.playerCount);
+    map.activeKingdoms.filter(k => k);
 
 
 
@@ -1366,6 +1386,8 @@ function convertUnusedKingdoms(map){
 
         if(
             !activeKingdoms.includes(tile.kingdom)
+            &&
+            tile.building !== "capital"
         ){
 
             tile.kingdom = "unclaimed";

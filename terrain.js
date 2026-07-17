@@ -110,10 +110,7 @@ function generateConstructionZones(map){
     ];
 
 
-        const kingdoms =
-        [
-            ...Object.keys(map.kingdoms)
-        ];
+    const kingdoms = map.activeKingdoms;
 
 
 
@@ -170,6 +167,23 @@ function generateConstructionZones(map){
             tile.terrain === "grass" &&
             !tile.reserved
 
+        );
+
+
+        let averageKingdomSize =
+        Object.values(map.tiles)
+        .filter(tile=>
+
+            tile.kingdom !== "neutral" &&
+            tile.kingdom !== "unclaimed"
+
+        ).length
+        /
+        map.activeKingdoms.length;
+
+        let zoneTarget = Math.max(
+            3,
+            Math.ceil(kingdomTiles.length / 30)
         );
 
 
@@ -276,7 +290,7 @@ function generateConstructionZones(map){
         // ===================================
 
 
-        while(constructionZones.length < 3){
+        while(constructionZones.length < zoneTarget){
 
 
             let candidates =
@@ -414,9 +428,7 @@ function generateNeutralConstructionZones(map){
 function generateResources(map){
 
 
-    const kingdoms =
-    Object.keys(map.kingdoms);
-
+    const kingdoms = map.activeKingdoms;
 
 
     const normalResources = [
@@ -552,6 +564,12 @@ function generateResources(map){
 
 
 
+        let kingdomSize = Object.values(map.tiles).filter(
+            tile => tile.kingdom === kingdom
+        ).length;
+
+        let scale = Math.max(1, Math.ceil(kingdomSize / 50));
+
         let resourceList = [];
 
 
@@ -564,7 +582,11 @@ function generateResources(map){
 
         normalResources.forEach(resource=>{
 
-            resourceList.push(resource);
+            for(let i=0;i<scale;i++){
+
+                resourceList.push(resource);
+
+            }
 
         });
 
@@ -580,7 +602,11 @@ function generateResources(map){
         foodAssignments[kingdom]
         .forEach(food=>{
 
-            resourceList.push(food);
+            for(let i=0;i<scale;i++){
+
+                resourceList.push(food);
+
+            }
 
         });
 
@@ -593,7 +619,7 @@ function generateResources(map){
         // ==========================
 
 
-        for(let i=0;i<2;i++){
+        for(let i=0;i<2*scale;i++){
 
             resourceList.push(
                 specialty
@@ -745,8 +771,8 @@ function generateBiomes(map){
     ];
 
 
-    const kingdoms =
-    Object.keys(map.kingdoms);
+
+    const kingdoms = map.activeKingdoms;
 
 
 
@@ -857,6 +883,11 @@ function generateBiomes(map){
             canChange(tile)
         );
 
+        let scale = Math.max(
+            1,
+            Math.ceil(kingdomTiles.length / 35)
+        );
+
 
 
         if(kingdomTiles.length===0)
@@ -866,7 +897,8 @@ function generateBiomes(map){
 
         // Forest patches
 
-        let forestSeeds = 2;
+        let forestSeeds =
+        8 - map.activeKingdoms.length;
 
 
         for(let i=0;i<forestSeeds;i++){
@@ -883,8 +915,9 @@ function generateBiomes(map){
             growBiome(
                 seed,
                 "forest",
-                Math.floor(
-                    kingdomTiles.length*0.12
+                Math.max(
+                    5,
+                    Math.floor(Math.random() * 5) + 6
                 )
             );
 
@@ -896,7 +929,8 @@ function generateBiomes(map){
 
         // Mountain ranges
 
-        let mountainSeeds = 2;
+        let mountainSeeds =
+        7 - map.activeKingdoms.length;
 
 
         for(let i=0;i<mountainSeeds;i++){
@@ -913,8 +947,9 @@ function generateBiomes(map){
             growBiome(
                 seed,
                 "mountain",
-                Math.floor(
-                    kingdomTiles.length*0.06
+                Math.max(
+                    3,
+                    Math.floor(Math.random() * 3) + 3
                 )
             );
 
