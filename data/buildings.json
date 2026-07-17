@@ -1,0 +1,82 @@
+{
+    "capital": {
+        "name": "Capital",
+        "description": "The center of a kingdom. If captured, the kingdom is defeated.",
+
+        "health": 1000,
+        "defense": 5,
+
+        "canProduceWorkers": true,
+        "canProduceTroops": true,
+
+        "specialRules": [
+            "champion_healing",
+            "kingdom_center",
+            "boss_location"
+        ]
+    },
+
+    "constructionZone": {
+        "name": "Construction Zone",
+        "description": "A production area used to create troops and workers.",
+
+        "health": 300,
+        "defense": 2,
+
+        "canProduceWorkers": false,
+        "canProduceTroops": true,
+
+        "specialRules": [
+            "unit_production"
+        ]
+    },
+
+    "greatWall": {
+        "name": "Great Wall Segment",
+        "description": "A defensive structure built by the Crimson Empire.",
+
+        "health": 500,
+        "defense": 5,
+
+        "canProduceWorkers": false,
+        "canProduceTroops": false,
+
+        "specialRules": [
+            "crimson_objective",
+            "defensive_structure"
+        ]
+    },
+
+    "shipyard": {
+        "name": "Shipyard",
+        "description": "A facility used to create and upgrade ships.",
+
+        "health": 400,
+        "defense": 3,
+
+        "canProduceWorkers": false,
+        "canProduceTroops": true,
+
+        "specialRules": [
+            "water_unit_production",
+            "ship_upgrade"
+        ]
+    },
+
+    "bridge" : {
+        "name": "bridge",
+        "description": "A way for land troops to cross water",
+
+        "health": 300,
+        "defense": 5,
+
+        "canProduceWorkers": false,
+        "canProduceTroops": false,
+
+        "specialRules": [
+            "champion_healing",
+            "kingdom_center",
+            "boss_location"
+        ]
+    }
+}

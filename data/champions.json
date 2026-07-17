@@ -1,0 +1,67 @@
+{
+    "commander": {
+        "name": "Commander",
+        "description": "A master tactician who excels at leading armies.",
+
+        "kingdom": "crimson",
+
+        "abilities": [
+            "inspire",
+            "fortify",
+            "second_command"
+        ]
+    },
+
+    "whale": {
+        "name": "The Whale",
+        "description": "Guardian of the seas and master of naval warfare.",
+
+        "kingdom": "tide",
+
+        "abilities": [
+            "tidal_wave",
+            "ocean_mastery",
+            "ship_push"
+        ]
+    },
+
+    "chef": {
+        "name": "Master Chef",
+        "description": "A culinary genius capable of sustaining entire armies.",
+
+        "kingdom": "culinary",
+
+        "abilities": [
+            "feast",
+            "instant_feed",
+            "food_blessing"
+        ]
+    },
+
+    "wizard": {
+        "name": "Wizard",
+        "description": "An ancient mystic wielding elemental magic.",
+
+        "kingdom": "viking",
+
+        "abilities": [
+            "fireball",
+            "lightning",
+            "teleport",
+            "ice_blast"
+        ]
+    },
+
+    "werewolf": {
+        "name": "Werewolf",
+        "description": "A terrifying beast that dominates close combat.",
+
+        "kingdom": "shadow",
+
+        "abilities": [
+            "claw_grab",
+            "throw_enemy",
+            "pull_enemy"
+        ]
+    }
+}

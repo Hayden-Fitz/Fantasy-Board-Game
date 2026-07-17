@@ -1,0 +1,109 @@
+{
+    "infantry": {
+        "name": "Infantry",
+        "description": "Basic frontline soldiers.",
+        "image": "",
+
+        "health": 100,
+        "attack": 20,
+        "range": 1,
+        "movement": 3,
+
+        "cost": {
+            "food": 1,
+            "wood": 1,
+            "stone": 0,
+            "metal": 1,
+            "magic": 0,
+            "gold": 1
+        },
+
+        "abilities": [],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    },
+
+    "archer": {
+        "name": "Archer",
+        "description": "A ranged unit that attacks from a distance.",
+        "image": "",
+
+        "health": 60,
+        "attack": 25,
+        "range": 4,
+        "movement": 3,
+
+        "cost": {
+            "food": 1,
+            "wood": 2,
+            "stone": 0,
+            "metal": 1,
+            "magic": 0,
+            "gold": 2
+        },
+
+        "abilities": [],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    },
+
+    "healer": {
+        "name": "Healer",
+        "description": "A support unit that restores health to allies.",
+        "image": "",
+
+        "health": 70,
+        "attack": 5,
+        "range": 3,
+        "movement": 3,
+
+        "cost": {
+            "food": 1,
+            "wood": 0,
+            "stone": 0,
+            "metal": 0,
+            "magic": 3,
+            "gold": 4
+        },
+
+        "abilities": [
+            "healing_flame"
+        ],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    },
+
+    "siege_engine": {
+        "name": "Siege Engine",
+        "description": "A powerful machine designed to destroy structures.",
+        "image": "",
+
+        "health": 150,
+        "attack": 50,
+        "range": 5,
+        "movement": 1,
+
+        "cost": {
+            "food": 2,
+            "wood": 4,
+            "stone": 3,
+            "metal": 5,
+            "magic": 0,
+            "gold": 8
+        },
+
+        "abilities": [
+            "destroy_building"
+        ],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    }
+}

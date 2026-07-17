@@ -1,0 +1,69 @@
+{
+    "wood": {
+        "name": "Wood",
+        "description": "Used to construct buildings, ships, and many military units.",
+        "image": "wood.png"
+    },
+
+    "stone": {
+        "name": "Stone",
+        "description": "Used for defensive structures and heavy construction.",
+        "image": "stone.png"
+    },
+
+    "metal": {
+        "name": "Metal",
+        "description": "Used to forge weapons, armor, and advanced troops.",
+        "image": "metal.png"
+    },
+
+    "gold": {
+        "name": "Gold",
+        "description": "A universal currency used for trade, troop recruitment, and special effects.",
+        "image": "gold.png"
+    },
+
+    "magic": {
+        "name": "Magic",
+        "description": "A mystical resource required for magical units, champion abilities, and powerful cards.",
+        "image": "magic.png"
+    },
+
+    "food": {
+        "bread": {
+            "name": "Bread",
+            "description": "Feeds troops. Counts toward the Grand Feast.",
+            "image": "bread.png"
+        },
+
+        "fish": {
+            "name": "Fish",
+            "description": "Feeds troops. Counts toward the Grand Feast.",
+            "image": "fish.png"
+        },
+
+        "fruit": {
+            "name": "Fruit",
+            "description": "Feeds troops. Counts toward the Grand Feast.",
+            "image": "fruit.png"
+        },
+
+        "meat": {
+            "name": "Meat",
+            "description": "Feeds troops. Counts toward the Grand Feast.",
+            "image": "meat.png"
+        },
+
+        "cake": {
+            "name": "cake",
+            "description": "Feeds troops. Counts toward the Grand Feast.",
+            "image": "cake.png"
+        },
+
+        "spice": {
+            "name": "spice",
+            "description": "Feeds troops. Counts toward the Grand Feast.",
+            "image": "spice.png"
+        }
+    }
+}

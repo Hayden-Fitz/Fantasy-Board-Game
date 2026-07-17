@@ -1,0 +1,91 @@
+{
+    "burning": {
+        "name": "Burning",
+        "description": "This unit takes damage at the start of each turn."
+    },
+
+    "poisoned": {
+        "name": "Poisoned",
+        "description": "This unit takes poison damage each turn until the effect expires."
+    },
+
+    "frozen": {
+        "name": "Frozen",
+        "description": "This unit cannot move until the effect ends."
+    },
+
+    "stunned": {
+        "name": "Stunned",
+        "description": "This unit cannot move, attack, or use abilities."
+    },
+
+    "healing": {
+        "name": "Healing",
+        "description": "This unit restores health each turn."
+    },
+
+    "shielded": {
+        "name": "Shielded",
+        "description": "Reduces incoming damage."
+    },
+
+    "inspired": {
+        "name": "Inspired",
+        "description": "This unit gains increased attack."
+    },
+
+    "fortified": {
+        "name": "Fortified",
+        "description": "This unit gains increased defense."
+    },
+
+    "hastened": {
+        "name": "Hastened",
+        "description": "This unit gains additional movement."
+    },
+
+    "slowed": {
+        "name": "Slowed",
+        "description": "This unit loses movement speed."
+    },
+
+    "rooted": {
+        "name": "Rooted",
+        "description": "This unit cannot move but may still attack."
+    },
+
+    "silenced": {
+        "name": "Silenced",
+        "description": "This unit cannot use abilities."
+    },
+
+    "camouflaged": {
+        "name": "Camouflaged",
+        "description": "This unit is harder to target until it attacks or moves."
+    },
+
+    "fear": {
+        "name": "Fear",
+        "description": "This unit suffers reduced combat effectiveness."
+    },
+
+    "regenerating": {
+        "name": "Regenerating",
+        "description": "This unit restores health every turn."
+    },
+
+    "bleeding": {
+        "name": "Bleeding",
+        "description": "This unit loses health after moving or fighting."
+    },
+
+    "marked": {
+        "name": "Marked",
+        "description": "This unit receives additional damage from attacks."
+    },
+
+    "invulnerable": {
+        "name": "Invulnerable",
+        "description": "This unit cannot take damage while this effect lasts."
+    }
+}

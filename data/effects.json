@@ -1,0 +1,106 @@
+{
+    "damage": {
+        "name": "Damage",
+        "description": "Deals damage to one or more targets."
+    },
+
+    "heal": {
+        "name": "Heal",
+        "description": "Restores health to one or more targets."
+    },
+
+    "move": {
+        "name": "Move",
+        "description": "Moves a unit to another tile."
+    },
+
+    "teleport": {
+        "name": "Teleport",
+        "description": "Instantly moves a unit to a valid location."
+    },
+
+    "push": {
+        "name": "Push",
+        "description": "Pushes a target away."
+    },
+
+    "pull": {
+        "name": "Pull",
+        "description": "Pulls a target closer."
+    },
+
+    "spawn_unit": {
+        "name": "Spawn Unit",
+        "description": "Creates a new unit."
+    },
+
+    "destroy_unit": {
+        "name": "Destroy Unit",
+        "description": "Removes a unit from play."
+    },
+
+    "destroy_building": {
+        "name": "Destroy Building",
+        "description": "Destroys a structure."
+    },
+
+    "repair_building": {
+        "name": "Repair Building",
+        "description": "Repairs damage to a structure."
+    },
+
+    "gain_resource": {
+        "name": "Gain Resource",
+        "description": "Adds resources to a player."
+    },
+
+    "lose_resource": {
+        "name": "Lose Resource",
+        "description": "Removes resources from a player."
+    },
+
+    "draw_cards": {
+        "name": "Draw Cards",
+        "description": "Draws cards from the deck."
+    },
+
+    "discard_cards": {
+        "name": "Discard Cards",
+        "description": "Discards cards from a player's hand."
+    },
+
+    "apply_status": {
+        "name": "Apply Status",
+        "description": "Applies a status effect."
+    },
+
+    "remove_status": {
+        "name": "Remove Status",
+        "description": "Removes a status effect."
+    },
+
+    "reveal_tile": {
+        "name": "Reveal Tile",
+        "description": "Reveals a hidden tile."
+    },
+
+    "occupy_tile": {
+        "name": "Occupy Tile",
+        "description": "Claims control of a tile."
+    },
+
+    "build_structure": {
+        "name": "Build Structure",
+        "description": "Constructs a structure."
+    },
+
+    "upgrade_structure": {
+        "name": "Upgrade Structure",
+        "description": "Improves an existing structure."
+    },
+
+    "end_turn": {
+        "name": "End Turn",
+        "description": "Ends the current player's turn."
+    }
+}

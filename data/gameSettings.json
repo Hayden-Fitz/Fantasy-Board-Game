@@ -1,0 +1,32 @@
+{
+    "version": "1.0",
+
+    "minPlayers": 2,
+    "maxPlayers": 10,
+
+    "maxCards": 5,
+
+    "startingGold": 5,
+    "startingWorkers": 3,
+
+    "startingChampionHealth": 100,
+
+    "troopLimitPerType": 20,
+
+    "bossMaxThreatDistance": 9,
+    "bossMaxThreatChance": 0.5,
+
+    "championRespawnHealth": 1,
+
+    "resourceCollectionPerWorker": 1,
+
+    "foodFeedsTroops": 4,
+
+    "maxTurnTimeMinutes": 5,
+
+    "enableAlliances": true,
+
+    "allowKingdomTakeover": true,
+
+    "autoSave": true
+}

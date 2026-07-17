@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Fantasy Board Game</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="game-container">
+
+    <div class="main-panel">
+
+        <h1>Fantasy Board Game</h1>
+
+
+        <h2>Join Game</h2>
+
+
+        <input id="playerName" placeholder="Your name">
+
+
+        <select id="kingdom" onchange="changeKingdom()">
+
+            <option>Crimson Empire</option>
+            <option>Tide Kingdom</option>
+            <option>Culinary Kingdom</option>
+            <option>Viking Kingdom</option>
+            <option>Shadow Kingdom</option>
+
+        </select>
+
+
+        <br><br>
+
+
+        <button onclick="createGame()">
+            Create Game
+        </button>
+
+
+        <input 
+        id="gameCode" 
+        placeholder="Game Code"
+        style="text-transform:uppercase;"
+        oninput="this.value=this.value.toUpperCase()"
+>
+
+
+        <button onclick="joinGame()">
+            Join Game
+        </button>
+
+
+        <br>
+
+
+        <button onclick="readyUp()">
+            I'm Ready
+        </button>
+
+
+        <button onclick="deleteGame()">
+            Delete Game
+        </button>
+
+        <button onclick="checkStartGame()">
+        Start Game
+        </button>
+
+
+        <h3 id="status"></h3>
+
+
+    </div>
+
+
+
+    <div class="player-panel">
+
+        <h2>Players</h2>
+
+        <div id="playerList">
+            Waiting for players...
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div id="gameScreen" style="display:none;">
+
+    <h1>Entering the World...</h1>
+
+    <h2 id="countdown"></h2>
+
+</div>
+
+<div id="mapDisplay">
+
+</div>
+
+
+<div id="loadingScreen" style="display:none;">
+    <h1>Starting Game</h1>
+    <h1 id="countdown">5</h1>
+</div>
+
+TAHPQ5
+
+<script type="module" src="lobby.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+{
+    "water_boat": {
+        "name": "water Boat",
+        "description": "A basic vessel used for exploration, transportation, and early naval combat.",
+        "image": "",
+
+        "health": 80,
+        "attack": 10,
+        "range": 1,
+        "movement": 5,
+
+        "cost": {
+            "food": 1,
+            "wood": 5,
+            "stone": 0,
+            "metal": 1,
+            "magic": 0,
+            "gold": 2
+        },
+
+        "abilities": [
+            "naval_voyage"
+        ],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    },
+
+    "warship": {
+        "name": "Warship",
+        "description": "A heavily armed ship designed for naval battles.",
+        "image": "",
+
+        "health": 180,
+        "attack": 45,
+        "range": 3,
+        "movement": 4,
+
+        "cost": {
+            "food": 2,
+            "wood": 8,
+            "stone": 2,
+            "metal": 6,
+            "magic": 0,
+            "gold": 8
+        },
+
+        "abilities": [
+            "sea_terror"
+        ],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    },
+
+    "leviathan": {
+        "name": "Leviathan",
+        "description": "A legendary sea creature and the ultimate naval power.",
+        "image": "",
+
+        "health": 500,
+        "attack": 80,
+        "range": 4,
+        "movement": 6,
+
+        "cost": {
+            "food": 5,
+            "wood": 15,
+            "stone": 5,
+            "metal": 10,
+            "magic": 10,
+            "gold": 20
+        },
+
+        "abilities": [
+            "tidal_wave",
+            "sea_terror"
+        ],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    }
+}

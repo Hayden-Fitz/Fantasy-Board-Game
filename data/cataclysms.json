@@ -1,0 +1,289 @@
+{
+    "meteor": {
+        "name": "Meteor Shower",
+        "description": "A rain of meteors strikes the battlefield.",
+        "category": "damage",
+        "drawWeight": 1,
+        "duration": 0,
+        "targets": [
+            "random_tiles"
+        ],
+        "effects": [
+            {
+                "type": "damage",
+                "target": "units",
+                "amount": 5
+            },
+            {
+                "type": "destroy_building",
+                "target": "random_structure",
+                "amount": 1
+            }
+        ]
+    },
+
+    "earthquake": {
+        "name": "Earthquake",
+        "description": "The ground violently shakes, damaging structures and slowing armies.",
+        "category": "terrain",
+        "drawWeight": 1,
+        "duration": 1,
+        "targets": [
+            "all_land_tiles"
+        ],
+        "effects": [
+            {
+                "type": "damage",
+                "target": "buildings",
+                "amount": 10
+            },
+            {
+                "type": "apply_status",
+                "status": "slowed"
+            }
+        ]
+    },
+
+    "wildfire": {
+        "name": "Wildfire",
+        "description": "Flames spread across forests and settlements.",
+        "category": "terrain",
+        "drawWeight": 1,
+        "duration": 3,
+        "targets": [
+            "forest_tiles"
+        ],
+        "effects": [
+            {
+                "type": "apply_status",
+                "status": "burning"
+            },
+            {
+                "type": "destroy_building",
+                "target": "forest_structures"
+            }
+        ]
+    },
+
+    "flood": {
+        "name": "Flood",
+        "description": "waters overflow and sweep across the battlefield.",
+        "category": "terrain",
+        "drawWeight": 1,
+        "duration": 2,
+        "targets": [
+            "water_adjacent_tiles"
+        ],
+        "effects": [
+            {
+                "type": "push",
+                "target": "land_units"
+            },
+            {
+                "type": "change_terrain",
+                "terrain": "water"
+            }
+        ]
+    },
+
+    "plague": {
+        "name": "Plague",
+        "description": "Disease spreads among kingdoms.",
+        "category": "status",
+        "drawWeight": 1,
+        "duration": 3,
+        "targets": [
+            "all_units"
+        ],
+        "effects": [
+            {
+                "type": "apply_status",
+                "status": "poisoned"
+            }
+        ]
+    },
+
+    "volcano": {
+        "name": "Volcanic Eruption",
+        "description": "Molten rock erupts from the earth.",
+        "category": "damage",
+        "drawWeight": 1,
+        "duration": 0,
+        "targets": [
+            "random_area"
+        ],
+        "effects": [
+            {
+                "type": "damage",
+                "target": "units",
+                "amount": 15
+            },
+            {
+                "type": "destroy_building",
+                "target": "structures"
+            }
+        ]
+    },
+
+    "tornado": {
+        "name": "Tornado",
+        "description": "A violent tornado sweeps across the land.",
+        "category": "movement",
+        "drawWeight": 1,
+        "duration": 1,
+        "targets": [
+            "random_area"
+        ],
+        "effects": [
+            {
+                "type": "move",
+                "target": "units",
+                "distance": 3
+            }
+        ]
+    },
+
+    "magicSurge": {
+        "name": "Magic Surge",
+        "description": "Wild magic empowers and disrupts the battlefield.",
+        "category": "magic",
+        "drawWeight": 1,
+        "duration": 2,
+        "targets": [
+            "all_players"
+        ],
+        "effects": [
+            {
+                "type": "gain_resource",
+                "resource": "magic",
+                "amount": 3
+            },
+            {
+                "type": "apply_status",
+                "status": "inspired"
+            }
+        ]
+    },
+
+    "ancientAwakening": {
+        "name": "Ancient Awakening",
+        "description": "Forgotten powers awaken beneath the world.",
+        "category": "special",
+        "drawWeight": 1,
+        "duration": 0,
+        "targets": [
+            "neutral_territory"
+        ],
+        "effects": [
+            {
+                "type": "spawn_unit",
+                "unit": "ancient_guardian"
+            }
+        ]
+    },
+
+    "theDeadRise": {
+        "name": "The Dead Rise",
+        "description": "The fallen return to haunt the living.",
+        "category": "summon",
+        "drawWeight": 1,
+        "duration": 0,
+        "targets": [
+            "battlefields"
+        ],
+        "effects": [
+            {
+                "type": "spawn_unit",
+                "unit": "undead"
+            }
+        ]
+    },
+
+    "frozenWinter": {
+        "name": "Frozen Winter",
+        "description": "A bitter winter slows every kingdom.",
+        "category": "weather",
+        "drawWeight": 1,
+        "duration": 3,
+        "targets": [
+            "all_land_units"
+        ],
+        "effects": [
+            {
+                "type": "apply_status",
+                "status": "slowed"
+            }
+        ]
+    },
+
+    "acidRain": {
+        "name": "Acid Rain",
+        "description": "Corrosive rain damages everything exposed.",
+        "category": "damage",
+        "drawWeight": 1,
+        "duration": 2,
+        "targets": [
+            "all_units"
+        ],
+        "effects": [
+            {
+                "type": "damage",
+                "target": "units",
+                "amount": 3
+            }
+        ]
+    },
+
+    "bandits": {
+        "name": "Bandit Raid",
+        "description": "Bandits steal resources from kingdoms.",
+        "category": "economy",
+        "drawWeight": 1,
+        "duration": 0,
+        "targets": [
+            "all_players"
+        ],
+        "effects": [
+            {
+                "type": "lose_resource",
+                "resource": "gold",
+                "amount": 5
+            }
+        ]
+    },
+
+    "solarEclipse": {
+        "name": "Solar Eclipse",
+        "description": "Darkness blocks the power of champions.",
+        "category": "special",
+        "drawWeight": 1,
+        "duration": 1,
+        "targets": [
+            "all_champions"
+        ],
+        "effects": [
+            {
+                "type": "apply_status",
+                "status": "silenced"
+            }
+        ]
+    },
+
+    "locustSwarm": {
+        "name": "Locust Swarm",
+        "description": "Locusts consume crops throughout the kingdoms.",
+        "category": "economy",
+        "drawWeight": 1,
+        "duration": 3,
+        "targets": [
+            "food_tiles"
+        ],
+        "effects": [
+            {
+                "type": "lose_resource",
+                "resource": "food",
+                "amount": 5
+            }
+        ]
+    }
+}

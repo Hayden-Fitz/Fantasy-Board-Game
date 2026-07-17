@@ -1,0 +1,66 @@
+{
+    "crimson": {
+        "name": "Crimson Empire",
+        "color": "#C62828",
+
+        "specialtyResource": "metal",
+
+        "champion": "commander",
+
+        "boss": "warlord",
+
+        "objective": "great_wall"
+    },
+
+    "tide": {
+        "name": "Tide Kingdom",
+        "color": "#1565C0",
+
+        "specialtyResource": "wood",
+
+        "champion": "whale",
+
+        "boss": "endless_storm",
+
+        "objective": "legendary_leviathan"
+    },
+
+    "culinary": {
+        "name": "Culinary Kingdom",
+        "color": "#EF6C00",
+
+        "specialtyResource": "gold",
+
+        "champion": "master_chef",
+
+        "boss": "great_famine",
+
+        "objective": "grand_feast"
+    },
+
+    "viking": {
+        "name": "Viking Kingdom",
+        "color": "#FDD835",
+
+        "specialtyResource": "magic",
+
+        "champion": "wizard",
+
+        "boss": "smoke_and_lightning_dragon",
+
+        "objective": "ancient_runes"
+    },
+
+    "shadow": {
+        "name": "Shadow Kingdom",
+        "color": "#7B1FA2",
+
+        "specialtyResource": "stone",
+
+        "champion": "werewolf",
+
+        "boss": "moon_hunter",
+
+        "objective": "corrupt_shrines"
+    }
+}

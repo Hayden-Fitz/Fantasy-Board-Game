@@ -1,0 +1,177 @@
+{
+    "dive_attack": {
+        "name": "Dive Attack",
+        "description": "The champion dives onto enemies from above, dealing heavy damage.",
+        "type": "attack",
+        "cooldown": 2,
+        "effects": [
+            "damage",
+            "move"
+        ]
+    },
+
+    "rebirth": {
+        "name": "Rebirth",
+        "description": "The champion returns after being defeated.",
+        "type": "passive",
+        "cooldown": 0,
+        "effects": [
+            "heal"
+        ]
+    },
+
+    "healing_flame": {
+        "name": "Healing Flame",
+        "description": "A magical flame restores health to allies.",
+        "type": "support",
+        "cooldown": 3,
+        "effects": [
+            "heal"
+        ]
+    },
+
+    "poison_breath": {
+        "name": "Poison Breath",
+        "description": "A poisonous attack that weakens enemies.",
+        "type": "attack",
+        "cooldown": 2,
+        "effects": [
+            "damage",
+            "apply_status"
+        ]
+    },
+
+    "tidal_wave": {
+        "name": "Tidal Wave",
+        "description": "A massive wave pushes enemies away.",
+        "type": "control",
+        "cooldown": 3,
+        "effects": [
+            "push"
+        ]
+    },
+
+    "sea_terror": {
+        "name": "Sea Terror",
+        "description": "The champion intimidates enemy ships.",
+        "type": "control",
+        "cooldown": 3,
+        "effects": [
+            "apply_status"
+        ]
+    },
+
+    "fireball": {
+        "name": "Fireball",
+        "description": "Launch a powerful fire attack.",
+        "type": "attack",
+        "cooldown": 2,
+        "effects": [
+            "damage",
+            "apply_status"
+        ]
+    },
+
+    "lightning": {
+        "name": "Lightning",
+        "description": "Strike an enemy with lightning.",
+        "type": "attack",
+        "cooldown": 2,
+        "effects": [
+            "damage"
+        ]
+    },
+
+    "teleport": {
+        "name": "Teleport",
+        "description": "Instantly move to another location.",
+        "type": "movement",
+        "cooldown": 3,
+        "effects": [
+            "teleport"
+        ]
+    },
+
+    "ice": {
+        "name": "Ice",
+        "description": "Freeze enemies with magical ice.",
+        "type": "control",
+        "cooldown": 2,
+        "effects": [
+            "apply_status"
+        ]
+    },
+
+    "inspire": {
+        "name": "Inspire",
+        "description": "Nearby troops gain increased attack.",
+        "type": "support",
+        "cooldown": 2,
+        "effects": [
+            "apply_status"
+        ]
+    },
+
+    "fortify": {
+        "name": "Fortify",
+        "description": "Strengthen defenses and structures.",
+        "type": "defense",
+        "cooldown": 3,
+        "effects": [
+            "repair_building",
+            "apply_status"
+        ]
+    },
+
+    "second_command": {
+        "name": "Second Command",
+        "description": "Allows an additional troop movement.",
+        "type": "movement",
+        "cooldown": 3,
+        "effects": [
+            "move"
+        ]
+    },
+
+    "feeding_aura": {
+        "name": "Feeding Aura",
+        "description": "Nearby troops do not consume food this turn.",
+        "type": "support",
+        "cooldown": 3,
+        "effects": [
+            "gain_resource"
+        ]
+    },
+
+    "claw_grab": {
+        "name": "Claw Grab",
+        "description": "Grab an enemy unit and pull it closer.",
+        "type": "control",
+        "cooldown": 2,
+        "effects": [
+            "pull",
+            "damage"
+        ]
+    },
+
+    "throw_enemy": {
+        "name": "Throw Enemy",
+        "description": "Throw an enemy unit away.",
+        "type": "control",
+        "cooldown": 2,
+        "effects": [
+            "push",
+            "damage"
+        ]
+    },
+
+    "pull_enemy": {
+        "name": "Pull Enemy",
+        "description": "Pull enemies toward the champion.",
+        "type": "control",
+        "cooldown": 2,
+        "effects": [
+            "pull"
+        ]
+    }
+}

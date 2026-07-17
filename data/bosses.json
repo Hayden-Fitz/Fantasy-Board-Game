@@ -1,0 +1,106 @@
+{
+    "warlord": {
+        "name": "The Warlord",
+        "kingdom": "crimson",
+
+        "description": "An invading army constantly attacks the Great Wall.",
+
+        "location": "capital",
+
+        "threatRules": {
+            "minimumDistance": 2,
+            "maximumDistance": 9,
+            "maximumChance": 0.5
+        },
+
+        "destructionEffects": [
+            "destroy_wall_segment",
+            "destroy_troops",
+            "discard_cards"
+        ]
+    },
+
+    "storm": {
+        "name": "The Endless Storm",
+        "kingdom": "tide",
+
+        "description": "A powerful storm destroys naval progress.",
+
+        "location": "capital",
+
+        "threatRules": {
+            "minimumDistance": 2,
+            "maximumDistance": 9,
+            "maximumChance": 0.5
+        },
+
+        "destructionEffects": [
+            "destroy_ship_upgrade",
+            "destroy_boats",
+            "discard_cards"
+        ]
+    },
+
+    "famine": {
+        "name": "The Great Famine",
+        "kingdom": "culinary",
+
+        "description": "A famine destroys food supplies and weakens armies.",
+
+        "location": "capital",
+
+        "threatRules": {
+            "minimumDistance": 2,
+            "maximumDistance": 9,
+            "maximumChance": 0.5
+        },
+
+        "destructionEffects": [
+            "destroy_food_production",
+            "destroy_troops",
+            "discard_cards"
+        ]
+    },
+
+    "dragon": {
+        "name": "Smoke & Lightning Dragon",
+        "kingdom": "viking",
+
+        "description": "A dragon burns settlements while the wizard is away.",
+
+        "location": "capital",
+
+        "threatRules": {
+            "minimumDistance": 2,
+            "maximumDistance": 9,
+            "maximumChance": 0.5
+        },
+
+        "destructionEffects": [
+            "destroy_buildings",
+            "destroy_troops",
+            "discard_cards"
+        ]
+    },
+
+    "moonHunter": {
+        "name": "The Moon Hunter",
+        "kingdom": "shadow",
+
+        "description": "A hunter stalks the werewolf kingdom.",
+
+        "location": "capital",
+
+        "threatRules": {
+            "minimumDistance": 2,
+            "maximumDistance": 9,
+            "maximumChance": 0.5
+        },
+
+        "destructionEffects": [
+            "destroy_magic_resources",
+            "destroy_troops",
+            "discard_cards"
+        ]
+    }
+}

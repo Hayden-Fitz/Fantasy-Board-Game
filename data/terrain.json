@@ -1,0 +1,168 @@
+{
+    "grass": {
+        "name": "Grass",
+        "description": "Open terrain with no special effects.",
+        "image": "grass.png",
+
+        "movementCost": 1,
+        "defenseBonus": 0,
+
+        "buildable": true,
+        "walkable": true,
+        "flyable": true,
+        "swimmable": false,
+
+        "canContainResources": true,
+        "canContainStructures": true,
+
+        "specialRules": []
+    },
+
+    "forest": {
+        "name": "Forest",
+        "description": "Dense woods that provide protection.",
+        "image": "forest.png",
+
+        "movementCost": 2,
+        "defenseBonus": 1,
+
+        "buildable": false,
+        "walkable": true,
+        "flyable": true,
+        "swimmable": false,
+
+        "canContainResources": true,
+        "canContainStructures": false,
+
+        "specialRules": [
+            "blocks_line_of_sight"
+        ]
+    },
+
+    "mountain": {
+        "name": "Mountain",
+        "description": "Rocky terrain that slows movement.",
+        "image": "mountain.png",
+
+        "movementCost": 3,
+        "defenseBonus": 2,
+
+        "buildable": false,
+        "walkable": true,
+        "flyable": true,
+        "swimmable": false,
+
+        "canContainResources": true,
+        "canContainStructures": false,
+
+        "specialRules": []
+    },
+
+    "water": {
+        "name": "water",
+        "description": "Flowing water separating kingdoms.",
+        "image": "water.png",
+
+        "movementCost": 999,
+
+        "defenseBonus": 0,
+
+        "buildable": false,
+        "walkable": false,
+        "flyable": true,
+        "swimmable": true,
+
+        "canContainResources": false,
+        "canContainStructures": false,
+
+        "specialRules": [
+            "water_tile"
+        ]
+    },
+
+
+    "capital": {
+        "name": "Capital",
+        "description": "The heart of a kingdom.",
+        "image": "capital.png",
+
+        "movementCost": 1,
+        "defenseBonus": 3,
+
+        "buildable": false,
+        "walkable": true,
+        "flyable": true,
+        "swimmable": false,
+
+        "canContainResources": false,
+        "canContainStructures": true,
+
+        "specialRules": [
+            "heals_champions",
+            "suppresses_boss"
+        ]
+    },
+
+    "construction_zone": {
+        "name": "Construction Zone",
+        "description": "Produces troops and workers.",
+        "image": "construction_zone.png",
+
+        "movementCost": 1,
+        "defenseBonus": 1,
+
+        "buildable": false,
+        "walkable": true,
+        "flyable": true,
+        "swimmable": false,
+
+        "canContainResources": false,
+        "canContainStructures": true,
+
+        "specialRules": [
+            "produces_units"
+        ]
+    },
+
+    "food_resource": {
+        "name": "Food Resource",
+        "description": "Produces one type of food.",
+        "image": "food_resource.png",
+
+        "movementCost": 1,
+        "defenseBonus": 0,
+
+        "buildable": false,
+        "walkable": true,
+        "flyable": true,
+        "swimmable": false,
+
+        "canContainResources": true,
+        "canContainStructures": false,
+
+        "specialRules": [
+            "resource_tile"
+        ]
+    },
+
+    "resource": {
+        "name": "Resource",
+        "description": "Produces resources when worked.",
+        "image": "resource.png",
+
+        "movementCost": 1,
+        "defenseBonus": 0,
+
+        "buildable": false,
+        "walkable": true,
+        "flyable": true,
+        "swimmable": false,
+
+        "canContainResources": true,
+        "canContainStructures": false,
+
+        "specialRules": [
+            "resource_tile"
+        ]
+    }
+}

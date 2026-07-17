@@ -1,0 +1,86 @@
+{
+    "griffin_rider": {
+        "name": "Griffin Rider",
+        "description": "A mounted warrior that combines aerial mobility with strong combat ability.",
+        "image": "",
+
+        "health": 60,
+        "attack": 25,
+        "range": 1,
+        "movement": 5,
+
+        "cost": {
+            "food": 2,
+            "wood": 2,
+            "stone": 0,
+            "metal": 3,
+            "magic": 1,
+            "gold": 5
+        },
+
+        "abilities": [
+            "dive_attack"
+        ],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    },
+
+    "phoenix": {
+        "name": "Phoenix",
+        "description": "A magical flying creature that can return from defeat.",
+        "image": "",
+
+        "health": 80,
+        "attack": 20,
+        "range": 2,
+        "movement": 6,
+
+        "cost": {
+            "food": 1,
+            "wood": 0,
+            "stone": 0,
+            "metal": 0,
+            "magic": 5,
+            "gold": 8
+        },
+
+        "abilities": [
+            "rebirth",
+            "healing_flame"
+        ],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    },
+
+    "wyvern": {
+        "name": "Wyvern",
+        "description": "A dangerous flying beast that attacks enemies with poison.",
+        "image": "",
+
+        "health": 70,
+        "attack": 35,
+        "range": 2,
+        "movement": 5,
+
+        "cost": {
+            "food": 3,
+            "wood": 0,
+            "stone": 0,
+            "metal": 0,
+            "magic": 3,
+            "gold": 7
+        },
+
+        "abilities": [
+            "poison_breath"
+        ],
+
+        "statusEffects": [],
+
+        "maxPerKingdom": 20
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "id": "",
+    "username": "",
+
+    "kingdom": "",
+    "team": "",
+
+    "connected": true,
+    "ready": false,
+
+    "cards": [],
+
+    "resources": {},
+
+    "units": [],
+
+    "workers": [],
+
+    "champion": "",
+
+    "constructionZones": [],
+
+    "territory": [],
+
+    "objectiveProgress": {},
+
+    "bossThreat": 0,
+
+    "eliminated": false,
+
+    "controlledBy": "",
+
+    "turnFinished": false
+}

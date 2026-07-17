@@ -1,0 +1,289 @@
+body{
+
+background:#222;
+color:white;
+font-family:Arial;
+text-align:center;
+
+}
+
+
+input, select, button{
+
+font-size:20px;
+padding:10px;
+margin:5px;
+
+}
+
+
+button{ cursor:pointer; }
+
+
+.game-container{
+
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:40px;
+
+}
+
+
+.main-panel{
+
+width:500px;
+
+}
+
+
+.player-panel{
+
+width:300px;
+background:#333;
+border-radius:15px;
+padding:20px;
+
+}
+
+
+.player-card{
+
+background:#444;
+padding:10px;
+margin:10px;
+border-radius:10px;
+
+}
+
+
+.ready{
+
+color:#55ff55;
+
+}
+
+
+.not-ready{
+
+color:#ff5555;
+
+}
+
+
+
+#loadingScreen {
+
+    position: fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:black;
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:40px;
+
+    z-index:9999;
+
+}
+
+
+#mapDisplay{
+
+width:100vw;
+height:100vh;
+
+overflow:hidden;
+
+}
+
+
+#board{
+
+position:absolute;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%);
+
+}
+
+
+.tile {
+    position:absolute;
+    width:100px;
+    height:100px;
+}
+
+
+.hexBackground {
+    position:absolute;
+
+    width:40px;
+    height:40px;
+
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+
+    background:#7CB342;
+
+    clip-path:polygon(
+        50% 0%,
+        93.3% 25%,
+        93.3% 75%,
+        50% 100%,
+        6.7% 75%,
+        6.7% 25%
+    );
+
+    z-index:0;
+}
+
+
+
+.hexBorder {
+    position:absolute;
+
+    width:40px;
+    height:40px;
+
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+
+    clip-path:polygon(
+        50% 0%,
+        93.3% 25%,
+        93.3% 75%,
+        50% 100%,
+        6.7% 75%,
+        6.7% 25%
+    );
+
+    z-index:1;
+}
+
+
+
+.hexCenter {
+    position:absolute;
+
+    width:38px;
+    height:38px;
+
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+
+    background-size:120%;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    clip-path:polygon(
+        50% 0%,
+        93.3% 25%,
+        93.3% 75%,
+        50% 100%,
+        6.7% 75%,
+        6.7% 25%
+    );
+
+    z-index:2;
+}
+
+
+/* Individual image sizes */
+
+.hexCenter.mountain {
+    background-size:160%;
+}
+
+.hexCenter.forest {
+    background-size:130%;
+}
+
+.hexCenter.grass {
+    background-size:135%;
+}
+
+.hexCenter.water {
+    background-size:130%;
+}
+
+.hexCenter.capital {
+    background-size:290%;
+}
+
+.hexCenter.constructionZone {
+    background-size:240%;
+}
+
+
+.hexCenter.gold {
+    background-size:150%;
+}
+
+.hexCenter.magic {
+    background-size:190%;
+}
+
+.hexCenter.metal {
+    background-size:120%;
+}
+
+.hexCenter.stone{
+    background-size:165%;
+}
+
+.hexCenter.wood{
+    background-size:170%;
+}
+
+
+.hexCenter.bread {
+    background-size:160%;
+}
+.hexCenter.fruit {
+    background-size:120%;
+}
+.hexCenter.spice {
+    background-size:120%;
+}
+.hexCenter.cake {
+    background-size:150%;
+}
+.hexCenter.fish {
+    background-size:120%;
+}
+
+
+#zoomControls{
+    position:absolute;
+    top:10px;
+    left:10px;
+    z-index:100;
+    display:flex;
+    flex-direction:column;
+}
+
+#zoomControls button{
+    width:40px;
+    height:40px;
+    font-size:25px;
+    cursor:pointer;
+}

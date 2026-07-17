@@ -1,0 +1,38 @@
+{
+    "shape": "circle",
+
+    "players": {
+        "minimum": 2,
+        "maximum": 5
+    },
+
+    "world": {
+        "radius": 13
+    },
+
+    "center": {
+        "enabled": true,
+        "radius": 3
+    },
+
+    "water": {
+        "enabled": true,
+        "width": 1
+    },
+
+    "kingdom": {
+        "capitalsPerKingdom": 1,
+        "constructionZones": 3,
+        "specialResourceTiles": 3,
+        "generalResourceTiles": 5,
+        "foodTiles": 2
+    },
+
+    "neutral": {
+        "constructionZones": 3,
+        "foodTiles": 2,
+        "specialResourceTiles": 8
+    },
+
+    "minimumDistanceBetweenCapitals": 10
+}

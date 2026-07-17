@@ -1,0 +1,37 @@
+{
+    "worker": {
+        "name": "Worker",
+
+        "description": "Collects resources, constructs buildings, and repairs structures. Workers cannot attack or defend. While assigned to a resource tile, they automatically generate resources each round without occupying the troop space.",
+
+        "image": "worker.png",
+
+        "health": 8,
+        "movement": 2,
+        "attack": 0,
+        "range": 0,
+
+        "cost": {
+            "food": 1,
+            "gold": 1
+        },
+
+        "abilities": [
+            "assignment",
+            "construction",
+            "repair"
+        ],
+
+        "statusEffects": [],
+
+        "specialRules": [
+            "does_not_occupy_tile",
+            "cannot_attack",
+            "cannot_be_assigned_to_multiple_tiles",
+            "generates_resources",
+            "builds_units"
+        ],
+
+        "maxPerKingdom": 20
+    }
+}

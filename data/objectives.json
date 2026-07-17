@@ -1,0 +1,53 @@
+{
+    "crimson": {
+        "name": "The Great Wall",
+        "description": "Construct 12 wall segments.",
+        "target": 12,
+        "checkpoints": [4, 8],
+        "progress": 0
+    },
+
+    "tide": {
+        "name": "Legendary Leviathan",
+        "description": "Upgrade the Royal Ship into the Legendary Leviathan.",
+        "levels": [
+            "Boat I",
+            "Boat II",
+            "Warship",
+            "Flagship",
+            "Legendary Leviathan"
+        ],
+        "checkpoints": [2, 4],
+        "progress": 0
+    },
+
+    "culinary": {
+        "name": "Grand Feast",
+        "description": "Control Bread, Fish, Fruit, Meat, cake, and spice simultaneously.",
+        "requiredFoods": [
+            "bread",
+            "fish",
+            "fruit",
+            "meat",
+            "cake",
+            "spice"
+        ],
+        "progress": []
+    },
+
+    "viking": {
+        "name": "Ancient Runes",
+        "description": "Collect every Ancient Rune.",
+        "target": 6,
+        "checkpoints": [2, 4],
+        "progress": 0
+    },
+
+    "shadow": {
+        "name": "Corrupt the Shrines",
+        "description": "Corrupt every Ancient Shrine.",
+        "target": 6,
+        "checkpoints": [2, 4],
+        "progress": 0
+    }
+}
