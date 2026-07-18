@@ -88,16 +88,12 @@ height:100vh;
 overflow:hidden;
 
 }
-#board{
-
-position:absolute;
-
-left:50%;
-top:50%;
-
-transform:translate(-50%,-50%);
-
+#board {
+    position: absolute;
+    left: 0;
+    top: 0;
 }
+
 
 
 .tile {

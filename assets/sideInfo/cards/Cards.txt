@@ -1,0 +1,90 @@
+Fantasy Board Game Cards
+Version 1.0
+
+================================
+COMBAT CARDS (10)
+================================
+
+
+Card Name:
+Category:
+cost:
+Image Idea:
+
+Description:
+
+Effect:
+
+Balance Notes:
+
+
+
+================================
+BUILDING CARDS (10)
+================================
+
+
+Card Name:
+Category:
+cost:
+Image Idea:
+
+Description:
+
+Effect:
+
+Balance Notes:
+
+
+
+================================
+RESOURCE CARDS (10)
+================================
+
+
+Card Name:
+Category:
+cost:
+Image Idea:
+
+Description:
+
+Effect:
+
+Balance Notes:
+
+
+
+================================
+CHAMPION CARDS (10)
+================================
+
+
+Card Name:
+Category:
+cost:
+Image Idea:
+
+Description:
+
+Effect:
+
+Balance Notes:
+
+
+
+================================
+SPECIAL CARDS (10)
+================================
+
+
+Card Name:
+Category:
+cost:
+Image Idea:
+
+Description:
+
+Effect:
+
+Balance Notes:

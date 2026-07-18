@@ -13,7 +13,11 @@ import airUnits from "./data/units/airUnits.json" with { type: "json" };
 import landUnits from "./data/units/landUnits.json" with { type: "json" };
 import waterUnits from "./data/units/waterUnits.json" with { type: "json" };
 import workers from "./data/units/workers.json" with { type: "json" };
-
+import {
+    zoomIn,
+    zoomOut,
+    teleportToCapital
+} from "./mapGenerator.js";
 
 
 // =============================
@@ -32,7 +36,7 @@ export function createUI(gameState){
 
     createInfoPanel(gameState);
 
-    // createMapControls(gameState);
+    createMapControls(gameState);
 
 }
 
@@ -208,7 +212,7 @@ function createLeftPanel(game){
         <div class="building-slot">
 
             <span>
-                Building 1
+                Wall
             </span>
 
             <button class="build-button">
@@ -221,7 +225,7 @@ function createLeftPanel(game){
         <div class="building-slot">
 
             <span>
-                Building 2
+                Road
             </span>
 
             <button class="build-button">
@@ -234,7 +238,7 @@ function createLeftPanel(game){
         <div class="building-slot">
 
             <span>
-                Building 3
+                Bridge
             </span>
 
             <button class="build-button">
@@ -247,7 +251,7 @@ function createLeftPanel(game){
         <div class="building-slot">
 
             <span>
-                Building 4
+                Fortress
             </span>
 
             <button class="build-button">
@@ -260,7 +264,7 @@ function createLeftPanel(game){
         <div class="building-slot">
 
             <span>
-                Building 5
+                Barracks
             </span>
 
             <button class="build-button">
@@ -273,7 +277,7 @@ function createLeftPanel(game){
         <div class="building-slot">
 
             <span>
-                Building 6
+                Workshop
             </span>
 
             <button class="build-button">
@@ -399,4 +403,30 @@ function createInfoPanel(game){
 
     document.body.appendChild(panel);
 
+}
+
+
+
+function createMapControls() {
+
+    const controls = document.createElement("div");
+    controls.id = "map-controls";
+
+    controls.innerHTML = `
+        <button id="zoomIn">+</button>
+
+        <button id="zoomOut">−</button>
+
+        <button id="centerCapital">
+            <img src="assets/capital-removebg-preview.webp" alt="Center Capital">
+        </button>
+    `;
+
+    document.body.appendChild(controls);
+
+    controls.querySelector("#zoomIn").addEventListener("click", zoomIn);
+
+    controls.querySelector("#zoomOut").addEventListener("click", zoomOut);
+
+    controls.querySelector("#centerCapital").addEventListener("click", teleportToCapital);
 }

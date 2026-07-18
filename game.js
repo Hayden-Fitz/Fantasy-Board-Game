@@ -9,7 +9,7 @@ import {
     update
 } from "./firebase.js";
 
-import { generateMap, renderMap} from "./mapGenerator.js";
+import { generateMap, renderMap, setCurrentGame} from "./mapGenerator.js";
 import { createUI } from "./UI.js";
 
 
@@ -124,7 +124,7 @@ async function loadGame(){
             connected: false
         });
 
-console.log("Disconnect registered:", playerRef);
+        console.log("Disconnect registered:", playerRef);
 
         // Only the host watches for empty games
         if (game.host === playerID) {
@@ -233,13 +233,11 @@ function startGame(map, game){
 
     renderMap(map);
 
+    setCurrentGame(game);
 
     createUI({
-
         ...game,
-
         map: map
-
     });
 
 }

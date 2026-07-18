@@ -1,0 +1,204 @@
+================================
+BUILDING CARDS (10)
+================================
+
+Card Name: Master Builders
+Category: Building
+Cost: 2 Wood, 2 Stone
+
+Image Idea:
+Master craftsmen raising a fortress with giant wooden scaffolding.
+
+Description:
+"Great kingdoms are built by greater hands."
+
+Effect:
+Build one structure for 50% of its normal resource cost.
+
+Balance Notes:
+Excellent economy card that rewards planning rather than brute force.
+
+================================
+BUILDING CARDS (9)
+================================
+
+Card Name: Emergency Workforce
+Category: Building
+Cost: 5 Food, 3 Gold, 2 Magic
+
+Image Idea:
+Two workers emerging from magical portals carrying tools.
+
+Description:
+"When time matters more than cost."
+
+Effect:
+Summon two Workers onto any occupied resource tiles you control.
+
+Balance Notes:
+Extremely expensive but allows instant recovery after disasters or rapid expansion.
+
+================================
+BUILDING CARDS (8)
+================================
+
+Card Name: Rapid Construction
+Category: Building
+Cost: 3 Wood, 2 Stone
+
+Image Idea:
+Three roads being built simultaneously.
+
+Description:
+"Every road leads to victory."
+
+Effect:
+Instantly build up to three Roads.
+
+Balance Notes:
+Excellent mobility card.
+
+================================
+BUILDING CARDS (7)
+================================
+
+Card Name: Sabotage
+Category: Building
+Cost: 2 Gold, 2 Magic
+
+Image Idea:
+Spies planting explosives beneath an enemy fortress.
+
+Description:
+"No wall is truly safe."
+
+Effect:
+Destroy one enemy building.
+
+Balance Notes:
+Powerful removal. High cost prevents overuse.
+
+================================
+BUILDING CARDS (6)
+================================
+
+Card Name: Forced March
+Category: Building
+Cost: 3 Food, 2 Gold
+
+Image Idea:
+Workers rushing supplies through the night.
+
+Description:
+"Sleep is a luxury."
+
+Effect:
+Your workers may perform two normal build actions this turn instead of one.
+
+Balance Notes:
+Doubles construction speed without reducing resource costs.
+
+================================
+BUILDING CARDS (5)
+================================
+
+Card Name: Reinforced Foundations
+Category: Building
+Cost: 2 Stone, 2 Metal
+
+Image Idea:
+Massive stone pillars supporting a fortress.
+
+Description:
+"What is built well shall never fall."
+
+Effect:
+Choose one building.
+It cannot be destroyed by cards for the next 5 rounds.
+
+Balance Notes:
+Hard counter to Sabotage.
+
+================================
+BUILDING CARDS (4)
+================================
+
+Card Name: Supply Depot
+Category: Building
+Cost: 3 Wood, 3 Gold
+
+Image Idea:
+A warehouse overflowing with equipment while workers prepare to leave.
+
+Description:
+"Every empire begins with labor."
+
+Effect:
+Immediately summon one Worker at your Capital.
+
+Balance Notes:
+Simple but extremely useful economic card.
+
+================================
+BUILDING CARDS (3)
+================================
+
+Card Name: Engineering Breakthrough
+Category: Building
+Cost: 3 Magic, 2 Gold
+
+Image Idea:
+Ancient blueprints glowing with magical runes.
+
+Description:
+"The impossible becomes routine."
+
+Effect:
+Immediately finish one building currently under construction.
+
+Balance Notes:
+Skips the remaining build time but still requires the original resources to have been paid.
+
+================================
+BUILDING CARDS (2)
+================================
+
+Card Name: Royal Treasury
+Category: Building
+Cost: 5 Gold, 2 Magic
+
+Image Idea:
+A royal vault overflowing with treasure.
+
+Description:
+"Gold solves many problems."
+
+Effect:
+The next building you construct costs only one of each resource it normally requires.
+
+Balance Notes:
+Extremely powerful economy card with a high cost.
+
+================================
+BUILDING CARDS (1)
+================================
+
+Card Name: Grand Expansion
+Category: Building
+Cost: 4 Wood, 4 Stone, 2 Gold
+
+Image Idea:
+A kingdom rapidly expanding with roads, walls, and workshops.
+
+Description:
+"The future belongs to those who build it."
+
+Effect:
+Choose one:
+• Build 2 Roads instantly.
+• Build 1 Wall instantly.
+• Build 1 Bridge instantly.
+• Build 1 Barracks or Workshop instantly.
+
+Balance Notes:
+Massive tempo card that saves time, not resources.

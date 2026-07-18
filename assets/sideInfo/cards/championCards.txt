@@ -1,0 +1,201 @@
+================================
+CHAMPION CARDS (10)
+================================
+
+Card Name: Heroic Charge
+Category: Champion
+Cost: 2 Gold 2 Food
+
+Image Idea:
+A champion charging into battle with soldiers following.
+
+Description:
+"The first strike belongs to the fearless."
+
+Effect:
+Your champion gains +2 movement this turn.
+
+Balance Notes:
+Simple mobility card for reaching battles or objectives.
+
+================================
+CHAMPION CARDS (9)
+================================
+
+Card Name: Champion's Feast
+Category: Champion
+Cost: 4 Food
+
+Image Idea:
+A champion eating at a royal feast.
+
+Description:
+"Even legends require rest."
+
+Effect:
+Restore 40% of your champion's health.
+
+Balance Notes:
+Primary healing card for champions.
+
+================================
+CHAMPION CARDS (8)
+================================
+
+Card Name: Unbreakable Resolve
+Category: Champion
+Cost: 3 Stone 2 Gold
+
+Image Idea:
+A champion holding a shield while surrounded.
+
+Description:
+"Some heroes simply refuse to fall."
+
+Effect:
+Your champion gains +50% defense for the next two rounds.
+
+Balance Notes:
+Excellent defensive card without becoming permanent.
+
+================================
+CHAMPION CARDS (7)
+================================
+
+Card Name: Inspire the Army
+Category: Champion
+Cost: 2 Gold 2 Magic
+
+Image Idea:
+Champion raising a banner before an army.
+
+Description:
+"Courage spreads faster than fear."
+
+Effect:
+All friendly combat units within 2 tiles of your champion gain +20% attack for one battle.
+
+Balance Notes:
+Rewards keeping armies near your champion.
+
+================================
+CHAMPION CARDS (6)
+================================
+
+Card Name: Heroic Leap
+Category: Champion
+Cost: 3 Magic
+
+Image Idea:
+A champion magically leaping over cliffs.
+
+Description:
+"No obstacle can stop a determined hero."
+
+Effect:
+Move your champion to any controlled tile within 5 tiles.
+
+Balance Notes:
+Allows repositioning without full teleportation.
+
+================================
+CHAMPION CARDS (5)
+================================
+
+Card Name: Heroic Leap
+Category: Champion
+cost: 3 Magic 2 Gold
+
+Image Idea:
+A champion leaping across a canyon surrounded by magical energy.
+
+Description:
+"No obstacle can stop a true hero."
+
+Effect:
+Move your champion to any tile within 5 tiles, ignoring all terrain, enemy units, walls, roads, and rivers.
+
+Balance Notes:
+Provides powerful mobility without increasing combat strength. Excellent for escaping danger, suppressing your kingdom's boss, or repositioning for an objective.
+
+================================
+CHAMPION CARDS (4)
+================================
+
+Card Name: Duel Challenge
+Category: Champion
+Cost: 3 Metal 2 Gold
+
+Image Idea:
+Two champions facing each other.
+
+Description:
+"Settle this with steel."
+
+Effect:
+Choose one enemy combat unit.
+Your champion deals +50% damage against that unit during this battle.
+
+Balance Notes:
+Useful for eliminating powerful enemy units.
+
+================================
+CHAMPION CARDS (3)
+================================
+
+Card Name: Guardian's Return
+Category: Champion
+Cost: 3 Gold 2 Food
+
+Image Idea:
+Champion returning to defend the capital.
+
+Description:
+"Home still needs its protector."
+
+Effect:
+Immediately move your champion to your capital.
+
+Balance Notes:
+Emergency escape card when the boss threat becomes dangerous.
+
+================================
+CHAMPION CARDS (2)
+================================
+
+Card Name: Legendary Strike
+Category: Champion
+Cost: 4 Metal 3 Magic
+
+Image Idea:
+Champion delivering a glowing sword strike.
+
+Description:
+"One perfect blow changes history."
+
+Effect:
+Your champion's next attack deals double damage.
+
+Balance Notes:
+High-cost finishing move.
+
+================================
+CHAMPION CARDS (1)
+================================
+
+Card Name: Rally the Champion
+Category: Champion
+Cost: 2 Food 2 Gold
+
+Image Idea:
+The people cheering as the champion rides past.
+
+Description:
+"The kingdom stands behind its hero."
+
+Effect:
+Refresh your champion.
+It may move and attack again this turn.
+
+Balance Notes:
+One of the strongest champion cards. Expensive but can completely change a battle.

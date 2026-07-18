@@ -1,0 +1,186 @@
+================================
+COMBAT CARDS (10)
+================================
+
+
+Card Name: Battle Fury
+Category: Combat
+cost: 2 metal 1 gold
+Image Idea: A warrior who only has part of his face shown and is glowing with a red rage
+
+Description: "The drums beat louder. The soldiers remember why they fight."
+
+Effect: one unit gain +25% attack damage for one encounter on your turn.
+
+Balance Notes: Strong offensive card but only effective for one battle
+
+
+
+================================
+COMBAT CARDS (9)
+================================
+
+
+Card Name: emergency heal
+Category: Combat
+cost: 3 food
+Image Idea: soldiers feasting at a feast
+
+Description: "even the strongest armies need time to recover"
+
+Effect: restore 15% health to all friendly units in a 2 tile radius of where you select
+
+Balance Notes: useful after a battle, prevents armies from being wiped instantly
+
+================================
+COMBAT CARDS (8)
+================================
+
+
+Card Name: Defensive Formation
+Category: Combat
+cost: 2 Stone
+Image Idea: a shield wall formation
+
+Description: "A shield alone breaks. A thousand shields become a fortress."
+
+Effect: one unit gains a +50% defense buff for the next time that they are attacked
+
+Balance Notes: counter to Battle Fury
+
+================================
+COMBAT CARDS (7)
+================================
+
+
+Card Name: Battlefield Reinforcements
+Category: Combat
+cost: 5 Gold 2 Food 1 Magic
+
+Image Idea: A portal opening behind an army as fresh soldiers march through
+
+Description: "The battle is not over until the last soldier arrives."
+
+Effect: Summon any one troop type you own onto any tile you currently control.
+
+Balance Notes: Very flexible card. High cost prevents players from constantly teleporting armies across the map.
+
+================================
+COMBAT CARDS (6)
+================================
+
+
+Card Name: War Drums
+Category: Combat
+cost: 3 Gold
+
+Image Idea: A massive war drum surrounded by marching soldiers
+
+Description: "The sound of war can be heard across the entire battlefield."
+
+Effect: Choose one friendly combat unit.
+That unit gains +2 movement for this turn.
+
+Balance Notes: Allows surprise attacks and faster expansion without directly increasing damage.
+
+================================
+COMBAT CARDS (5)
+================================
+
+
+Card Name: Precision Strike
+Category: Combat
+cost: 2 Metal 2 Magic
+
+Image Idea: A group of archers firing a glowing arrow toward a target
+
+Description: "One perfect shot can change the course of a war."
+
+Effect: immediately deal 20% health damage to one enemy combat unit.
+
+Balance Notes: Strong against powerful enemy units but cannot defeat them instantly.
+
+================================
+COMBAT CARDS (4)
+================================
+
+
+Card Name: Rallying Cry
+Category: Combat
+cost: 2 Food 1 Gold
+
+Image Idea: A commander raising a kingdom banner above soldiers
+
+Description: "A true leader does not command armies. They inspire them."
+
+Effect: One friendly combat unit gains +1 movement and +20% attack for one turn.
+
+Balance Notes: Good for aggressive pushes without being overwhelming.
+
+================================
+COMBAT CARDS (3)
+================================
+
+Card Name: Tactical Retreat
+
+Category: Combat
+
+cost: 2 Gold 1 Food
+
+Image Idea:
+Soldiers escaping through smoke while arrows fly overhead
+
+Description:
+"A wise commander knows when to fight another day."
+
+Effect:
+Move one friendly combat unit up to 3 tiles.
+
+Balance Notes:
+Allows players to save important armies without being a direct attack card.
+
+================================
+COMBAT CARDS (2)
+================================
+
+
+Card Name: Siege Breaker
+Category: Combat
+cost: 3 Metal 2 Stone 1 wood
+
+Image Idea: A giant hammer smashing a fortress wall
+
+Description: "Every fortress has a weakness."
+
+Effect: Your unit deals double damage against:
+- Walls
+- Fortresses
+- Siege Engines
+
+for 2 rounds.
+
+Balance Notes: Specialized counter card. Weak against normal troops.
+
+================================
+COMBAT CARDS (1)
+================================
+
+
+Card Name: Champion's Command
+Category: Combat
+cost: 4 Gold 4 Magic
+
+Image Idea: A champion standing above an army with magical energy surrounding them
+
+Description: "When champions lead, kingdoms follow."
+
+Effect: Choose one friendly unit within 2 tiles of your champion.
+
+That unit gains:
++50% attack
++25% defense
++1 movement
+
+for 3 rounds.
+
+Balance Notes: Encourages keeping champions involved in battles instead of hiding them.

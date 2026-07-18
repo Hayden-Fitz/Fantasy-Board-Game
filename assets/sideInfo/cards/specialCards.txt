@@ -1,0 +1,238 @@
+================================
+SPECIAL CARDS (10)
+================================
+
+Card Name: Cataclysm Ritual
+Category: Special
+
+cost:
+6 Magic
+6 Gold
+
+Image Idea:
+A massive ritual circle unleashing destruction across the world.
+
+Description:
+"The world itself trembles."
+
+Effect:
+Reveal one Cataclysm Card.
+Every opponent immediately suffers that Cataclysm.
+
+Balance Notes:
+Extremely expensive. Devastating in multiplayer but affects everyone except the player who cast it.
+
+================================
+SPECIAL CARDS (9)
+================================
+
+Card Name: Peace Treaty
+Category: Special
+
+cost:
+4 Gold
+
+Image Idea:
+Two rulers signing an ancient treaty.
+
+Description:
+"Even enemies need time to breathe."
+
+Effect:
+Choose one opponent.
+Neither player may attack the other until your next turn.
+
+Balance Notes:
+Useful for buying time or preventing an invasion.
+
+================================
+SPECIAL CARDS (8)
+================================
+
+Card Name: Spy Network
+Category: Special
+
+cost:
+3 Gold
+2 Magic
+
+Image Idea:
+A hooded spy stealing enemy battle plans.
+
+Description:
+"Secrets win wars."
+
+Effect:
+Look at another player's hand.
+Choose one card for them to discard.
+
+Balance Notes:
+Strong disruption without affecting the battlefield.
+
+================================
+SPECIAL CARDS (7)
+================================
+
+Card Name: Resource Convoy
+Category: Special
+
+cost:
+3 Gold
+2 Food
+
+Image Idea:
+A heavily guarded caravan overflowing with supplies.
+
+Description:
+"When the kingdom calls, the wagons always arrive."
+
+Effect:
+Choose one resource.
+Gain 6 of that resource.
+
+Balance Notes:
+Flexible economy card that lets players solve whatever resource shortage they currently have.
+
+================================
+SPECIAL CARDS (6)
+================================
+
+Card Name: Smuggler's Market
+Category: Special
+
+cost:
+2 Wood
+2 Stone
+2 Metal
+2 Gold
+2 Magic
+
+Image Idea:
+A hidden underground marketplace.
+
+Description:
+"Everything has a price."
+
+Effect:
+Ignore all resource costs of the next card you play this turn.
+
+Balance Notes:
+One of the strongest combo cards in the game. Very expensive to compensate.
+
+================================
+SPECIAL CARDS (5)
+================================
+
+Card Name: Kingdom Mobilization
+Category: Special
+
+cost:
+4 Food
+2 Gold
+
+Image Idea:
+Messengers riding from city to city calling every citizen to arms.
+
+Description:
+"The entire kingdom answers the call."
+
+Effect:
+Immediately create one Basic Troop at every Construction Zone you own.
+
+Balance Notes:
+Gets stronger as your kingdom expands. Excellent late-game reinforcement card.
+
+================================
+SPECIAL CARDS (4)
+================================
+
+Card Name: Industrial Revolution
+Category: Special
+
+cost:
+4 Wood
+4 Stone
+2 Gold
+
+Image Idea:
+Smoke stacks, cranes, and workers rapidly expanding a city.
+
+Description:
+"The kingdom enters a new age."
+
+Effect:
+For the next 3 rounds, every resource gathered by your workers is doubled.
+
+Balance Notes:
+A powerful long-term economy card that rewards planning.
+
+================================
+SPECIAL CARDS (3)
+================================
+
+Card Name: Overtime
+Category: Special
+
+cost:
+3 Food
+2 Gold
+
+Image Idea:
+Workers mining through the night.
+
+Description:
+"One more shift."
+
+Effect:
+Every Worker immediately gathers resources one additional time this turn.
+
+Balance Notes:
+Powerful one-turn economy burst.
+
+================================
+SPECIAL CARDS (2)
+================================
+
+Card Name: Kingdom Census
+Category: Special
+
+cost:
+4 Food
+3 Gold
+
+Image Idea:
+New citizens arriving at the capital while workers receive their assignments.
+
+Description:
+"Every pair of hands strengthens the kingdom."
+
+Effect:
+Immediately create 3 Workers at your Capital.
+
+Balance Notes:
+Excellent recovery card after catastrophes or for rapidly expanding your economy.
+
+================================
+SPECIAL CARDS (1)
+================================
+
+Card Name: Divine Intervention
+Category: Special
+
+cost:
+6 Magic
+
+Image Idea:
+A beam of heavenly light descending onto the battlefield.
+
+Description:
+"When all hope is lost..."
+
+Effect:
+Choose one:
+• Fully heal your Champion.
+• Fully heal up to 3 friendly combat units.
+• Remove all negative effects from every friendly unit.
+
+Balance Notes:
+An expensive emergency recovery card capable of turning around a desperate situation.

@@ -1,0 +1,207 @@
+================================
+RESOURCE CARDS (10)
+================================
+
+Card Name: Merchant Caravan
+Category: Resource
+Cost: 2 Gold
+
+Image Idea:
+A long caravan of wagons traveling between kingdoms.
+
+Description:
+"Trade keeps kingdoms alive."
+
+Effect:
+Choose one resource.
+Gain 6 of that resource.
+
+Balance Notes:
+Simple, flexible resource generator.
+
+================================
+RESOURCE CARDS (9)
+================================
+
+Card Name: Harvest Season
+Category: Resource
+Cost: 1 Gold
+
+Image Idea:
+Workers harvesting massive golden fields.
+
+Description:
+"The land provides."
+
+Effect:
+Gain 10 Food.
+
+Balance Notes:
+Excellent for feeding large armies.
+
+================================
+RESOURCE CARDS (8)
+================================
+
+Card Name: Rich Vein
+Category: Resource
+Cost: 2 Food
+
+Image Idea:
+Miners discovering glowing ore.
+
+Description:
+"The mountain rewards the patient."
+
+Effect:
+Gain 8 Metal.
+
+Balance Notes:
+Supports military production.
+
+================================
+RESOURCE CARDS (7)
+================================
+
+Card Name: Ancient Quarry
+Category: Resource
+Cost: 1 Food
+
+Image Idea:
+Workers cutting enormous stone blocks.
+
+Description:
+"Stone outlasts kingdoms."
+
+Effect:
+Gain 8 Stone.
+
+Balance Notes:
+Supports defensive building.
+
+================================
+RESOURCE CARDS (6)
+================================
+
+Card Name: Enchanted Grove
+Category: Resource
+Cost: 2 Food
+
+Image Idea:
+Ancient glowing trees.
+
+Description:
+"The forest whispers its secrets."
+
+Effect:
+Gain 8 Wood.
+
+Balance Notes:
+Supports construction.
+
+================================
+RESOURCE CARDS (5)
+================================
+
+Card Name: Arcane Surge
+Category: Resource
+Cost: 3 Gold
+
+Image Idea:
+Magical crystals erupting from the ground.
+
+Description:
+"The world overflows with power."
+
+Effect:
+Gain 6 Magic.
+
+Balance Notes:
+Supports champion and spell cards.
+
+================================
+RESOURCE CARDS (4)
+================================
+
+Card Name: Royal Taxes
+Category: Resource
+Cost: 2 Food
+
+Image Idea:
+Citizens delivering treasure to the king.
+
+Description:
+"The crown always collects."
+
+Effect:
+Gain 10 Gold.
+
+Balance Notes:
+The largest gold burst in the deck.
+
+================================
+RESOURCE CARDS (3)
+================================
+
+Card Name: Resource Exchange
+Category: Resource
+Cost: None
+
+Image Idea:
+Two merchants exchanging crates.
+
+Description:
+"Everything has value."
+
+Effect:
+Discard up to 5 of one resource.
+Gain the same amount of any other resource.
+
+Balance Notes:
+Excellent flexibility without creating resources.
+
+================================
+RESOURCE CARDS (2)
+================================
+
+Card Name: Emergency Supplies
+Category: Resource
+Cost: 2 Gold
+
+Image Idea:
+Supply wagons racing toward a battlefield.
+
+Description:
+"The kingdom always keeps reserves."
+
+Effect:
+Choose any three resources.
+Gain 3 of each.
+
+Balance Notes:
+Versatile recovery card.
+
+================================
+RESOURCE CARDS (1)
+================================
+
+Card Name: King's Blessing
+Category: Resource
+Cost: 4 Gold, 2 Magic
+
+Image Idea:
+The king overlooking overflowing warehouses.
+
+Description:
+"Prosperity smiles upon the kingdom."
+
+Effect:
+Gain:
+• 6 Wood
+• 6 Stone
+• 6 Metal
+• 6 Food
+
+
+Balance Notes:
+The ultimate economy card. Expensive to play but provides a huge resource boost.

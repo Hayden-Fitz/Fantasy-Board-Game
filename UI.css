@@ -360,6 +360,10 @@
 
     transition:0.15s ease;
 
+    box-shadow:
+    0 6px 15px black,
+    inset 0 0 15px rgba(0,0,0,.5);
+
 }
 
 .player-name{
@@ -425,18 +429,18 @@
 
     position:fixed;
 
-    right:20px;
+    right:-5px;
     bottom:20px;
 
-    width:260px;
+    width:220px;
 
     min-height:180px;
 
-    background:#4a2a14;
+    background:#6b3f1d;
 
     border:3px solid #2b1608;
 
-    border-radius:12px;
+    border-radius: 15px 0px 0px 15px;
 
     color:#f5deb3;
 
@@ -445,6 +449,10 @@
     z-index:9998;
 
     text-align:left;
+
+    box-shadow:
+    0 6px 15px black,
+    inset 0 0 15px rgba(0,0,0,.5);
 
 }
 
@@ -476,7 +484,7 @@
 
 #info-actions button{
 
-    background:#6b3f1d;
+    background:#4a2a14;
 
     color:white;
 
@@ -489,5 +497,71 @@
     border-radius:6px;
 
     cursor:pointer;
+
+}
+
+
+
+
+
+
+/*=========================
+    MAP CONTROLS
+=========================*/
+
+#map-controls{
+
+    position:fixed;
+
+    top:-5px;
+    left:-5px;
+
+    display:flex;
+    gap:8px;
+
+    padding:8px;
+
+    background:#6b3f1d;
+
+    border:3px solid #2b1608;
+
+    border-radius:0px 0px 12px 0px;
+
+    z-index:9998;
+
+    box-shadow:
+    0 6px 15px black,
+    inset 0 0 15px rgba(0,0,0,.5);
+
+}
+
+#map-controls button{
+
+    width:45px;
+    height:45px;
+
+    background:#4a2a14;
+
+    border:2px solid #2b1608;
+
+    border-radius:8px;
+
+    color:#f5deb3;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.15s ease;
+
+}
+
+#map-controls button:hover{
+
+    background:#8b552a;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 10px rgba(255,220,120,.35);
 
 }

@@ -3,9 +3,15 @@ import kingdoms from "./data/kingdoms.json" with { type: "json" };
 import resources from "./data/resources.json" with { type: "json" };
 import { generateTerrain } from "./terrain.js";
 
+let board = null;
 
+let offsetX=0;
+let offsetY=0;
 
+let scale=1;
 
+let currentMap = null;
+let currentGame = null;
 
 export function generateMap(players){
 
@@ -973,7 +979,7 @@ function removeIsolatedLand(map){
 // ==========================
 
 function renderMap(map){
-
+    currentMap = map;
     
 
     const tileImages = {
@@ -1004,12 +1010,12 @@ function renderMap(map){
     let display =
     document.getElementById("mapDisplay");
 
-    setupTileHighlight(display);
+    
 
     display.innerHTML = "";
 
 
-    let board =
+    board =
     document.createElement("div");
 
 
@@ -1258,12 +1264,6 @@ function renderMap(map){
     // =====================
 
 
-    let offsetX=0;
-    let offsetY=0;
-
-    let scale=1;
-
-
     let dragging=false;
 
     let startX;
@@ -1271,83 +1271,84 @@ function renderMap(map){
 
 
 
-    display.onmousedown=(e)=>{
+
+    
+
+
+    display.addEventListener("mousedown", (e)=>{
+
+        if(e.target.closest("#map-controls"))
+            return;
 
         dragging=true;
 
         startX=e.clientX-offsetX;
         startY=e.clientY-offsetY;
 
-    };
+    });
 
 
-    display.onmouseup=()=>{
-
-        dragging=false;
-
-    };
-
-
-    display.onmouseleave=()=>{
+    display.addEventListener("mouseup",()=>{
 
         dragging=false;
 
+    });
+
+
+    display.addEventListener("mouseleave",()=>{
+
+        dragging=false;
+
+    });
+
+
+    display.addEventListener("mousemove",(e)=>{
+
+        if(!dragging)
+            return;
+
+
+        offsetX=e.clientX-startX;
+        offsetY=e.clientY-startY;
+
+
+        updateZoom();
+
+    });
+
+
+    display.onwheel=(e)=>{
+
+        e.preventDefault();
+
+
+        scale +=
+        e.deltaY < 0
+        ? 0.1
+        : -0.1;
+
+
+        scale=Math.max(
+            0.3,
+            Math.min(scale,5)
+        );
+
+
+        board.style.transform =
+        `
+        translate(${offsetX}px,${offsetY}px)
+        scale(${scale})
+        `;
+
     };
 
 
-display.onmousemove=(e)=>{
-
-    if(!dragging)
-        return;
-
-
-    offsetX=e.clientX-startX;
-    offsetY=e.clientY-startY;
-
-
-    updateZoom();
-
-};
-
-
-display.onwheel=(e)=>{
-
-    e.preventDefault();
-
-
-    scale +=
-    e.deltaY < 0
-    ? 0.1
-    : -0.1;
-
-
-    scale=Math.max(
-        0.3,
-        Math.min(scale,5)
-    );
-
-
-    board.style.transform =
-    `
-    translate(${offsetX}px,${offsetY}px)
-    scale(${scale})
-    `;
-
-};
-
-
-function updateZoom(){
-
-    board.style.transform =
-    `
-    translate(${offsetX}px,${offsetY}px)
-    scale(${scale})
-    `;
 
 }
+
+export function setCurrentGame(game) {
+        currentGame = game;
 }
-
-
 
 
 
@@ -1471,4 +1472,106 @@ function setupTileHighlight(display){
 }
 
 
-export { renderMap };
+
+
+
+
+function updateZoom(){
+
+    board.style.transform =
+    `
+    translate(${offsetX}px,${offsetY}px)
+    scale(${scale})
+    `;
+
+}
+
+export function zoomIn(){
+
+    scale = Math.min(scale + 0.1, 5);
+
+    updateZoom();
+
+}
+export function zoomOut(){
+
+    scale = Math.max(scale - 0.1, 0.3);
+
+    updateZoom();
+
+}
+
+
+// ==========================
+// UI BUTTON LISTENERS
+// ==========================
+
+
+function teleportToCapital() {
+
+    if (!currentMap || !board || !currentGame) return;
+
+    // Get the local player
+    const playerID = localStorage.getItem("playerID");
+
+    if (!playerID) {
+        console.error("No local player ID.");
+        return;
+    }
+
+    const me = currentGame.players[playerID];
+
+    if (!me) {
+        console.error("Local player not found.");
+        return;
+    }
+
+    if (!me) return;
+
+    // Convert display name to kingdom ID
+    const kingdomId = Object.keys(currentMap.kingdoms).find(
+        id => currentMap.kingdoms[id].name === me.kingdom
+    );
+
+    if (!kingdomId) {
+        console.log("Kingdom ID not found:", me.kingdom);
+        return;
+    }
+
+    // Find this kingdom's capital
+    const capital = Object.values(currentMap.tiles).find(tile =>
+        tile.building === "capital" &&
+        tile.kingdom === kingdomId
+    );
+
+    if (!capital) {
+        console.log("Capital not found:", kingdomId);
+        return;
+    }
+
+    const display = document.getElementById("mapDisplay");
+    if (!display) return;
+
+    const hexSize = 20;
+
+    // Convert hex coordinates to world coordinates
+    const worldX =
+        Math.sqrt(3) * hexSize * (capital.x + capital.y / 2);
+
+    const worldY =
+        1.5 * hexSize * capital.y;
+
+    // Center the camera
+    offsetX = (display.clientWidth / 2) - (worldX * scale);
+    offsetY = (display.clientHeight / 2) - (worldY * scale);
+
+    updateZoom();
+}
+
+
+// export { renderMap };
+
+export {
+    renderMap,
+    teleportToCapital
+};
