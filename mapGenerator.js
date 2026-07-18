@@ -380,13 +380,6 @@ function generateLand(map){
 
 
 
-
-
-
-
-
-
-
 // ==========================
 // PLACE CAPITALS
 // ==========================
@@ -984,26 +977,26 @@ function renderMap(map){
     
 
     const tileImages = {
-        grass: "assets/grass-removebg-preview.png",
-        forest: "assets/forest-removebg-preview.png",
-        mountain: "assets/mountain-removebg-preview.png",
-        water: "assets/water-removebg-preview.png",
+        grass: "assets/grass-removebg-preview.webp",
+        forest: "assets/forest-removebg-preview.webp",
+        mountain: "assets/mountain-removebg-preview.webp",
+        water: "assets/water-removebg-preview.webp",
 
-        capital: "assets/capital-removebg-preview.png",
-        constructionZone: "assets/construction-removebg-preview.png",
+        capital: "assets/capital-removebg-preview.webp",
+        constructionZone: "assets/construction-removebg-preview.webp",
 
-        wood: "assets/wood-removebg-preview.png",
-        stone: "assets/stone-removebg-preview.png",
-        metal: "assets/metal-removebg-preview.png",
-        gold: "assets/gold-removebg-preview.png",
-        magic: "assets/magic-removebg-preview.png",
+        wood: "assets/wood-removebg-preview.webp",
+        stone: "assets/stone-removebg-preview.webp",
+        metal: "assets/metal-removebg-preview.webp",
+        gold: "assets/gold-removebg-preview.webp",
+        magic: "assets/magic-removebg-preview.webp",
 
-        bread: "assets/bread-removebg-preview.png",
-        fish: "assets/fish-removebg-preview.png",
-        fruit: "assets/fruit-removebg-preview.png",
-        meat: "assets/meat-removebg-preview.png",
-        cake: "assets/cake-removebg-preview.png",
-        spice: "assets/spice-removebg-preview.png"
+        bread: "assets/bread-removebg-preview.webp",
+        fish: "assets/fish-removebg-preview.webp",
+        fruit: "assets/fruit-removebg-preview.webp",
+        meat: "assets/meat-removebg-preview.webp",
+        cake: "assets/cake-removebg-preview.webp",
+        spice: "assets/spice-removebg-preview.webp"
     };
 
 
@@ -1011,6 +1004,7 @@ function renderMap(map){
     let display =
     document.getElementById("mapDisplay");
 
+    setupTileHighlight(display);
 
     display.innerHTML = "";
 
@@ -1023,7 +1017,7 @@ function renderMap(map){
 
 
     display.appendChild(board);
-
+    setupTileHighlight(display);
 
 
     const hexSize = 20;
@@ -1077,8 +1071,6 @@ function renderMap(map){
         culinary:"#a33400",
         viking:"#fffb00",
         shadow:"#7B1FA2",
-        //neutral:"#777777",
-        //unclaimed:"#444444"
 
     };
 
@@ -1161,26 +1153,26 @@ function renderMap(map){
     // TILE APPEARANCE
     // -------------------------
 
-element.innerHTML = `
+        element.innerHTML = `
 
-<div class="hexBackground"></div>
+        <div class="hexBackground"></div>
 
-<div 
-class="hexBorder"
-style="
-background:${borderColor};
-">
-</div>
+        <div 
+        class="hexBorder"
+        style="
+        background:${borderColor};
+        ">
+        </div>
 
 
-<div 
-class="hexCenter ${tile.building || tile.resource || tile.terrain}"
-style="
-background-image:url('${image}');
-">
-</div>
+        <div 
+        class="hexCenter ${tile.building || tile.resource || tile.terrain}"
+        style="
+        background-image:url('${image}');
+        ">
+        </div>
 
-`;
+        `;
 
 
 
@@ -1202,10 +1194,64 @@ background-image:url('${image}');
 
     board.appendChild(element);
 
-
     });
 
 
+
+    // =====================
+    // TILE GLOW MOUSE DETECTION
+    // =====================
+
+    display.addEventListener("mousemove", (e)=>{
+
+        let mouseX = e.clientX;
+        let mouseY = e.clientY;
+
+        let closestTile = null;
+        let closestDistance = Infinity;
+
+
+        document.querySelectorAll(".tile").forEach(tile=>{
+
+            let hex = tile.querySelector(".hexCenter");
+
+            let rect = hex.getBoundingClientRect();
+
+            let centerX = rect.left + rect.width / 2;
+            let centerY = rect.top + rect.height / 2;
+
+
+            let distance = Math.hypot(
+                mouseX - centerX,
+                mouseY - centerY
+            );
+
+
+            if(distance < closestDistance){
+
+                closestDistance = distance;
+                closestTile = tile;
+
+            }
+
+        });
+
+
+
+        document.querySelectorAll(".tile.glow")
+        .forEach(tile=>{
+            tile.classList.remove("glow");
+        });
+
+
+
+        if(closestTile){
+
+            closestTile.classList.add("glow");
+
+        }
+
+    });
 
     // =====================
     // CAMERA CONTROLS
@@ -1299,46 +1345,7 @@ function updateZoom(){
     `;
 
 }
-
-
-
-document.getElementById("zoomIn").onclick = ()=>{
-
-
-    scale += 0.1;
-
-
-    scale = Math.min(
-        scale,
-        5
-    );
-
-
-    updateZoom();
-
-};
-
-
-
-document.getElementById("zoomOut").onclick = ()=>{
-
-
-    scale -= 0.1;
-
-
-    scale = Math.max(
-        scale,
-        0.3
-    );
-
-
-    updateZoom();
-
-};
-
-
 }
-
 
 
 
@@ -1406,6 +1413,60 @@ function convertUnusedKingdoms(map){
 
     });
 
+
+}
+
+
+
+function setupTileHighlight(display){
+
+    display.addEventListener("mousemove", (e)=>{
+
+        let mouseX = e.clientX;
+        let mouseY = e.clientY;
+
+        let closestTile = null;
+        let closestDistance = Infinity;
+
+
+        document.querySelectorAll(".tile").forEach(tile=>{
+
+            let rect = tile.getBoundingClientRect();
+
+            let centerX = rect.left + rect.width / 2;
+            let centerY = rect.top + rect.height / 2;
+
+
+            let distance = Math.hypot(
+                mouseX - centerX,
+                mouseY - centerY
+            );
+
+
+            if(distance < closestDistance){
+
+                closestDistance = distance;
+                closestTile = tile;
+
+            }
+
+        });
+
+
+        document.querySelectorAll(".tile.glow")
+        .forEach(tile=>{
+            tile.classList.remove("glow");
+        });
+
+
+        if(closestTile){
+
+            closestTile.classList.add("glow");
+
+        }
+
+
+    });
 
 }
 

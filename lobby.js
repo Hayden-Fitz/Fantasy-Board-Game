@@ -1,13 +1,14 @@
-import { 
-database,
-ref,
-set,
-get,
-push,
-remove,
-onValue
+import {
+    database,
+    ref,
+    get,
+    set,
+    onValue,
+    push,
+    remove,
+    onDisconnect,
+    update
 } from "./firebase.js";
-
 
 
 function generateGameCode(){
@@ -20,12 +21,54 @@ function generateGameCode(){
 }
 
 
-
 let currentGameCode = "";
 let currentPlayerID = "";
 
 let countdownStarted = false;
+// ==========================
+// DELETE EMPTY GAMES
+// ==========================
 
+async function cleanupDeadGames(){
+
+    console.log("Checking for abandoned games...");
+
+    const gamesSnapshot =
+    await get(ref(database, "games"));
+
+    if(!gamesSnapshot.exists())
+        return;
+
+    const games = gamesSnapshot.val();
+
+    console.log("Games found:", games);
+
+    for(const [gameCode, game] of Object.entries(games)){
+
+        const players =
+        Object.values(game.players || {});
+
+        if(players.length === 0){
+
+            await remove(ref(database, "games/" + gameCode));
+            continue;
+
+        }
+
+        const connectedPlayers =
+        players.filter(player => player.connected === true);
+
+        if(connectedPlayers.length === 0){
+
+            console.log("Deleting abandoned game:", gameCode);
+
+            await remove(ref(database, "games/" + gameCode));
+
+        }
+
+    }
+
+}
 
 
 // ==========================
@@ -60,7 +103,6 @@ window.createGame = async function(){
     currentPlayerID = playerID;
 
 
-
     let player = {
 
         id: playerID,
@@ -69,9 +111,11 @@ window.createGame = async function(){
 
         kingdom: kingdom,
 
-        ready:false,
+        ready: false,
 
-        host:true
+        host: true,
+
+        connected: true
 
     };
 
@@ -100,7 +144,16 @@ window.createGame = async function(){
         player
     );
 
+    const playerRef = ref(
+        database,
+        "games/" + gameCode + "/players/" + playerID
+    );
 
+    await onDisconnect(playerRef).update({
+        connected:false
+    });
+
+console.log("Lobby disconnect registered");
 
     savePlayerData();
 
@@ -113,6 +166,8 @@ window.createGame = async function(){
     watchPlayers();
 
     watchGameStatus();
+
+   
 
 
 };
@@ -176,15 +231,17 @@ window.joinGame = async function(){
 
     let player = {
 
-        id:playerID,
+        id: playerID,
 
-        username:playerName,
+        username: playerName,
 
-        kingdom:kingdom,
+        kingdom: kingdom,
 
-        ready:false,
+        ready: false,
 
-        host:false
+        host: false,
+
+        connected: true
 
     };
 
@@ -198,7 +255,16 @@ window.joinGame = async function(){
         player
     );
 
+    const playerRef = ref(
+        database,
+        "games/"+gameCode+"/players/"+playerID
+    );
 
+    await onDisconnect(playerRef).update({
+        connected:false
+    });
+
+    console.log("Lobby disconnect registered");
 
     savePlayerData();
 
@@ -212,6 +278,7 @@ window.joinGame = async function(){
     watchPlayers();
 
     watchGameStatus();
+
 
 
 };
@@ -601,6 +668,11 @@ startCountdown();
 
 
 
+setInterval(()=>{
+    cleanupDeadGames();
+},30000);
+
+cleanupDeadGames();
 
 window.createGame=createGame;
 window.joinGame=joinGame;

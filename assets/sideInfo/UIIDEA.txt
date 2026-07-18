@@ -1,0 +1,48 @@
+           ______________________________________________________________________________
+          | wood x  stone x  metal x  gold x  magic x  food x ∨  current objective percentage x|
+          -------------------------------------------------------------------------------
+
+_____________                                                                                _____________
+    boss     |                                                                              | other player                                                                        
+Threat level |                                                                              | stats
+             |                                                                              |
+_____________|                                                                              |_____________
+ buildings   |                                                                              | other player
+bridge: cost |                                                                              |
+other:  cost |                                map is here                                   | stats          if some players
+other: cost  |                                                                              |_____________   are gone, then
+other:  cost |                                                                              | other player   remove their 
+other:  cost |                                                                              | stats          stat screen
+other:  cost |                                                                              |
+_____________|                                                                              |_____________
+current turn |                                                                              | other player
+phase:       |                                                                              | stats
+ie draw, feed|                                                                              |
+play, attack etc.|                                                                     _____|_____________
+_____________|                                                                        |
+                                                                                      | info about what you 
+                _____________________________________________________________________ |  clicked on ie health
+               |             |             |             |             |             ||  damage, tile info, etc.
+ cards --->    |   image     |             |             |             |             ||
+hovering over  |             |             |             |             |             ||
+them increases | description |             |             |             |             ||
+size           |             |             |             |             |             ||     
+________________________________________________________________________________________________________________     
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

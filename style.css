@@ -6,8 +6,6 @@ font-family:Arial;
 text-align:center;
 
 }
-
-
 input, select, button{
 
 font-size:20px;
@@ -15,11 +13,7 @@ padding:10px;
 margin:5px;
 
 }
-
-
 button{ cursor:pointer; }
-
-
 .game-container{
 
 display:flex;
@@ -28,15 +22,11 @@ gap:40px;
 margin-top:40px;
 
 }
-
-
 .main-panel{
 
 width:500px;
 
 }
-
-
 .player-panel{
 
 width:300px;
@@ -45,8 +35,6 @@ border-radius:15px;
 padding:20px;
 
 }
-
-
 .player-card{
 
 background:#444;
@@ -55,23 +43,16 @@ margin:10px;
 border-radius:10px;
 
 }
-
-
 .ready{
 
 color:#55ff55;
 
 }
-
-
 .not-ready{
 
 color:#ff5555;
 
 }
-
-
-
 #loadingScreen {
 
     position: fixed;
@@ -99,8 +80,6 @@ color:#ff5555;
     z-index:9999;
 
 }
-
-
 #mapDisplay{
 
 width:100vw;
@@ -109,8 +88,6 @@ height:100vh;
 overflow:hidden;
 
 }
-
-
 #board{
 
 position:absolute;
@@ -125,9 +102,32 @@ transform:translate(-50%,-50%);
 
 .tile {
     position:absolute;
-    width:100px;
-    height:100px;
+    width:40px;
+    height:40px;
+
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+
 }
+
+
+/* ==========================
+   TILE HIGHLIGHT EFFECT
+========================== */
+
+
+
+
+.tile.glow .hexCenter{
+
+    filter:
+        brightness(1.3)
+        drop-shadow(0 0 8px rgba(255,220,120,0.9));
+
+}
+
+
 
 
 .hexBackground {
@@ -243,7 +243,7 @@ transform:translate(-50%,-50%);
 }
 
 .hexCenter.metal {
-    background-size:120%;
+    background-size:155%;
 }
 
 .hexCenter.stone{
@@ -286,4 +286,18 @@ transform:translate(-50%,-50%);
     height:40px;
     font-size:25px;
     cursor:pointer;
+}
+
+
+html {
+    scrollbar-width: none; /* Firefox */
+}
+
+body {
+    overflow: auto;
+}
+
+/* Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+    display: none;
 }

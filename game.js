@@ -1,12 +1,16 @@
-import { 
+import {
     database,
     ref,
     get,
     set,
-    onValue
+    onValue,
+    remove,
+    onDisconnect,
+    update
 } from "./firebase.js";
 
-import { generateMap, renderMap } from "./mapGenerator.js";
+import { generateMap, renderMap} from "./mapGenerator.js";
+import { createUI } from "./UI.js";
 
 
 
@@ -101,6 +105,38 @@ async function loadGame(){
         }
 
 
+        // ==========================
+        // PLAYER CONNECTION
+        // ==========================
+
+        const playerRef =
+        ref(
+            database,
+            `games/${gameCode}/players/${playerID}`
+        );
+
+        await update(playerRef, {
+            connected: true
+        });
+
+        await onDisconnect(playerRef).set({
+            ...currentPlayer,
+            connected: false
+        });
+
+console.log("Disconnect registered:", playerRef);
+
+        // Only the host watches for empty games
+        if (game.host === playerID) {
+
+            const playersRef = ref(database, `games/${gameCode}/players`);
+
+            onValue(playersRef, () => {
+                cleanupGame();
+            });
+
+        }
+
         if (game.host === playerID) {
 
             let map = generateMap(players);
@@ -118,16 +154,43 @@ async function loadGame(){
     // ==========================
 
 
-    waitForMap();
+    waitForMap(game);
 
 
 }
 
 
+async function cleanupGame(){
+
+    const gameRef =
+        ref(database, "games/" + gameCode);
+
+    const snapshot =
+        await get(gameRef);
+
+    if(!snapshot.exists())
+        return;
+
+    const game = snapshot.val();
+
+    const players =
+        Object.values(game.players || {});
+
+    const connectedPlayers =
+        players.filter(player => player.connected);
+
+    if(connectedPlayers.length === 0){
+
+        console.log("Deleting empty game.");
+
+        await remove(gameRef);
+
+    }
+
+}
 
 
-
-function waitForMap(){
+function waitForMap(game){
 
 
     let mapRef =
@@ -135,7 +198,6 @@ function waitForMap(){
         database,
         "games/"+gameCode+"/map"
     );
-
 
 
     onValue(
@@ -147,32 +209,89 @@ function waitForMap(){
                 let map =
                 snapshot.val();
 
+
                 console.log(
                     "MAP LOADED:",
                     map
                 );
 
-                startGame(map);
+
+                startGame(map, game);
 
             }
 
         }
     );
 
-
-
 }
 
 
 
 
 
-function startGame(map){
+function startGame(map, game){
+
     renderMap(map);
+
+
+    createUI({
+
+        ...game,
+
+        map: map
+
+    });
+
 }
 
 
+// export function setupTileHighlight(){
 
+//     let display = document.getElementById("mapDisplay");
+
+//     if(!display){
+//         console.error("Map display not found");
+//         return;
+//     }
+
+
+//     display.addEventListener("mousemove", (e)=>{
+
+//         let hoveredTile = null;
+
+//         document.querySelectorAll(".tile").forEach(tile=>{
+
+//             let rect = tile.getBoundingClientRect();
+
+//             if(
+//                 e.clientX >= rect.left &&
+//                 e.clientX <= rect.right &&
+//                 e.clientY >= rect.top &&
+//                 e.clientY <= rect.bottom
+//             ){
+
+//                 hoveredTile = tile;
+
+//             }
+
+//         });
+
+
+//         document.querySelectorAll(".tile.glow")
+//         .forEach(tile=>{
+//             tile.classList.remove("glow");
+//         });
+
+
+//         if(hoveredTile){
+
+//             hoveredTile.classList.add("glow");
+
+//         }
+
+//     });
+
+// }
 
 
 loadGame();

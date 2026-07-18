@@ -1,18 +1,18 @@
 import { initializeApp } from 
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
-import { 
-getDatabase,
-ref,
-set,
-get,
-child,
-push,
-onValue,
-remove
-} from 
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
+import {
+    getDatabase,
+    ref,
+    set,
+    get,
+    child,
+    push,
+    onValue,
+    remove,
+    update,
+    onDisconnect
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
 
@@ -39,11 +39,13 @@ export const database = getDatabase(app);
 
 
 export {
-ref,
-set,
-get,
-child,
-push,
-onValue,
-remove
+    ref,
+    set,
+    get,
+    child,
+    push,
+    onValue,
+    remove,
+    update,
+    onDisconnect
 };
