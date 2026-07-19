@@ -7,10 +7,22 @@ import {
     remove,
     onDisconnect,
     update
-} from "./firebase.js";
+} from "./firebase/firebase.js";
 
-import { generateMap, renderMap, setCurrentGame} from "./mapGenerator.js";
-import { createUI } from "./UI.js";
+import { generateMap, renderMap, setCurrentGame } from "./mapGenerator.js";
+import { createUI } from "./UI/UI.js";
+
+import {
+    createPlayerDeck,
+    drawStartingHand,
+    getPlayerHand,
+    getDiscardPile,
+    getDeckSize
+} from "./cards/cards.js";
+
+import {
+    syncPlayerCards
+} from "./firebase/playerCards.js";
 
 
 
@@ -119,8 +131,7 @@ async function loadGame(){
             connected: true
         });
 
-        await onDisconnect(playerRef).set({
-            ...currentPlayer,
+        await onDisconnect(playerRef).update({
             connected: false
         });
 
@@ -229,67 +240,54 @@ function waitForMap(game){
 
 
 
-function startGame(map, game){
+async function startGame(map, game){
 
     renderMap(map);
 
     setCurrentGame(game);
 
+
+    // ==========================
+    // CREATE PLAYER CARD DECK
+    // ==========================
+
+    createPlayerDeck();
+
+    drawStartingHand();
+
+
+    // Sync cards to Firebase
+
+    try {
+
+        await syncPlayerCards(
+            gameCode,
+            playerID,
+            getPlayerHand(),
+            getDiscardPile(),
+            getDeckSize()
+        );
+
+    }
+    catch(error){
+
+        console.error("Card sync failed:", error);
+
+    }
+
+
+    // Create UI
+
     createUI({
         ...game,
-        map: map
+        map: map,
+        hand: getPlayerHand()
     });
 
 }
 
 
-// export function setupTileHighlight(){
 
-//     let display = document.getElementById("mapDisplay");
-
-//     if(!display){
-//         console.error("Map display not found");
-//         return;
-//     }
-
-
-//     display.addEventListener("mousemove", (e)=>{
-
-//         let hoveredTile = null;
-
-//         document.querySelectorAll(".tile").forEach(tile=>{
-
-//             let rect = tile.getBoundingClientRect();
-
-//             if(
-//                 e.clientX >= rect.left &&
-//                 e.clientX <= rect.right &&
-//                 e.clientY >= rect.top &&
-//                 e.clientY <= rect.bottom
-//             ){
-
-//                 hoveredTile = tile;
-
-//             }
-
-//         });
-
-
-//         document.querySelectorAll(".tile.glow")
-//         .forEach(tile=>{
-//             tile.classList.remove("glow");
-//         });
-
-
-//         if(hoveredTile){
-
-//             hoveredTile.classList.add("glow");
-
-//         }
-
-//     });
-
-// }
 
 
 loadGame();

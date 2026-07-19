@@ -341,16 +341,6 @@ function generateConstructionZones(map){
 
 
         }
-
-
-
-        console.log(
-            kingdom,
-            "construction zones:",
-            constructionZones
-        );
-
-
     });
 
 
@@ -648,16 +638,6 @@ function generateResources(map){
         });
 
 
-
-        console.log(
-
-            kingdom,
-            "resources placed:",
-            resourceList
-
-        );
-
-
     });
 
 
@@ -745,12 +725,6 @@ function generateResources(map){
 
     }
 
-
-
-    console.log(
-        "Neutral resources placed:",
-        amount
-    );
 
 
 }

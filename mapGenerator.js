@@ -983,26 +983,26 @@ function renderMap(map){
     
 
     const tileImages = {
-        grass: "assets/grass-removebg-preview.webp",
-        forest: "assets/forest-removebg-preview.webp",
-        mountain: "assets/mountain-removebg-preview.webp",
-        water: "assets/water-removebg-preview.webp",
+        grass: "assets/tiles/grass-removebg-preview.webp",
+        forest: "assets/tiles/forest-removebg-preview.webp",
+        mountain: "assets/tiles/mountain-removebg-preview.webp",
+        water: "assets/tiles/water-removebg-preview.webp",
 
-        capital: "assets/capital-removebg-preview.webp",
-        constructionZone: "assets/construction-removebg-preview.webp",
+        capital: "assets/tiles/capital-removebg-preview.webp",
+        constructionZone: "assets/tiles/construction-removebg-preview.webp",
 
-        wood: "assets/wood-removebg-preview.webp",
-        stone: "assets/stone-removebg-preview.webp",
-        metal: "assets/metal-removebg-preview.webp",
-        gold: "assets/gold-removebg-preview.webp",
-        magic: "assets/magic-removebg-preview.webp",
+        wood: "assets/tiles/wood-removebg-preview.webp",
+        stone: "assets/tiles/stone-removebg-preview.webp",
+        metal: "assets/tiles/metal-removebg-preview.webp",
+        gold: "assets/tiles/gold-removebg-preview.webp",
+        magic: "assets/tiles/magic-removebg-preview.webp",
 
-        bread: "assets/bread-removebg-preview.webp",
-        fish: "assets/fish-removebg-preview.webp",
-        fruit: "assets/fruit-removebg-preview.webp",
-        meat: "assets/meat-removebg-preview.webp",
-        cake: "assets/cake-removebg-preview.webp",
-        spice: "assets/spice-removebg-preview.webp"
+        bread: "assets/tiles/bread-removebg-preview.webp",
+        fish: "assets/tiles/fish-removebg-preview.webp",
+        fruit: "assets/tiles/fruit-removebg-preview.webp",
+        meat: "assets/tiles/meat-removebg-preview.webp",
+        cake: "assets/tiles/cake-removebg-preview.webp",
+        spice: "assets/tiles/spice-removebg-preview.webp"
     };
 
 

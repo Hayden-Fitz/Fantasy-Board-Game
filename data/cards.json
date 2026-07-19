@@ -1,11 +1,1087 @@
+
 {
-    "combat": {},
+    "combat": {
 
-    "building": {},
+        "battle_fury": {
+        "cardID": "battle_fury",
+        "name": "Battle Fury",
+        "category": "combat",
+        "image": "battle_fury.webp",
+        "cost": {
+            "metal": 2,
+            "gold": 1
+        },
+        "description": "The drums beat louder. The soldiers remember why they fight.",
+        "effect": {
+            "type": "attack_buff",
+            "value": 0.25,
+            "duration": 1,
+            "target": "friendly_unit"
+        },
+        "balanceNotes": "One encounter only."
+        },
 
-    "resource": {},
+        "emergency_heal": {
+        "cardID": "emergency_heal",
+        "name": "Emergency Heal",
+        "category": "combat",
+        "image": "emergency_heal.webp",
+        "cost": {
+            "food": 3
+        },
+        "description": "Even the strongest armies need time to recover.",
+        "effect": {
+            "type": "heal_radius",
+            "value": 0.15,
+            "radius": 2,
+            "target": "friendly_units"
+        },
+        "balanceNotes": "Area heal."
+        },
 
-    "champion": {},
+        "defensive_formation": {
+        "cardID": "defensive_formation",
+        "name": "Defensive Formation",
+        "category": "combat",
+        "image": "defensive_formation.webp",
+        "cost": {
+            "stone": 2
+        },
+        "description": "A shield alone breaks. A thousand shields become a fortress.",
+        "effect": {
+            "type": "defense_buff",
+            "value": 0.50,
+            "duration": 1,
+            "target": "friendly_unit"
+        },
+        "balanceNotes": "Counter to Battle Fury."
+        },
 
-    "special": {}
+        "battlefield_reinforcements": {
+        "cardID": "battlefield_reinforcements",
+        "name": "Battlefield Reinforcements",
+        "category": "combat",
+        "image": "battlefield_reinforcements.webp",
+        "cost": {
+            "gold": 5,
+            "food": 2,
+            "magic": 1
+        },
+        "description": "The battle is not over until the last soldier arrives.",
+        "effect": {
+            "type": "summon_unit",
+            "target": "controlled_tile"
+        },
+        "balanceNotes": "Summon any troop type onto a controlled tile."
+        },
+
+        "war_drums": {
+        "cardID": "war_drums",
+        "name": "War Drums",
+        "category": "combat",
+        "image": "war_drums.webp",
+        "cost": {
+            "gold": 3
+        },
+        "description": "The sound of war can be heard across the entire battlefield.",
+        "effect": {
+            "type": "movement_buff",
+            "value": 2,
+            "duration": 1,
+            "target": "friendly_unit"
+        },
+        "balanceNotes": "Grants +2 movement this turn."
+        },
+
+        "precision_strike": {
+        "cardID": "precision_strike",
+        "name": "Precision Strike",
+        "category": "combat",
+        "image": "precision_strike.webp",
+        "cost": {
+            "metal": 2,
+            "magic": 2
+        },
+        "description": "One perfect shot can change the course of a war.",
+        "effect": {
+            "type": "direct_damage",
+            "value": 0.20,
+            "target": "enemy_unit"
+        },
+        "balanceNotes": "Deals 20% health damage."
+        },
+
+        "rallying_cry": {
+        "cardID": "rallying_cry",
+        "name": "Rallying Cry",
+        "category": "combat",
+        "image": "rallying_cry.webp",
+        "cost": {
+            "food": 2,
+            "gold": 1
+        },
+        "description": "A true leader does not command armies. They inspire them.",
+        "effect": {
+            "type": "mixed_buff",
+            "attack": 0.20,
+            "movement": 1,
+            "duration": 1,
+            "target": "friendly_unit"
+        },
+        "balanceNotes": "Temporary offensive push."
+        },
+
+        "tactical_retreat": {
+        "cardID": "tactical_retreat",
+        "name": "Tactical Retreat",
+        "category": "combat",
+        "image": "tactical_retreat.webp",
+        "cost": {
+            "gold": 2,
+            "food": 1
+        },
+        "description": "A wise commander knows when to fight another day.",
+        "effect": {
+            "type": "move_unit",
+            "range": 3,
+            "target": "friendly_unit"
+        },
+        "balanceNotes": "Move a unit up to 3 tiles."
+        },
+
+        "siege_breaker": {
+        "cardID": "siege_breaker",
+        "name": "Siege Breaker",
+        "category": "combat",
+        "image": "siege_breaker.webp",
+        "cost": {
+            "metal": 3,
+            "stone": 2,
+            "wood": 1
+        },
+        "description": "Every fortress has a weakness.",
+        "effect": {
+            "type": "siege_bonus",
+            "multiplier": 2,
+            "duration": 2,
+            "targets": [
+            "wall",
+            "fortress",
+            "siege_engine"
+            ]
+        },
+        "balanceNotes": "Double damage versus structures."
+        },
+
+        "champions_command": {
+        "cardID": "champions_command",
+        "name": "Champion's Command",
+        "category": "combat",
+        "image": "champions_command.webp",
+        "cost": {
+            "gold": 4,
+            "magic": 4
+        },
+        "description": "When champions lead, kingdoms follow.",
+        "effect": {
+            "type": "champion_buff",
+            "attack": 0.50,
+            "defense": 0.25,
+            "movement": 1,
+            "radius": 2,
+            "duration": 3,
+            "target": "friendly_unit"
+        },
+        "balanceNotes": "Units must be within 2 tiles of your champion."
+        }
+
+    },
+
+    "building": {
+
+        "master_builders": {
+        "cardId": "master_builders",
+        "name": "Master Builders",
+        "category": "building",
+        "image": "master_builders.webp",
+        "cost": {
+            "wood": 2,
+            "stone": 2
+        },
+        "description": "Great kingdoms are built by greater hands.",
+        "effect": {
+            "type": "building_discount",
+            "discount": 0.50,
+            "target": "building",
+            "amount": 1
+        },
+        "balanceNotes": "Build one structure for 50% of its normal resource cost."
+        },
+
+        "emergency_workforce": {
+        "cardId": "emergency_workforce",
+        "name": "Emergency Workforce",
+        "category": "building",
+        "image": "emergency_workforce.webp",
+        "cost": {
+            "food": 5,
+            "gold": 3,
+            "magic": 2
+        },
+        "description": "When time matters more than cost.",
+        "effect": {
+            "type": "spawn_workers",
+            "amount": 2,
+            "target": "controlled_resource_tiles",
+            "requiresOccupiedTile": true
+        },
+        "balanceNotes": "Summon two Workers onto any occupied resource tiles you control."
+        },
+
+        "rapid_construction": {
+        "cardId": "rapid_construction",
+        "name": "Rapid Construction",
+        "category": "building",
+        "image": "rapid_construction.webp",
+        "cost": {
+            "wood": 3,
+            "stone": 2
+        },
+        "description": "Every road leads to victory.",
+        "effect": {
+            "type": "instant_build",
+            "building": "road",
+            "amount": 3,
+            "requiresResources": false
+        },
+        "balanceNotes": "Instantly build up to three Roads."
+        },
+
+        "sabotage": {
+        "cardId": "sabotage",
+        "name": "Sabotage",
+        "category": "building",
+        "image": "sabotage.webp",
+        "cost": {
+            "gold": 2,
+            "magic": 2
+        },
+        "description": "No wall is truly safe.",
+        "effect": {
+            "type": "destroy_building",
+            "target": "enemy_building",
+            "amount": 1,
+            "ignoresDefense": false
+        },
+        "balanceNotes": "Destroy one enemy building."
+        },
+
+        "forced_march": {
+        "cardId": "forced_march",
+        "name": "Forced March",
+        "category": "building",
+        "image": "forced_march.webp",
+        "cost": {
+            "food": 3,
+            "gold": 2
+        },
+        "description": "Sleep is a luxury.",
+        "effect": {
+            "type": "extra_worker_actions",
+        "bonusActions": 1,
+            "duration": 1,
+            "target": "friendly_workers"
+        },
+        "balanceNotes": "Workers may perform two normal build actions this turn instead of one."
+        },
+
+        "reinforced_foundations": {
+        "cardId": "reinforced_foundations",
+        "name": "Reinforced Foundations",
+        "category": "building",
+        "image": "reinforced_foundations.webp",
+        "cost": {
+            "stone": 2,
+            "metal": 2
+        },
+        "description": "What is built well shall never fall.",
+        "effect": {
+            "type": "building_protection",
+            "duration": 5,
+            "target": "friendly_building",
+            "protectsFrom": [
+            "card_destroy_effects"
+            ]
+        },
+        "balanceNotes": "Hard counter to Sabotage."
+        },
+
+        "supply_depot": {
+        "cardId": "supply_depot",
+        "name": "Supply Depot",
+        "category": "building",
+        "image": "supply_depot.webp",
+        "cost": {
+            "wood": 3,
+            "gold": 3
+        },
+        "description": "Every empire begins with labor.",
+        "effect": {
+            "type": "spawn_worker",
+            "amount": 1,
+            "target": "capital"
+        },
+        "balanceNotes": "Immediately summon one Worker at your Capital."
+        },
+
+        "engineering_breakthrough": {
+        "cardId": "engineering_breakthrough",
+        "name": "Engineering Breakthrough",
+        "category": "building",
+        "image": "engineering_breakthrough.webp",
+        "cost": {
+            "magic": 3,
+            "gold": 2
+        },
+        "description": "The impossible becomes routine.",
+        "effect": {
+            "type": "complete_construction",
+            "target": "building_under_construction",
+            "amount": 1,
+            "keepsResourceCost": true
+        },
+        "balanceNotes": "Finishes one building currently under construction."
+        },
+
+        "royal_treasury": {
+        "cardId": "royal_treasury",
+        "name": "Royal Treasury",
+        "category": "building",
+        "image": "royal_treasury.webp",
+        "cost": {
+            "gold": 5,
+            "magic": 2
+        },
+        "description": "Gold solves many problems.",
+        "effect": {
+            "type": "next_build_discount",
+            "resourceCost": 1,
+            "duration": 1,
+            "target": "friendly_building"
+        },
+        "balanceNotes": "The next building costs only one of each required resource."
+        },
+
+        "grand_expansion": {
+        "cardId": "grand_expansion",
+        "name": "Grand Expansion",
+        "category": "building",
+        "image": "grand_expansion.webp",
+        "cost": {
+            "wood": 4,
+            "stone": 4,
+            "gold": 2
+        },
+        "description": "The future belongs to those who build it.",
+        "effect": {
+            "type": "choose_build",
+            "options": [
+            {
+                "building": "road",
+                "amount": 2
+            },
+            {
+                "building": "wall",
+                "amount": 1
+            },
+            {
+                "building": "bridge",
+                "amount": 1
+            },
+            {
+                "building": [
+                "barracks",
+                "workshop"
+                ],
+                "amount": 1
+            }
+            ]
+        },
+        "balanceNotes": "Massive tempo card that saves time, not resources."
+        }
+
+    },
+
+    "resource": {
+        "merchant_caravan": {
+        "id": "merchant_caravan",
+        "name": "Merchant Caravan",
+        "category": "resource",
+
+        "cost": {
+            "gold": 2
+        },
+
+        "imageIdea": "A long caravan of wagons traveling between kingdoms.",
+
+        "description": "Trade keeps kingdoms alive.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resource": "chosen_resource",
+            "amount": 6
+        },
+
+        "balanceNotes": "Simple, flexible resource generator."
+        },
+
+
+        "harvest_season": {
+        "id": "harvest_season",
+        "name": "Harvest Season",
+        "category": "resource",
+
+        "cost": {
+            "gold": 1
+        },
+
+        "imageIdea": "Workers harvesting massive golden fields.",
+
+        "description": "The land provides.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resource": "food",
+            "amount": 10
+        },
+
+        "balanceNotes": "Excellent for feeding large armies."
+        },
+
+
+        "rich_vein": {
+        "id": "rich_vein",
+        "name": "Rich Vein",
+        "category": "resource",
+
+        "cost": {
+            "food": 2
+        },
+
+        "imageIdea": "Miners discovering glowing ore.",
+
+        "description": "The mountain rewards the patient.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resource": "metal",
+            "amount": 8
+        },
+
+        "balanceNotes": "Supports military production."
+        },
+
+
+        "ancient_quarry": {
+        "id": "ancient_quarry",
+        "name": "Ancient Quarry",
+        "category": "resource",
+
+        "cost": {
+            "food": 1
+        },
+
+        "imageIdea": "Workers cutting enormous stone blocks.",
+
+        "description": "Stone outlasts kingdoms.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resource": "stone",
+            "amount": 8
+        },
+
+        "balanceNotes": "Supports defensive building."
+        },
+
+
+        "enchanted_grove": {
+        "id": "enchanted_grove",
+        "name": "Enchanted Grove",
+        "category": "resource",
+
+        "cost": {
+            "food": 2
+        },
+
+        "imageIdea": "Ancient glowing trees.",
+
+        "description": "The forest whispers its secrets.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resource": "wood",
+            "amount": 8
+        },
+
+        "balanceNotes": "Supports construction."
+        },
+
+
+        "arcane_surge": {
+        "id": "arcane_surge",
+        "name": "Arcane Surge",
+        "category": "resource",
+
+        "cost": {
+            "gold": 3
+        },
+
+        "imageIdea": "Magical crystals erupting from the ground.",
+
+        "description": "The world overflows with power.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resource": "magic",
+            "amount": 6
+        },
+
+        "balanceNotes": "Supports champion and spell cards."
+        },
+
+
+        "royal_taxes": {
+        "id": "royal_taxes",
+        "name": "Royal Taxes",
+        "category": "resource",
+
+        "cost": {
+            "food": 2
+        },
+
+        "imageIdea": "Citizens delivering treasure to the king.",
+
+        "description": "The crown always collects.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resource": "gold",
+            "amount": 10
+        },
+
+        "balanceNotes": "The largest gold burst in the deck."
+        },
+
+
+        "resource_exchange": {
+        "id": "resource_exchange",
+        "name": "Resource Exchange",
+        "category": "resource",
+
+        "cost": {},
+
+        "imageIdea": "Two merchants exchanging crates.",
+
+        "description": "Everything has value.",
+
+        "effect": {
+            "type": "resource_conversion",
+            "target": "player",
+            "discardResource": "chosen_resource",
+            "discardAmount": {
+            "maximum": 5
+            },
+            "gainResource": "chosen_resource",
+            "gainAmount": "equal_to_discarded_amount"
+        },
+
+        "balanceNotes": "Excellent flexibility without creating resources."
+        },
+
+
+        "emergency_supplies": {
+        "id": "emergency_supplies",
+        "name": "Emergency Supplies",
+        "category": "resource",
+
+        "cost": {
+            "gold": 2
+        },
+
+        "imageIdea": "Supply wagons racing toward a battlefield.",
+
+        "description": "The kingdom always keeps reserves.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resources": [
+            {
+                "resource": "chosen_resource",
+                "amount": 3
+            },
+            {
+                "resource": "chosen_resource",
+                "amount": 3
+            },
+            {
+                "resource": "chosen_resource",
+                "amount": 3
+            }
+            ]
+        },
+
+        "balanceNotes": "Versatile recovery card."
+        },
+
+
+        "kings_blessing": {
+        "id": "kings_blessing",
+        "name": "King's Blessing",
+        "category": "resource",
+
+        "cost": {
+            "gold": 4,
+            "magic": 2
+        },
+
+        "imageIdea": "The king overlooking overflowing warehouses.",
+
+        "description": "Prosperity smiles upon the kingdom.",
+
+        "effect": {
+            "type": "resource_gain",
+            "target": "player",
+            "resources": {
+            "wood": 6,
+            "stone": 6,
+            "metal": 6,
+            "food": 6
+            }
+        },
+
+        "balanceNotes": "The ultimate economy card. Expensive to play but provides a huge resource boost."
+        }
+    },
+
+    "champion": {
+            "heroic_charge": {
+                "id": "heroic_charge",
+                "name": "Heroic Charge",
+                "category": "Champion",
+                "cost": {
+                    "gold": 2,
+                    "food": 2
+                },
+                "imageIdea": "A champion charging into battle with soldiers following.",
+                "description": "The first strike belongs to the fearless.",
+                "effect": {
+                    "type": "movement_buff",
+                    "target": "friendly_champion",
+                    "movementBonus": 2,
+                    "duration": 1
+                },
+                "balanceNotes": "Simple mobility card for reaching battles or objectives."
+            },
+
+            "champions_feast": {
+                "id": "champions_feast",
+                "name": "Champion's Feast",
+                "category": "Champion",
+                "cost": {
+                    "food": 4
+                },
+                "imageIdea": "A champion eating at a royal feast.",
+                "description": "Even legends require rest.",
+                "effect": {
+                    "type": "heal",
+                    "target": "friendly_champion",
+                    "healthRestorePercent": 0.40
+                },
+                "balanceNotes": "Primary healing card for champions."
+            },
+
+            "unbreakable_resolve": {
+                "id": "unbreakable_resolve",
+                "name": "Unbreakable Resolve",
+                "category": "Champion",
+                "cost": {
+                    "stone": 3,
+                    "gold": 2
+                },
+                "imageIdea": "A champion holding a shield while surrounded.",
+                "description": "Some heroes simply refuse to fall.",
+                "effect": {
+                    "type": "defense_buff",
+                    "target": "friendly_champion",
+                    "defenseBonus": 0.50,
+                    "duration": 2
+                },
+                "balanceNotes": "Excellent defensive card without becoming permanent."
+            },
+
+            "inspire_the_army": {
+                "id": "inspire_the_army",
+                "name": "Inspire the Army",
+                "category": "Champion",
+                "cost": {
+                    "gold": 2,
+                    "magic": 2
+                },
+                "imageIdea": "Champion raising a banner before an army.",
+                "description": "Courage spreads faster than fear.",
+                "effect": {
+                    "type": "area_attack_buff",
+                    "target": "friendly_combat_units",
+                    "range": 2,
+                    "attackBonus": 0.20,
+                    "duration": 1,
+                    "condition": "within_champion_radius"
+                },
+                "balanceNotes": "Rewards keeping armies near your champion."
+            },
+
+            "heroic_leap": {
+                "id": "heroic_leap",
+                "name": "Heroic Leap",
+                "category": "Champion",
+                "cost": {
+                    "magic": 3
+                },
+                "imageIdea": "A champion magically leaping over cliffs.",
+                "description": "No obstacle can stop a determined hero.",
+                "effect": {
+                    "type": "movement_teleport",
+                    "target": "friendly_champion",
+                    "maxDistance": 5,
+                    "restrictions": [
+                        "controlled_tiles_only"
+                    ]
+                },
+                "balanceNotes": "Allows repositioning without full teleportation."
+            },
+
+            "heroic_leap_advanced": {
+                "id": "heroic_leap_advanced",
+                "name": "Heroic Leap",
+                "category": "Champion",
+                "cost": {
+                    "magic": 3,
+                    "gold": 2
+                },
+                "imageIdea": "A champion leaping across a canyon surrounded by magical energy.",
+                "description": "No obstacle can stop a true hero.",
+                "effect": {
+                    "type": "movement_teleport",
+                    "target": "friendly_champion",
+                    "maxDistance": 5,
+                    "ignore": [
+                        "terrain",
+                        "enemy_units",
+                        "walls",
+                        "roads",
+                        "rivers"
+                    ]
+                },
+                "balanceNotes": "Provides powerful mobility without increasing combat strength. Excellent for escaping danger, suppressing bosses, or repositioning for objectives."
+            },
+
+            "duel_challenge": {
+                "id": "duel_challenge",
+                "name": "Duel Challenge",
+                "category": "Champion",
+                "cost": {
+                    "metal": 3,
+                    "gold": 2
+                },
+                "imageIdea": "Two champions facing each other.",
+                "description": "Settle this with steel.",
+                "effect": {
+                    "type": "damage_bonus",
+                    "target": "enemy_combat_unit",
+                    "attacker": "friendly_champion",
+                    "damageBonus": 0.50,
+                    "duration": 1,
+                    "condition": "chosen_enemy"
+                },
+                "balanceNotes": "Useful for eliminating powerful enemy units."
+            },
+
+            "guardians_return": {
+                "id": "guardians_return",
+                "name": "Guardian's Return",
+                "category": "Champion",
+                "cost": {
+                    "gold": 3,
+                    "food": 2
+                },
+                "imageIdea": "Champion returning to defend the capital.",
+                "description": "Home still needs its protector.",
+                "effect": {
+                    "type": "move_to_capital",
+                    "target": "friendly_champion",
+                    "destination": "capital"
+                },
+                "balanceNotes": "Emergency escape card when boss threat becomes dangerous."
+            },
+
+            "legendary_strike": {
+                "id": "legendary_strike",
+                "name": "Legendary Strike",
+                "category": "Champion",
+                "cost": {
+                    "metal": 4,
+                    "magic": 3
+                },
+                "imageIdea": "Champion delivering a glowing sword strike.",
+                "description": "One perfect blow changes history.",
+                "effect": {
+                    "type": "damage_multiplier",
+                    "target": "friendly_champion",
+                    "nextAttackMultiplier": 2
+                },
+                "balanceNotes": "High-cost finishing move."
+            },
+
+            "rally_the_champion": {
+                "id": "rally_the_champion",
+                "name": "Rally the Champion",
+                "category": "Champion",
+                "cost": {
+                    "food": 2,
+                    "gold": 2
+                },
+                "imageIdea": "The people cheering as the champion rides past.",
+                "description": "The kingdom stands behind its hero.",
+                "effect": {
+                    "type": "refresh_champion",
+                    "target": "friendly_champion",
+                    "effects": [
+                        "restore_actions",
+                        "allow_move",
+                        "allow_attack"
+                    ],
+                    "duration": 1
+                },
+                "balanceNotes": "One of the strongest champion cards. Expensive but can completely change a battle."
+            }
+    },
+
+    "special": {
+        "cataclysm_ritual": {
+            "id": "cataclysm_ritual",
+            "name": "Cataclysm Ritual",
+            "category": "Special",
+            "cost": {
+                "magic": 6,
+                "gold": 6
+            },
+            "imageIdea": "A massive ritual circle unleashing destruction across the world.",
+            "description": "The world itself trembles.",
+            "effect": {
+                "type": "trigger_cataclysm",
+                "target": "all_opponents",
+                "cataclysmCount": 1,
+                "affectsCaster": false
+            },
+            "balanceNotes": "Extremely expensive. Devastating in multiplayer but affects everyone except the player who cast it."
+        },
+
+        "peace_treaty": {
+            "id": "peace_treaty",
+            "name": "Peace Treaty",
+            "category": "Special",
+            "cost": {
+                "gold": 4
+            },
+            "imageIdea": "Two rulers signing an ancient treaty.",
+            "description": "Even enemies need time to breathe.",
+            "effect": {
+                "type": "attack_prevention",
+                "target": "chosen_opponent",
+                "duration": "until_next_turn",
+                "restrictions": [
+                    "cannot_attack_each_other"
+                ]
+            },
+            "balanceNotes": "Useful for buying time or preventing an invasion."
+        },
+
+        "spy_network": {
+            "id": "spy_network",
+            "name": "Spy Network",
+            "category": "Special",
+            "cost": {
+                "gold": 3,
+                "magic": 2
+            },
+            "imageIdea": "A hooded spy stealing enemy battle plans.",
+            "description": "Secrets win wars.",
+            "effect": {
+                "type": "hand_disruption",
+                "target": "chosen_opponent",
+                "viewHand": true,
+                "discardCount": 1
+            },
+            "balanceNotes": "Strong disruption without affecting the battlefield."
+        },
+
+        "resource_convoy": {
+            "id": "resource_convoy",
+            "name": "Resource Convoy",
+            "category": "Special",
+            "cost": {
+                "gold": 3,
+                "food": 2
+            },
+            "imageIdea": "A heavily guarded caravan overflowing with supplies.",
+            "description": "When the kingdom calls, the wagons always arrive.",
+            "effect": {
+                "type": "gain_resource",
+                "target": "self",
+                "resourceChoice": true,
+                "amount": 6
+            },
+            "balanceNotes": "Flexible economy card that solves whatever resource shortage the player currently has."
+        },
+
+        "smugglers_market": {
+            "id": "smugglers_market",
+            "name": "Smuggler's Market",
+            "category": "Special",
+            "cost": {
+                "wood": 2,
+                "stone": 2,
+                "metal": 2,
+                "gold": 2,
+                "magic": 2
+            },
+            "imageIdea": "A hidden underground marketplace.",
+            "description": "Everything has a price.",
+            "effect": {
+                "type": "free_card_play",
+                "target": "self",
+                "duration": 1,
+                "resourceCostMultiplier": 0
+            },
+            "balanceNotes": "One of the strongest combo cards in the game. Very expensive to compensate."
+        },
+
+        "kingdom_mobilization": {
+            "id": "kingdom_mobilization",
+            "name": "Kingdom Mobilization",
+            "category": "Special",
+            "cost": {
+                "food": 4,
+                "gold": 2
+            },
+            "imageIdea": "Messengers riding from city to city calling every citizen to arms.",
+            "description": "The entire kingdom answers the call.",
+            "effect": {
+                "type": "summon_units",
+                "target": "owned_construction_zones",
+                "unit": "basic_troop",
+                "amountPerZone": 1
+            },
+            "balanceNotes": "Gets stronger as your kingdom expands. Excellent late-game reinforcement card."
+        },
+
+        "industrial_revolution": {
+            "id": "industrial_revolution",
+            "name": "Industrial Revolution",
+            "category": "Special",
+            "cost": {
+                "wood": 4,
+                "stone": 4,
+                "gold": 2
+            },
+            "imageIdea": "Smoke stacks, cranes, and workers rapidly expanding a city.",
+            "description": "The kingdom enters a new age.",
+            "effect": {
+                "type": "resource_multiplier",
+                "target": "friendly_workers",
+                "resourceGainMultiplier": 2,
+                "duration": 3
+            },
+            "balanceNotes": "A powerful long-term economy card that rewards planning."
+        },
+
+        "overtime": {
+            "id": "overtime",
+            "name": "Overtime",
+            "category": "Special",
+            "cost": {
+                "food": 3,
+                "gold": 2
+            },
+            "imageIdea": "Workers mining through the night.",
+            "description": "One more shift.",
+            "effect": {
+                "type": "extra_worker_action",
+                "target": "friendly_workers",
+                "additionalGatherActions": 1,
+                "duration": 1
+            },
+            "balanceNotes": "Powerful one-turn economy burst."
+        },
+
+        "kingdom_census": {
+            "id": "kingdom_census",
+            "name": "Kingdom Census",
+            "category": "Special",
+            "cost": {
+                "food": 4,
+                "gold": 3
+            },
+            "imageIdea": "New citizens arriving at the capital while workers receive their assignments.",
+            "description": "Every pair of hands strengthens the kingdom.",
+            "effect": {
+                "type": "summon_workers",
+                "target": "capital",
+                "amount": 3
+            },
+            "balanceNotes": "Excellent recovery card after catastrophes or for rapidly expanding your economy."
+        },
+
+        "divine_intervention": {
+            "id": "divine_intervention",
+            "name": "Divine Intervention",
+            "category": "Special",
+            "cost": {
+                "magic": 6
+            },
+            "imageIdea": "A beam of heavenly light descending onto the battlefield.",
+            "description": "When all hope is lost...",
+            "effect": {
+                "type": "choose_recovery",
+                "options": [
+                    {
+                        "type": "heal",
+                        "target": "friendly_champion",
+                        "amount": "full"
+                    },
+                    {
+                        "type": "heal",
+                        "target": "friendly_combat_units",
+                        "amount": "full",
+                        "maxTargets": 3
+                    },
+                    {
+                        "type": "remove_status_effects",
+                        "target": "all_friendly_units"
+                    }
+                ]
+            },
+            "balanceNotes": "An expensive emergency recovery card capable of turning around a desperate situation."
+        }
+    }
 }
+

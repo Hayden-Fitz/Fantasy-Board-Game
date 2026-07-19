@@ -8,7 +8,7 @@ import {
     remove,
     onDisconnect,
     update
-} from "./firebase.js";
+} from "./firebase/firebase.js";
 
 
 function generateGameCode(){
@@ -674,7 +674,9 @@ setInterval(()=>{
 
 cleanupDeadGames();
 
-window.createGame=createGame;
-window.joinGame=joinGame;
-window.changeKingdom=changeKingdom;
-window.readyUp=readyUp;
+window.createGame = createGame;
+window.joinGame = joinGame;
+window.readyUp = readyUp;
+window.deleteGame = deleteGame;
+window.checkStartGame = checkStartGame;
+window.changeKingdom = changeKingdom;
