@@ -9,7 +9,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Merchant Caravan",
         category: "resource",
-        image: "assets/cardImages/resourceImages/merchantCaravan.jpg",
+        image: "assets/CardImages/resourceImages/merchantCaravan.jpg",
 
         cost: {
             gold: 2
@@ -34,7 +34,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Harvest Season",
         category: "resource",
-        image: "assets/cardImages/resourceImages/harvestSeason.jpg",
+        image: "assets/CardImages/resourceImages/harvestSeason.jpg",
 
         cost: {
             gold: 1
@@ -59,7 +59,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Rich Vein",
         category: "resource",
-        image: "assets/cardImages/resourceImages/richVein.jpg",
+        image: "assets/CardImages/resourceImages/richVein.jpg",
 
         cost: {
             food: 2
@@ -84,7 +84,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Ancient Quarry",
         category: "resource",
-        image: "assets/cardImages/resourceImages/ancientQuarry.jpg",
+        image: "assets/CardImages/resourceImages/ancientQuarry.jpg",
 
         cost: {
             food: 1
@@ -109,7 +109,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Enchanted Grove",
         category: "resource",
-        image: "assets/cardImages/resourceImages/enchantedGrove.jpg",
+        image: "assets/CardImages/resourceImages/enchantedGrove.jpg",
 
         cost: {
             food: 2
@@ -134,7 +134,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Arcane Surge",
         category: "resource",
-        image: "assets/cardImages/resourceImages/arcaneSurge.jpg",
+        image: "assets/CardImages/resourceImages/arcaneSurge.jpg",
 
         cost: {
             gold: 3
@@ -159,7 +159,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Royal Taxes",
         category: "resource",
-        image: "assets/cardImages/resourceImages/royalTaxes.jpg",
+        image: "assets/CardImages/resourceImages/royalTaxes.jpg",
 
         cost: {
             food: 2
@@ -184,7 +184,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Resource Exchange",
         category: "resource",
-        image: "assets/cardImages/resourceImages/resourceExchange.jpg",
+        image: "assets/CardImages/resourceImages/resourceExchange.jpg",
 
         cost: {
             WILD: 5
@@ -213,7 +213,7 @@ const resourceCards = [
         kingdom: "all",
         name: "Emergency Supplies",
         category: "resource",
-        image: "assets/cardImages/resourceImages/emergencySupplies.jpg",
+        image: "assets/CardImages/resourceImages/emergencySupplies.jpg",
 
         cost: {
             gold: 2
@@ -250,7 +250,7 @@ const resourceCards = [
         kingdom: "all",
         name: "King's Blessing",
         category: "resource",
-        image: "assets/cardImages/resourceImages/kingsBlessing.jpg",
+        image: "assets/CardImages/resourceImages/kingsBlessing.jpg",
 
         cost: {
             gold: 4,

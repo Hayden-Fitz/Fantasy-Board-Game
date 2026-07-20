@@ -9,7 +9,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Master Builders",
         category: "building",
-        image: "assets/cardImages/buildingImages/masterBuilders.jpg",
+        image: "assets/CardImages/buildingImages/masterBuilders.jpg",
 
         cost: {
             wood: 2,
@@ -35,7 +35,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Emergency Workforce",
         category: "building",
-        image: "assets/cardImages/buildingImages/emergencyWorkforce.jpg",
+        image: "assets/CardImages/buildingImages/emergencyWorkforce.jpg",
 
         cost: {
             food: 5,
@@ -62,7 +62,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Rapid Construction",
         category: "building",
-        image: "assets/cardImages/buildingImages/rapidConstruction.jpg",
+        image: "assets/CardImages/buildingImages/rapidConstruction.jpg",
 
         cost: {
             wood: 3,
@@ -88,7 +88,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Sabotage",
         category: "building",
-        image: "assets/cardImages/buildingImages/sabotage.jpg",
+        image: "assets/CardImages/buildingImages/sabotage.jpg",
 
         cost: {
             gold: 2,
@@ -114,7 +114,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Forced March",
         category: "building",
-        image: "assets/cardImages/buildingImages/forcedMarch.jpg",
+        image: "assets/CardImages/buildingImages/forcedMarch.jpg",
 
         cost: {
             food: 3,
@@ -145,7 +145,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Reinforced Foundations",
         category: "building",
-        image: "assets/cardImages/buildingImages/reinforcedFoundations.jpg",
+        image: "assets/CardImages/buildingImages/reinforcedFoundations.jpg",
 
         cost: {
             stone: 2,
@@ -173,7 +173,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Supply Depot",
         category: "building",
-        image: "assets/cardImages/buildingImages/supplyDepot.jpg",
+        image: "assets/CardImages/buildingImages/supplyDepot.jpg",
 
         cost: {
             wood: 3,
@@ -198,7 +198,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Engineering Breakthrough",
         category: "building",
-        image: "assets/cardImages/buildingImages/engineeringBreakthrough.jpg",
+        image: "assets/CardImages/buildingImages/engineeringBreakthrough.jpg",
 
         cost: {
             magic: 3,
@@ -224,7 +224,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Royal Treasury",
         category: "building",
-        image: "assets/cardImages/buildingImages/royalTreasury.jpg",
+        image: "assets/CardImages/buildingImages/royalTreasury.jpg",
 
         cost: {
             gold: 5,
@@ -250,7 +250,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Grand Expansion",
         category: "building",
-        image: "assets/cardImages/buildingImages/grandExpansion.jpg",
+        image: "assets/CardImages/buildingImages/grandExpansion.jpg",
 
         cost: {
             wood: 4,

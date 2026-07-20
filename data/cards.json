@@ -222,7 +222,7 @@
         "cardId": "emergency_workforce",
         "name": "Emergency Workforce",
         "category": "building",
-        "image": "assets/cardAssets/cardImages/buildingImages/emergency_workforce.webp",
+        "image": "assets/cardAssets/CardImages/buildingImages/emergency_workforce.webp",
         "cost": {
             "food": 5,
             "gold": 3,
@@ -242,7 +242,7 @@
         "cardId": "rapid_construction",
         "name": "Rapid Construction",
         "category": "building",
-        "image": "assets/cardAssets/cardImages/buildingImages/rapidConstruction.jpg",
+        "image": "assets/cardAssets/CardImages/buildingImages/rapidConstruction.jpg",
         "cost": {
             "wood": 3,
             "stone": 2
