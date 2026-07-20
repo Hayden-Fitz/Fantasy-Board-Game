@@ -15,7 +15,7 @@ import waterUnits from "../data/units/waterUnits.json" with { type: "json" };
 import workers from "../data/units/workers.json" with { type: "json" };
 import { zoomIn, zoomOut, teleportToCapital } from "../mapGenerator.js";
 import { cardLookup, getPlayerHand, getCard } from "../cards/cards.js";
-
+import { endCurrentPhase } from "../turnHandler.js";
 
 // =============================
 // CREATE UI
@@ -34,6 +34,18 @@ export function createUI(gameState){
     createInfoPanel(gameState);
 
     createMapControls(gameState);
+
+    updateCurrentPlayer(
+        getCurrentPlayerName(gameState)
+    );
+
+    updateCurrentPhase(
+        gameState.turn?.currentPhase
+    );
+
+    updateRound(
+        gameState.turn?.round || 1
+    );
 
 }
 
@@ -146,7 +158,7 @@ function createTopBar(game){
     round.innerHTML = `
 
         Round:
-        ${game.round || 1}
+        ${game.turn?.round || 1}
 
     `;
 
@@ -160,6 +172,14 @@ function createTopBar(game){
 
 
 function createLeftPanel(game){
+
+
+    // Remove old panel if it exists
+    const oldPanel = document.getElementById("left-panel");
+
+    if(oldPanel){
+        oldPanel.remove();
+    }
 
     let panel = document.createElement("div");
 
@@ -342,24 +362,25 @@ function createLeftPanel(game){
 
 
         <!-- ==========================
-             TURN PHASE SECTION
+            TURN SECTION
         =========================== -->
-
 
         <div class="panel-section" id="phase-section">
 
-
-            <h2>
-                Turn Phase
-            </h2>
-
-
-            <div id="current-phase">
-
-                Waiting...
-
+            <div id="current-player">
+                Current Player
+                <br>
+                <strong id="current-player-name">Waiting...</strong>
             </div>
 
+            <hr>
+
+            <div id="current-phase">
+                Waiting...
+            </div>
+            <button id="phase-button">
+                End Phase
+            </button>
 
         </div>
 
@@ -371,7 +392,93 @@ function createLeftPanel(game){
     document.body.appendChild(panel);
 
 
+    const phaseButton =
+    document.getElementById("phase-button");
+
+
+    phaseButton.addEventListener("click", ()=>{
+
+        endCurrentPhase(
+            localStorage.getItem("gameCode"),
+            localStorage.getItem("playerID")
+        );
+
+    });
+
 }
+
+
+function updateCurrentPlayer(name){
+
+    const element =
+        document.getElementById("current-player-name");
+
+    if(element){
+
+        element.textContent = name;
+
+    }
+
+}
+
+function updateCurrentPhase(phase){
+
+    const element =
+        document.getElementById("current-phase");
+
+    if(!element)
+        return;
+
+    const names = {
+
+        feed: "Feed Troops",
+        cards: "Play Cards",
+        construction: "Construction",
+        movement: "Move & Battle"
+
+    };
+
+    element.textContent =
+        names[phase] || "Waiting...";
+
+}
+
+function getCurrentPlayerName(gameState){
+
+    const currentPlayerID =
+        gameState.turn?.currentPlayer;
+
+
+    if(!currentPlayerID)
+        return "Waiting...";
+
+
+    const player =
+        Object.values(gameState.players || {})
+        .find(
+            player => player.id === currentPlayerID
+        );
+
+
+    return player?.username || "Waiting...";
+}
+
+function updateRound(round){
+
+    const element =
+        document.getElementById("roundCounter");
+
+    if(element){
+
+        element.textContent =
+            `Round: ${round}`;
+
+    }
+
+}
+
+
+
 
 
 
@@ -708,5 +815,44 @@ function formatCardEffect(effect){
 
 
     return text;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export function updateTurnUI(turn, players){
+
+    updateCurrentPlayer(
+        getCurrentPlayerName({
+            turn: turn,
+            players: players
+        })
+    );
+
+
+    updateCurrentPhase(
+        turn.currentPhase
+    );
+
+
+    updateRound(
+        turn.round
+    );
 
 }

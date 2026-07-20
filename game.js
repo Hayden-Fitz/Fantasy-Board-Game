@@ -10,7 +10,7 @@ import {
 } from "./firebase/firebase.js";
 
 import { generateMap, renderMap, setCurrentGame } from "./mapGenerator.js";
-import { createUI } from "./UI/UI.js";
+import { createUI, updateTurnUI } from "./UI/UI.js";
 
 import {
     createPlayerDeck,
@@ -25,6 +25,63 @@ import {
 } from "./firebase/playerCards.js";
 
 
+
+// =============================
+// TURN PHASES
+// =============================
+
+const playablePhases = [
+
+    "feed",
+    "cards",
+    "construction",
+    "movement"
+
+];
+function getPhaseName(phase){
+
+    const names = {
+
+        feed: "Feed Troops",
+
+        cards: "Play Cards",
+
+        construction: "Construction",
+
+        movement: "Move & Battle"
+
+    };
+
+
+    return names[phase] || "Waiting...";
+
+}
+function getNextPhase(currentPhase){
+
+    let index =
+    playablePhases.indexOf(currentPhase);
+
+
+    if(index === -1){
+
+        return playablePhases[0];
+
+    }
+
+
+    index++;
+
+
+    if(index >= playablePhases.length){
+
+        return "end";
+
+    }
+
+
+    return playablePhases[index];
+
+}
 
 
 let gameCode =
@@ -156,6 +213,25 @@ async function loadGame(){
                 ref(database, "games/" + gameCode + "/map"),
                 map
             );
+
+
+            // ==========================
+            // CREATE INITIAL TURN
+            // ==========================
+
+            await update(
+                ref(database, "games/" + gameCode),
+                {
+
+                    turn:{
+                        currentPlayer: players[0].id,
+                        currentPhase: "feed",
+                        round: 1
+                    }
+
+                }
+            );
+
         }
 
 
@@ -275,6 +351,14 @@ async function startGame(map, game){
 
     }
 
+    await update(
+        ref(database, "games/" + gameCode + "/turn"),
+        {
+            currentPlayer: Object.values(game.players)[0].id,
+            currentPhase: "feed",
+            round: 1
+        }
+    );
 
     // Create UI
 
@@ -282,6 +366,29 @@ async function startGame(map, game){
         ...game,
         map: map,
         hand: getPlayerHand()
+    });
+
+    
+
+    const turnRef =
+    ref(database, "games/" + gameCode + "/turn");
+
+
+    onValue(turnRef, snapshot=>{
+
+        if(!snapshot.exists())
+            return;
+
+
+        const turn =
+        snapshot.val();
+
+
+        updateTurnUI(
+            turn,
+            game.players
+        );
+
     });
 
 }

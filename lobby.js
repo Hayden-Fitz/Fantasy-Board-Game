@@ -124,13 +124,17 @@ window.createGame = async function(){
     await set(
         ref(database,"games/" + gameCode),
         {
+            status: "lobby",
 
-            status:"lobby",
+            host: playerID,
 
-            host:playerID,
+            players: {},
 
-            players:{}
-
+            turn: {
+                currentPlayer: null,
+                currentPhase: "feed",
+                round: 1
+            }
         }
     );
 
@@ -495,60 +499,93 @@ window.checkStartGame = async function(){
 
 
 
-let game =
-(await get(
-ref(database,"games/"+currentGameCode)
-)).val();
+    let game =
+    (await get(
+        ref(database,"games/"+currentGameCode)
+    )).val();
 
 
 
-if(game.host !== currentPlayerID){
+    if(game.host !== currentPlayerID){
 
 
-document.getElementById("status").innerHTML =
-"Only the host can start.";
+        document.getElementById("status").innerHTML =
+        "Only the host can start.";
 
-return;
-
-
-}
+        return;
 
 
-
-let players =
-game.players;
+    }
 
 
 
-let allReady =
-Object.values(players)
-.every(
-player=>player.ready
-);
+    let players =
+    game.players;
 
 
 
-if(allReady){
+    const turnOrder = [
+        "Crimson Empire",
+        "Tide Kingdom",
+        "Culinary Kingdom",
+        "Viking Kingdom",
+        "Shadow Kingdom"
+    ];
+
+    // Find the first kingdom that is actually in the game
+    let firstPlayerID = null;
+
+    for(const kingdom of turnOrder){
+
+        const player = Object.values(players).find(
+            p => p.kingdom === kingdom
+        );
+
+        if(player){
+            firstPlayerID = player.id;
+            break;
+        }
+
+    }
 
 
-await set(
 
-ref(database,"games/"+currentGameCode+"/status"),
-
-"starting"
-
-);
+    let allReady =
+    Object.values(players).every(
+        player=>player.ready
+    );
 
 
-}
 
-else{
+    if(allReady){
+
+        await update(
+            ref(database, "games/" + currentGameCode + "/turn"),
+            {
+                currentPlayer: firstPlayerID,
+                currentPhase: "feed",
+                round: 1
+            }
+        );
+
+        await set(
+
+        ref(database,"games/"+currentGameCode+"/status"),
+
+            "starting"
+
+        );
 
 
-document.getElementById("status").innerHTML =
-"Not everyone is ready.";
+    }
 
-}
+    else{
+
+
+        document.getElementById("status").innerHTML =
+        "Not everyone is ready.";
+
+    }
 
 
 

@@ -364,6 +364,90 @@
 
 
 
+#current-player{
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+    font-size:clamp(11px,.9vw,15px);
+
+}
+
+#current-player strong{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:white;
+
+    font-size:clamp(13px,1vw,18px);
+
+}
+
+#phase-section hr{
+
+    border:none;
+
+    height:2px;
+
+    background:#2b1608;
+
+    margin:10px 0;
+
+}
+
+#current-phase{
+
+    text-align:center;
+
+    font-size:clamp(13px,1vw,18px);
+
+    font-weight:bold;
+
+    margin-bottom:12px;
+
+}
+
+#phase-button{
+
+    width:80%;
+
+    height:38px;
+
+    background:#8a5728;
+
+    border:2px solid #2b1608;
+
+    border-radius:8px;
+
+    color:#f5deb3;
+
+    font-size:clamp(13px,1vw,17px);
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+#phase-button:hover{
+
+    background:#b87938;
+
+}
+
+#phase-button:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+}
+
+
+
 /*=========================
     RIGHT PANEL UI
 =========================*/
