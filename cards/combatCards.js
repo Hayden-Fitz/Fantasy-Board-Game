@@ -9,7 +9,7 @@ const combatCards = [
         kingdom: "all",
         name: "Battle Fury",
         category: "combat",
-        image: "assets/CardImages/combatImages/battleFury.jpg",
+        image: "assets/cardImages/combatImages/battleFury.jpg",
 
         cost: {
             metal: 2,
@@ -35,7 +35,7 @@ const combatCards = [
         kingdom: "all",
         name: "Emergency Heal",
         category: "combat",
-        image: "assets/CardImages/combatImages/emergencyHeal.jpg",
+        image: "assets/cardImages/combatImages/emergencyHeal.jpg",
 
         cost: {
             food: 3
@@ -60,7 +60,7 @@ const combatCards = [
         kingdom: "all",
         name: "Defensive Formation",
         category: "combat",
-        image: "assets/CardImages/combatImages/defensiveFormation.jpg",
+        image: "assets/cardImages/combatImages/defensiveFormation.jpg",
 
         cost: {
             stone: 2
@@ -85,7 +85,7 @@ const combatCards = [
         kingdom: "all",
         name: "Reinforcements",
         category: "combat",
-        image: "assets/CardImages/combatImages/reinforcements.jpg",
+        image: "assets/cardImages/combatImages/reinforcements.jpg",
 
         cost: {
             gold: 5,
@@ -110,7 +110,7 @@ const combatCards = [
         kingdom: "all",
         name: "War Drums",
         category: "combat",
-        image: "assets/CardImages/combatImages/warDrums.jpg",
+        image: "assets/cardImages/combatImages/warDrums.jpg",
 
         cost: {
             gold: 3
@@ -147,7 +147,7 @@ const combatCards = [
         kingdom: "all",
         name: "Precision Strike",
         category: "combat",
-        image: "assets/CardImages/combatImages/precisionStrike.jpg",
+        image: "assets/cardImages/combatImages/precisionStrike.jpg",
 
         cost: {
             metal: 2,
@@ -172,7 +172,7 @@ const combatCards = [
         kingdom: "all",
         name: "Rallying Cry",
         category: "combat",
-        image: "assets/CardImages/combatImages/rallyingCry.jpg",
+        image: "assets/cardImages/combatImages/rallyingCry.jpg",
 
         cost: {
             food: 2,
@@ -199,7 +199,7 @@ const combatCards = [
         kingdom: "all",
         name: "Tactical Retreat",
         category: "combat",
-        image: "assets/CardImages/combatImages/tacticalRetreat.jpg",
+        image: "assets/cardImages/combatImages/tacticalRetreat.jpg",
 
         cost: {
             gold: 2,
@@ -224,7 +224,7 @@ const combatCards = [
         kingdom: "all",
         name: "Siege Breaker",
         category: "combat",
-        image: "assets/CardImages/combatImages/siegeBreaker.jpg",
+        image: "assets/cardImages/combatImages/siegeBreaker.jpg",
 
         cost: {
             metal: 3,
@@ -255,7 +255,7 @@ const combatCards = [
         kingdom: "all",
         name: "Champion's Command",
         category: "combat",
-        image: "assets/CardImages/combatImages/championsCommand.jpg",
+        image: "assets/cardImages/combatImages/championsCommand.jpg",
 
         cost: {
             gold: 4,

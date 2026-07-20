@@ -9,7 +9,7 @@ const specialCards = [
         kingdom: "all",
         name: "Cataclysm Ritual",
         category: "special",
-        image: "assets/CardImages/specialImages/cataclysmRitual.jpg",
+        image: "assets/cardImages/specialImages/cataclysmRitual.jpg",
 
         cost: {
             magic: 6,
@@ -35,7 +35,7 @@ const specialCards = [
         kingdom: "all",
         name: "Peace Treaty",
         category: "special",
-        image: "assets/CardImages/specialImages/peaceTreaty.jpg",
+        image: "assets/cardImages/specialImages/peaceTreaty.jpg",
 
         cost: {
             gold: 4
@@ -62,7 +62,7 @@ const specialCards = [
         kingdom: "all",
         name: "Spy Network",
         category: "special",
-        image: "assets/CardImages/specialImages/spyNetwork.jpg",
+        image: "assets/cardImages/specialImages/spyNetwork.jpg",
 
         cost: {
             gold: 3,
@@ -88,7 +88,7 @@ const specialCards = [
         kingdom: "all",
         name: "Resource Convoy",
         category: "special",
-        image: "assets/CardImages/specialImages/resourceConvoy.jpg",
+        image: "assets/cardImages/specialImages/resourceConvoy.jpg",
 
         cost: {
             gold: 3,
@@ -114,7 +114,7 @@ const specialCards = [
         kingdom: "all",
         name: "Smuggler's Market",
         category: "special",
-        image: "assets/CardImages/specialImages/smugglersMarket.jpg",
+        image: "assets/cardImages/specialImages/smugglersMarket.jpg",
 
         cost: {
             wood: 2,
@@ -143,7 +143,7 @@ const specialCards = [
         kingdom: "all",
         name: "Kingdom Mobilization",
         category: "special",
-        image: "assets/CardImages/specialImages/kingdomMobilization.jpg",
+        image: "assets/cardImages/specialImages/kingdomMobilization.jpg",
 
         cost: {
             food: 4,
@@ -169,7 +169,7 @@ const specialCards = [
         kingdom: "all",
         name: "Industrial Revolution",
         category: "special",
-        image: "assets/CardImages/specialImages/industrialRevolution.jpg",
+        image: "assets/cardImages/specialImages/industrialRevolution.jpg",
 
         cost: {
             wood: 4,
@@ -196,7 +196,7 @@ const specialCards = [
         kingdom: "all",
         name: "Overtime",
         category: "special",
-        image: "assets/CardImages/specialImages/overtime.jpg",
+        image: "assets/cardImages/specialImages/overtime.jpg",
 
         cost: {
             food: 3,
@@ -222,7 +222,7 @@ const specialCards = [
         kingdom: "all",
         name: "Kingdom Census",
         category: "special",
-        image: "assets/CardImages/specialImages/kingdomCensus.jpg",
+        image: "assets/cardImages/specialImages/kingdomCensus.jpg",
 
         cost: {
             food: 4,
@@ -247,7 +247,7 @@ const specialCards = [
         kingdom: "all",
         name: "Divine Intervention",
         category: "special",
-        image: "assets/CardImages/specialImages/divineIntervention.jpg",
+        image: "assets/cardImages/specialImages/divineIntervention.jpg",
 
         cost: {
             magic: 6
