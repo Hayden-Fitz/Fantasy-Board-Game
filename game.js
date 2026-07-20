@@ -7,10 +7,10 @@ import {
     remove,
     onDisconnect,
     update
-} from "../firebase/firebase.js";
+} from "./firebase/firebase.js";
 
-import { generateMap, renderMap, setCurrentGame } from "../mapGenerator.js";
-import { createUI, updateTurnUI } from "../UI/UI.js";
+import { generateMap, renderMap, setCurrentGame } from "./mapGenerator.js";
+import { createUI, updateTurnUI } from "./UI/UI.js";
 
 import {
     createPlayerDeck,
@@ -18,11 +18,11 @@ import {
     getPlayerHand,
     getDiscardPile,
     getDeckSize
-} from "../cards/cards.js";
+} from "./cards/cards.js";
 
 import {
     syncPlayerCards
-} from "../firebase/playerCards.js";
+} from "./firebase/playerCards.js";
 
 
 
