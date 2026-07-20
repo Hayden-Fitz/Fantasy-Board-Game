@@ -9,14 +9,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Merchant Caravan",
         category: "resource",
-        image: "merchant_caravan.webp",
+        image: "assets/cardImages/resourceImages/merchantCaravan.jpg",
 
         cost: {
             gold: 2
         },
 
         description:
-            "Trade keeps kingdoms alive.",
+            "Gain 6 of any one resource of your choice. Pick the resource you need most and add 6 of it to your supply.",
 
         effect: {
             type: "resource_gain",
@@ -34,14 +34,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Harvest Season",
         category: "resource",
-        image: "harvest_season.webp",
+        image: "assets/cardImages/resourceImages/harvestSeason.jpg",
 
         cost: {
             gold: 1
         },
 
         description:
-            "The land provides.",
+            "Collect 10 Food from a season of plentiful crops. Great for feeding large armies or preparing for future turns.",
 
         effect: {
             type: "resource_gain",
@@ -59,14 +59,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Rich Vein",
         category: "resource",
-        image: "rich_vein.webp",
+        image: "assets/cardImages/resourceImages/richVein.jpg",
 
         cost: {
             food: 2
         },
 
         description:
-            "The mountain rewards the patient.",
+            "Mine a valuable metal deposit and gain 8 Metal. Use it to recruit stronger troops or construct advanced buildings.",
 
         effect: {
             type: "resource_gain",
@@ -84,14 +84,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Ancient Quarry",
         category: "resource",
-        image: "ancient_quarry.webp",
+        image: "assets/cardImages/resourceImages/ancientQuarry.jpg",
 
         cost: {
             food: 1
         },
 
         description:
-            "Stone outlasts kingdoms.",
+            "Extract stone from an ancient quarry and gain 8 Stone. Perfect for constructing walls and defensive structures.",
 
         effect: {
             type: "resource_gain",
@@ -109,14 +109,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Enchanted Grove",
         category: "resource",
-        image: "enchanted_grove.webp",
+        image: "assets/cardImages/resourceImages/enchantedGrove.jpg",
 
         cost: {
             food: 2
         },
 
         description:
-            "The forest whispers its secrets.",
+            "Gather rare enchanted timber and gain 8 Wood. An excellent source of materials for roads and new buildings.",
 
         effect: {
             type: "resource_gain",
@@ -134,14 +134,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Arcane Surge",
         category: "resource",
-        image: "arcane_surge.webp",
+        image: "assets/cardImages/resourceImages/arcaneSurge.jpg",
 
         cost: {
             gold: 3
         },
 
         description:
-            "The world overflows with power.",
+            "Channel magical energy to gain 6 Magic. This resource is useful for powerful cards and champion abilities.",
 
         effect: {
             type: "resource_gain",
@@ -159,14 +159,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Royal Taxes",
         category: "resource",
-        image: "royal_taxes.webp",
+        image: "assets/cardImages/resourceImages/royalTaxes.jpg",
 
         cost: {
             food: 2
         },
 
         description:
-            "The crown always collects.",
+            "Collect taxes from across your kingdom and gain 10 Gold. A massive burst of wealth for expensive plays.",
 
         effect: {
             type: "resource_gain",
@@ -184,12 +184,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Resource Exchange",
         category: "resource",
-        image: "resource_exchange.webp",
+        image: "assets/cardImages/resourceImages/resourceExchange.jpg",
 
-        cost: {},
+        cost: {
+            WILD: 5
+        },
 
         description:
-            "Everything has value.",
+            "Trade up to 5 of one resource for an equal amount of another. Convert excess resources into exactly what you need.",
 
         effect: {
             type: "resource_conversion",
@@ -211,14 +213,14 @@ const resourceCards = [
         kingdom: "all",
         name: "Emergency Supplies",
         category: "resource",
-        image: "emergency_supplies.webp",
+        image: "assets/cardImages/resourceImages/emergencySupplies.jpg",
 
         cost: {
             gold: 2
         },
 
         description:
-            "The kingdom always keeps reserves.",
+            "Choose any three resource rewards. Each choice grants 3 of any resource, for a total of 9 resources however you divide them.",
 
         effect: {
             type: "resource_gain",
@@ -248,7 +250,7 @@ const resourceCards = [
         kingdom: "all",
         name: "King's Blessing",
         category: "resource",
-        image: "kings_blessing.webp",
+        image: "assets/cardImages/resourceImages/kingsBlessing.jpg",
 
         cost: {
             gold: 4,
@@ -256,7 +258,7 @@ const resourceCards = [
         },
 
         description:
-            "Prosperity smiles upon the kingdom.",
+            "Receive the King's blessing and gain 6 Wood, 6 Stone, 6 Metal, and 6 Food all at once to strengthen your kingdom.",
 
         effect: {
             type: "resource_gain",
@@ -274,5 +276,6 @@ const resourceCards = [
     }
 
 ];
+
 
 export default resourceCards;

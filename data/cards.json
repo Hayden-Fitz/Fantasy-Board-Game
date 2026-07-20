@@ -57,11 +57,11 @@
         "balanceNotes": "Counter to Battle Fury."
         },
 
-        "battlefield_reinforcements": {
-        "cardID": "battlefield_reinforcements",
-        "name": "Battlefield Reinforcements",
+        "reinforcements": {
+        "cardID": "reinforcements",
+        "name": "Reinforcements",
         "category": "combat",
-        "image": "battlefield_reinforcements.webp",
+        "image": "reinforcements.webp",
         "cost": {
             "gold": 5,
             "food": 2,
@@ -222,7 +222,7 @@
         "cardId": "emergency_workforce",
         "name": "Emergency Workforce",
         "category": "building",
-        "image": "emergency_workforce.webp",
+        "image": "assets/cardAssets/cardImages/buildingImages/emergency_workforce.webp",
         "cost": {
             "food": 5,
             "gold": 3,
@@ -242,7 +242,7 @@
         "cardId": "rapid_construction",
         "name": "Rapid Construction",
         "category": "building",
-        "image": "rapid_construction.webp",
+        "image": "assets/cardAssets/cardImages/buildingImages/rapidConstruction.jpg",
         "cost": {
             "wood": 3,
             "stone": 2

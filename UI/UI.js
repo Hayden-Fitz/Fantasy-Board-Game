@@ -14,7 +14,7 @@ import landUnits from "../data/units/landUnits.json" with { type: "json" };
 import waterUnits from "../data/units/waterUnits.json" with { type: "json" };
 import workers from "../data/units/workers.json" with { type: "json" };
 import { zoomIn, zoomOut, teleportToCapital } from "../mapGenerator.js";
-import { cardLookup } from "../cards/cards.js";
+import { cardLookup, getPlayerHand, getCard } from "../cards/cards.js";
 
 
 // =============================
@@ -522,14 +522,13 @@ function createCardPanel(gameState){
     */
 
 
-    const hand = gameState.hand || [];
+    const hand = getPlayerHand();
 
 
     hand.forEach(cardID => {
 
 
-        const card =
-        cardLookup[cardID];
+        const card = getCard(cardID);
 
 
         if(!card)
@@ -554,59 +553,44 @@ function createCardPanel(gameState){
             </div>
 
 
-            <img
+            <div class="card-image-frame">
 
-                class="card-image"
+                <img
+                    class="card-image"
+                    src="${card.image}"
+                    alt="${card.name}"
+                >
 
-                src="assets/cards/${card.image}"
-
-                alt="${card.name}"
-
-            >
+            </div>
 
 
 
             <div class="card-info">
 
 
-                <div class="card-cost">
+                <div class="card-cost-box">
 
-                    <b>Cost:</b>
+                    <span class="card-cost-label">
+                        Cost
+                    </span>
 
-                    <br>
+                    <span class="card-cost">
 
-                    ${
-                        Object.entries(card.cost || {})
-                        .map(
-                            ([resource,amount]) =>
-                            `${amount} ${resource}`
-                        )
-                        .join(", ")
-                    }
+                        ${
+                            Object.entries(card.cost || {})
+                            .map(([resource, amount]) => `${amount} ${resource}`)
+                            .join(", ")
+
+                        }
+
+                    </span>
 
                 </div>
-
 
 
                 <div class="card-description">
 
-                    <b>Description:</b>
-
-                    <br>
-
                     ${card.description}
-
-                </div>
-
-
-
-                <div class="card-effect">
-
-                    <b>Effect:</b>
-
-                    <br>
-
-                    ${formatCardEffect(card.effect)}
 
                 </div>
 

@@ -638,6 +638,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*=========================
     CARD HAND UI
 =========================*/
@@ -686,7 +698,7 @@
 
     width:120px;
 
-    height:90px;
+    height:100px;
 
 
     background:#6b3f1d;
@@ -724,33 +736,141 @@
 
 .card-title{
 
+    height:38px;                 /* Fixed space for two lines */
+
+    padding:6px 8px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
     text-align:center;
 
     font-weight:bold;
 
     font-size:14px;
 
-    padding:5px;
+    line-height:1.2;
+
+    overflow:hidden;
+
+    word-break:break-word;
 
 }
 
 
 .card-image{
 
-    width:100%;
+    width:calc(100% - 16px);
 
-    height:70px;
+    height:130px;
 
+    margin:8px;
+
+    margin-top:0;
 
     object-fit:cover;
 
+    border-radius:10px;
 
-    border-radius:8px;
+    border:2px solid #3b1f0d;
 
+    background:#2b1608;   /* Placeholder if no image yet */
 
     display:block;
 
 }
+
+
+.card-info{
+
+    padding:12px;
+
+    font-size:13px;
+
+    line-height:1.3;
+
+}
+
+
+.card-cost-box{
+
+    margin:-14px 12px 10px 12px;
+
+    padding:6px 10px;
+
+    background:linear-gradient(
+        to bottom,
+        #8b6a3d,
+        #5b3d1d
+    );
+
+    border:2px solid #2b1608;
+
+    border-radius:8px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:
+        inset 0 2px 2px rgba(255,255,255,.15),
+        inset 0 -2px 2px rgba(0,0,0,.35);
+
+}
+
+
+.card-cost-label{
+
+    font-weight:bold;
+
+    color:#f5deb3;
+
+    font-size:13px;
+
+}
+
+
+.card-cost{
+
+    color:#f5deb3;
+
+    font-size:13px;
+
+    text-align:right;
+
+}
+
+
+.card-description{
+
+    margin-top:12px;
+
+    min-height:45px;
+
+}
+
+
+.card-effect{
+
+    margin-top:12px;
+
+    border-top:1px solid #3b1f0d;
+
+    padding-top:10px;
+
+    min-height:60px;
+
+}
+
+
+/*==============
+   CARD HOVER EFFECTS
+================*/
 
 
 .card-container:hover .card{
@@ -762,7 +882,6 @@
     z-index:10000;
 
 }
-
 
 .card-container.left-card:hover .card{
 
@@ -800,45 +919,14 @@
 
 }
 
+.card-container:hover .card-title{
 
-.card-info{
+    height:52px;          /* More room for the larger title */
 
-    padding:12px;
+    font-size:22px;
 
-    font-size:13px;
+    line-height:1.25;
 
-    line-height:1.3;
-
-}
-
-
-.card-cost{
-
-    margin-top:5px;
-
-    font-weight:bold;
-
-}
-
-
-
-.card-description{
-
-    margin-top:12px;
-
-    min-height:45px;
-
-}
-
-
-.card-effect{
-
-    margin-top:12px;
-
-    border-top:1px solid #3b1f0d;
-
-    padding-top:10px;
-
-    min-height:60px;
+    padding:8px 10px;
 
 }

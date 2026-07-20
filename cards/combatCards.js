@@ -9,7 +9,7 @@ const combatCards = [
         kingdom: "all",
         name: "Battle Fury",
         category: "combat",
-        image: "battle_fury.webp",
+        image: "assets/cardImages/combatImages/battleFury.jpg",
 
         cost: {
             metal: 2,
@@ -17,7 +17,7 @@ const combatCards = [
         },
 
         description:
-            "The drums beat louder. The soldiers remember why they fight.",
+            "The drums beat louder as soldiers charge without fear. One friendly unit gains 25% more attack power for its next battle this turn.",
 
         effect: {
             type: "attack_buff",
@@ -35,14 +35,14 @@ const combatCards = [
         kingdom: "all",
         name: "Emergency Heal",
         category: "combat",
-        image: "emergency_heal.webp",
+        image: "assets/cardImages/combatImages/emergencyHeal.jpg",
 
         cost: {
             food: 3
         },
 
         description:
-            "Even the strongest armies need time to recover.",
+            "Fresh supplies restore wounded troops before they fall. Heal all friendly units within 2 tiles for 15% of their maximum health.",
 
         effect: {
             type: "heal_radius",
@@ -60,14 +60,14 @@ const combatCards = [
         kingdom: "all",
         name: "Defensive Formation",
         category: "combat",
-        image: "defensive_formation.webp",
+        image: "assets/cardImages/combatImages/defensiveFormation.jpg",
 
         cost: {
             stone: 2
         },
 
         description:
-            "A shield alone breaks. A thousand shields become a fortress.",
+            "Locked shields turn an army into an unbreakable wall. One friendly unit gains 50% extra defense during its next combat this turn.",
 
         effect: {
             type: "defense_buff",
@@ -81,11 +81,11 @@ const combatCards = [
     },
 
     {
-        cardID: "battlefield_reinforcements",
+        cardID: "Reinforcements",
         kingdom: "all",
-        name: "Battlefield Reinforcements",
+        name: "Reinforcements",
         category: "combat",
-        image: "battlefield_reinforcements.webp",
+        image: "assets/cardImages/combatImages/reinforcements.jpg",
 
         cost: {
             gold: 5,
@@ -94,7 +94,7 @@ const combatCards = [
         },
 
         description:
-            "The battle is not over until the last soldier arrives.",
+            "Fresh soldiers rush onto the battlefield when hope seems lost. Summon any troop type onto a tile you currently control.",
 
         effect: {
             type: "summon_unit",
@@ -110,14 +110,14 @@ const combatCards = [
         kingdom: "all",
         name: "War Drums",
         category: "combat",
-        image: "war_drums.webp",
+        image: "assets/cardImages/combatImages/warDrums.jpg",
 
         cost: {
             gold: 3
         },
 
         description:
-            "The sound of war can be heard across the entire battlefield.",
+            "The thunder of war echoes across the battlefield. One friendly unit gains +2 movement for the remainder of this turn.",
 
         effect: {
             type: "movement_buff",
@@ -130,12 +130,24 @@ const combatCards = [
             "Grants +2 movement this turn."
     },
 
-    {
+
+
+
+
+
+
+
+
+
+
+
+
+        {
         cardID: "precision_strike",
         kingdom: "all",
         name: "Precision Strike",
         category: "combat",
-        image: "precision_strike.webp",
+        image: "assets/cardImages/combatImages/precisionStrike.jpg",
 
         cost: {
             metal: 2,
@@ -143,7 +155,7 @@ const combatCards = [
         },
 
         description:
-            "One perfect shot can change the course of a war.",
+            "Target one enemy unit and deal direct damage of 20% its max health. A perfect attack for weakening powerful enemies before the main battle begins.",
 
         effect: {
             type: "direct_damage",
@@ -160,7 +172,7 @@ const combatCards = [
         kingdom: "all",
         name: "Rallying Cry",
         category: "combat",
-        image: "rallying_cry.webp",
+        image: "assets/cardImages/combatImages/rallyingCry.jpg",
 
         cost: {
             food: 2,
@@ -168,7 +180,7 @@ const combatCards = [
         },
 
         description:
-            "A true leader does not command armies. They inspire them.",
+            "Your troops gain +20% attack and +1 movement for this turn. Use it to push farther into enemy territory while increasing your army's damage output.",
 
         effect: {
             type: "mixed_buff",
@@ -187,7 +199,7 @@ const combatCards = [
         kingdom: "all",
         name: "Tactical Retreat",
         category: "combat",
-        image: "tactical_retreat.webp",
+        image: "assets/cardImages/combatImages/tacticalRetreat.jpg",
 
         cost: {
             gold: 2,
@@ -195,7 +207,7 @@ const combatCards = [
         },
 
         description:
-            "A wise commander knows when to fight another day.",
+            "Move one friendly unit up to 3 tiles without fighting. Perfect for escaping danger, repositioning forces, or capturing an important objective before your opponent.",
 
         effect: {
             type: "move_unit",
@@ -212,7 +224,7 @@ const combatCards = [
         kingdom: "all",
         name: "Siege Breaker",
         category: "combat",
-        image: "siege_breaker.webp",
+        image: "assets/cardImages/combatImages/siegeBreaker.jpg",
 
         cost: {
             metal: 3,
@@ -221,7 +233,7 @@ const combatCards = [
         },
 
         description:
-            "Every fortress has a weakness.",
+            "For the next 2 turns, one friendly siege force deals double damage against walls, fortresses, and siege engines. Ideal for breaking through heavy defenses quickly.",
 
         effect: {
             type: "siege_bonus",
@@ -243,7 +255,7 @@ const combatCards = [
         kingdom: "all",
         name: "Champion's Command",
         category: "combat",
-        image: "champions_command.webp",
+        image: "assets/cardImages/combatImages/championsCommand.jpg",
 
         cost: {
             gold: 4,
@@ -251,7 +263,7 @@ const combatCards = [
         },
 
         description:
-            "When champions lead, kingdoms follow.",
+            "All friendly units within 2 tiles of your Champion gain +50% attack, +25% defense, and +1 movement for 3 turns. Keep your army close to maximize the effect.",
 
         effect: {
             type: "champion_buff",

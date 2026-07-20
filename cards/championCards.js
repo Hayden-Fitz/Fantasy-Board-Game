@@ -9,7 +9,7 @@ const championCards = [
         kingdom: "all",
         name: "Heroic Charge",
         category: "champion",
-        image: "heroic_charge.webp",
+        image: "assets/cardImages/championImages/heroicCharge.jpg",
 
         cost: {
             gold: 2,
@@ -17,7 +17,7 @@ const championCards = [
         },
 
         description:
-            "The first strike belongs to the fearless.",
+            "Move your Champion up to 2 extra spaces this turn, allowing them to quickly reach battles, objectives, or defend your kingdom.",
 
         effect: {
             type: "movement_buff",
@@ -35,14 +35,14 @@ const championCards = [
         kingdom: "all",
         name: "Champion's Feast",
         category: "champion",
-        image: "champions_feast.webp",
+        image: "assets/cardImages/championImages/championsFeast.jpg",
 
         cost: {
             food: 4
         },
 
         description:
-            "Even legends require rest.",
+            "Restore 40% of your Champion's maximum health, keeping them in the fight without returning to your Capital.",
 
         effect: {
             type: "heal",
@@ -59,7 +59,7 @@ const championCards = [
         kingdom: "all",
         name: "Unbreakable Resolve",
         category: "champion",
-        image: "unbreakable_resolve.webp",
+        image: "assets/cardImages/championImages/unbreakableResolve.jpg",
 
         cost: {
             stone: 3,
@@ -67,7 +67,7 @@ const championCards = [
         },
 
         description:
-            "Some heroes simply refuse to fall.",
+            "Your Champion gains 50% bonus defense for the next 2 turns, reducing damage taken during future battles.",
 
         effect: {
             type: "defense_buff",
@@ -85,7 +85,7 @@ const championCards = [
         kingdom: "all",
         name: "Inspire the Army",
         category: "champion",
-        image: "inspire_the_army.webp",
+        image: "assets/cardImages/championImages/inspireTheArmy.jpg",
 
         cost: {
             gold: 2,
@@ -93,7 +93,7 @@ const championCards = [
         },
 
         description:
-            "Courage spreads faster than fear.",
+            "Friendly combat units within 2 spaces of your Champion gain 20% bonus attack until the end of this turn.",
 
         effect: {
             type: "area_attack_buff",
@@ -113,14 +113,14 @@ const championCards = [
         kingdom: "all",
         name: "Heroic Leap",
         category: "champion",
-        image: "heroic_leap.webp",
+        image: "assets/cardImages/championImages/heroicLeap.jpg",
 
         cost: {
             magic: 3
         },
 
         description:
-            "No obstacle can stop a determined hero.",
+            "Teleport your Champion up to 5 controlled tiles away, ignoring normal movement while remaining inside your territory.",
 
         effect: {
             type: "movement_teleport",
@@ -135,12 +135,18 @@ const championCards = [
             "Allows repositioning without full teleportation."
     },
 
+
+
+
+
+
+
     {
         cardID: "heroic_leap_advanced",
         kingdom: "all",
         name: "Heroic Leap",
         category: "champion",
-        image: "heroic_leap_advanced.webp",
+        image: "assets/cardImages/championImages/heroicLeapAdvanced.jpg",
 
         cost: {
             magic: 3,
@@ -148,7 +154,7 @@ const championCards = [
         },
 
         description:
-            "No obstacle can stop a true hero.",
+            "Teleport your Champion up to 5 spaces, ignoring terrain, rivers, roads, walls, and enemy units while moving.",
 
         effect: {
             type: "movement_teleport",
@@ -172,7 +178,7 @@ const championCards = [
         kingdom: "all",
         name: "Duel Challenge",
         category: "champion",
-        image: "duel_challenge.webp",
+        image: "assets/cardImages/championImages/duelChallenge.jpg",
 
         cost: {
             metal: 3,
@@ -180,7 +186,7 @@ const championCards = [
         },
 
         description:
-            "Settle this with steel.",
+            "Choose one enemy combat unit. Your Champion deals 50% extra damage when attacking that unit this turn.",
 
         effect: {
             type: "damage_bonus",
@@ -200,7 +206,7 @@ const championCards = [
         kingdom: "all",
         name: "Guardian's Return",
         category: "champion",
-        image: "guardians_return.webp",
+        image: "assets/cardImages/championImages/guardiansReturn.jpg",
 
         cost: {
             gold: 3,
@@ -208,7 +214,7 @@ const championCards = [
         },
 
         description:
-            "Home still needs its protector.",
+            "Instantly move your Champion back to your Capital to defend against threats or safely recover from danger.",
 
         effect: {
             type: "move_to_capital",
@@ -225,7 +231,7 @@ const championCards = [
         kingdom: "all",
         name: "Legendary Strike",
         category: "champion",
-        image: "legendary_strike.webp",
+        image: "assets/cardImages/championImages/legendaryStrike.jpg",
 
         cost: {
             metal: 4,
@@ -233,7 +239,7 @@ const championCards = [
         },
 
         description:
-            "One perfect blow changes history.",
+            "Your Champion's next attack deals double damage, making it ideal for defeating bosses or elite enemy units.",
 
         effect: {
             type: "damage_multiplier",
@@ -250,7 +256,7 @@ const championCards = [
         kingdom: "all",
         name: "Rally the Champion",
         category: "champion",
-        image: "rally_the_champion.webp",
+        image: "assets/cardImages/championImages/rallyTheChampion.jpg",
 
         cost: {
             food: 2,
@@ -258,7 +264,7 @@ const championCards = [
         },
 
         description:
-            "The kingdom stands behind its hero.",
+            "Refresh your Champion so they may move and attack again this turn, even if they have already acted.",
 
         effect: {
             type: "refresh_champion",
@@ -273,8 +279,7 @@ const championCards = [
 
         balanceNotes:
             "One of the strongest champion cards."
-    }
-
+    },
 ];
 
 export default championCards;

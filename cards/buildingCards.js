@@ -9,7 +9,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Master Builders",
         category: "building",
-        image: "master_builders.webp",
+        image: "assets/cardImages/buildingImages/masterBuilders.jpg",
 
         cost: {
             wood: 2,
@@ -17,7 +17,7 @@ const buildingCards = [
         },
 
         description:
-            "Great kingdoms are built by greater hands.",
+            "Master Builders reduce the cost of your next building by 50%, letting you construct powerful structures for half their normal resources.",
 
         effect: {
             type: "building_discount",
@@ -35,7 +35,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Emergency Workforce",
         category: "building",
-        image: "emergency_workforce.webp",
+        image: "assets/cardImages/buildingImages/emergencyWorkforce.jpg",
 
         cost: {
             food: 5,
@@ -44,7 +44,7 @@ const buildingCards = [
         },
 
         description:
-            "When time matters more than cost.",
+            "Summon two Workers onto occupied resource tiles you control, allowing you to expand or gather resources much more quickly.",
 
         effect: {
             type: "spawn_workers",
@@ -62,7 +62,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Rapid Construction",
         category: "building",
-        image: "rapid_construction.webp",
+        image: "assets/cardImages/buildingImages/rapidConstruction.jpg",
 
         cost: {
             wood: 3,
@@ -70,7 +70,7 @@ const buildingCards = [
         },
 
         description:
-            "Every road leads to victory.",
+            "Instantly construct up to three Roads without paying their normal building costs, helping your kingdom expand in a single turn.",
 
         effect: {
             type: "instant_build",
@@ -88,7 +88,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Sabotage",
         category: "building",
-        image: "sabotage.webp",
+        image: "assets/cardImages/buildingImages/sabotage.jpg",
 
         cost: {
             gold: 2,
@@ -96,7 +96,7 @@ const buildingCards = [
         },
 
         description:
-            "No wall is truly safe.",
+            "Destroy one enemy building to disrupt their economy, defenses, or expansion before they can recover.",
 
         effect: {
             type: "destroy_building",
@@ -114,7 +114,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Forced March",
         category: "building",
-        image: "forced_march.webp",
+        image: "assets/cardImages/buildingImages/forcedMarch.jpg",
 
         cost: {
             food: 3,
@@ -122,7 +122,7 @@ const buildingCards = [
         },
 
         description:
-            "Sleep is a luxury.",
+            "Push your Workers beyond their limits, allowing each Worker to perform one additional build action during this turn.",
 
         effect: {
             type: "extra_worker_actions",
@@ -135,12 +135,17 @@ const buildingCards = [
             "Workers may perform two normal build actions this turn."
     },
 
+
+
+
+
+
     {
         cardID: "reinforced_foundations",
         kingdom: "all",
         name: "Reinforced Foundations",
         category: "building",
-        image: "reinforced_foundations.webp",
+        image: "assets/cardImages/buildingImages/reinforcedFoundations.jpg",
 
         cost: {
             stone: 2,
@@ -148,7 +153,7 @@ const buildingCards = [
         },
 
         description:
-            "What is built well shall never fall.",
+            "Fortify one of your buildings for 5 turns. It cannot be destroyed by card effects while Reinforced Foundations remains active.",
 
         effect: {
             type: "building_protection",
@@ -168,7 +173,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Supply Depot",
         category: "building",
-        image: "supply_depot.webp",
+        image: "assets/cardImages/buildingImages/supplyDepot.jpg",
 
         cost: {
             wood: 3,
@@ -176,7 +181,7 @@ const buildingCards = [
         },
 
         description:
-            "Every empire begins with labor.",
+            "Establish a new Supply Depot and immediately summon one Worker at your Capital to help expand your kingdom.",
 
         effect: {
             type: "spawn_worker",
@@ -193,7 +198,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Engineering Breakthrough",
         category: "building",
-        image: "engineering_breakthrough.webp",
+        image: "assets/cardImages/buildingImages/engineeringBreakthrough.jpg",
 
         cost: {
             magic: 3,
@@ -201,7 +206,7 @@ const buildingCards = [
         },
 
         description:
-            "The impossible becomes routine.",
+            "Complete one building that is currently under construction instantly without paying any additional resources.",
 
         effect: {
             type: "complete_construction",
@@ -219,7 +224,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Royal Treasury",
         category: "building",
-        image: "royal_treasury.webp",
+        image: "assets/cardImages/buildingImages/royalTreasury.jpg",
 
         cost: {
             gold: 5,
@@ -227,7 +232,7 @@ const buildingCards = [
         },
 
         description:
-            "Gold solves many problems.",
+            "Your next building costs only one of each required resource, making even the largest projects much easier to afford.",
 
         effect: {
             type: "next_build_discount",
@@ -245,7 +250,7 @@ const buildingCards = [
         kingdom: "all",
         name: "Grand Expansion",
         category: "building",
-        image: "grand_expansion.webp",
+        image: "assets/cardImages/buildingImages/grandExpansion.jpg",
 
         cost: {
             wood: 4,
@@ -254,7 +259,7 @@ const buildingCards = [
         },
 
         description:
-            "The future belongs to those who build it.",
+            "Choose one major construction project: build 2 Roads, 1 Wall, 1 Bridge, or either a Barracks or Workshop instantly.",
 
         effect: {
             type: "choose_build",
@@ -283,7 +288,7 @@ const buildingCards = [
 
         balanceNotes:
             "Massive tempo card that saves time, not resources."
-    }
+    },
 
 ];
 

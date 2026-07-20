@@ -9,7 +9,7 @@ const specialCards = [
         kingdom: "all",
         name: "Cataclysm Ritual",
         category: "special",
-        image: "cataclysm_ritual.webp",
+        image: "assets/cardImages/specialImages/cataclysmRitual.jpg",
 
         cost: {
             magic: 6,
@@ -17,7 +17,7 @@ const specialCards = [
         },
 
         description:
-            "The world itself trembles.",
+            "Trigger a Cataclysm card against every opponent. You are not affected, making this a devastating multiplayer attack.",
 
         effect: {
             type: "trigger_cataclysm",
@@ -35,14 +35,14 @@ const specialCards = [
         kingdom: "all",
         name: "Peace Treaty",
         category: "special",
-        image: "peace_treaty.webp",
+        image: "assets/cardImages/specialImages/peaceTreaty.jpg",
 
         cost: {
             gold: 4
         },
 
         description:
-            "Even enemies need time to breathe.",
+            "Choose one opponent. Neither of you may attack each other until the end of the turn, giving both kingdoms time to recover.",
 
         effect: {
             type: "attack_prevention",
@@ -62,7 +62,7 @@ const specialCards = [
         kingdom: "all",
         name: "Spy Network",
         category: "special",
-        image: "spy_network.webp",
+        image: "assets/cardImages/specialImages/spyNetwork.jpg",
 
         cost: {
             gold: 3,
@@ -70,7 +70,7 @@ const specialCards = [
         },
 
         description:
-            "Secrets win wars.",
+            "Look at a chosen opponent's hand, then force them to discard one card of your choice before they can use it.",
 
         effect: {
             type: "hand_disruption",
@@ -88,7 +88,7 @@ const specialCards = [
         kingdom: "all",
         name: "Resource Convoy",
         category: "special",
-        image: "resource_convoy.webp",
+        image: "assets/cardImages/specialImages/resourceConvoy.jpg",
 
         cost: {
             gold: 3,
@@ -96,7 +96,7 @@ const specialCards = [
         },
 
         description:
-            "When the kingdom calls, the wagons always arrive.",
+            "A convoy arrives carrying supplies. Gain 6 of any one resource you choose to strengthen your economy immediately.",
 
         effect: {
             type: "resource_gain",
@@ -114,7 +114,7 @@ const specialCards = [
         kingdom: "all",
         name: "Smuggler's Market",
         category: "special",
-        image: "smugglers_market.webp",
+        image: "assets/cardImages/specialImages/smugglersMarket.jpg",
 
         cost: {
             wood: 2,
@@ -125,7 +125,7 @@ const specialCards = [
         },
 
         description:
-            "Everything has a price.",
+            "Your next card ignores all resource costs this turn. Play any card from your hand completely free of charge.",
 
         effect: {
             type: "free_card_play",
@@ -143,7 +143,7 @@ const specialCards = [
         kingdom: "all",
         name: "Kingdom Mobilization",
         category: "special",
-        image: "kingdom_mobilization.webp",
+        image: "assets/cardImages/specialImages/kingdomMobilization.jpg",
 
         cost: {
             food: 4,
@@ -151,7 +151,7 @@ const specialCards = [
         },
 
         description:
-            "The entire kingdom answers the call.",
+            "Every Construction Zone you control recruits one Basic Troop, quickly reinforcing your kingdom for the coming battles.",
 
         effect: {
             type: "summon_units",
@@ -169,7 +169,7 @@ const specialCards = [
         kingdom: "all",
         name: "Industrial Revolution",
         category: "special",
-        image: "industrial_revolution.webp",
+        image: "assets/cardImages/specialImages/industrialRevolution.jpg",
 
         cost: {
             wood: 4,
@@ -178,7 +178,7 @@ const specialCards = [
         },
 
         description:
-            "The kingdom enters a new age.",
+            "For the next 3 turns, all of your Workers gather double the normal amount of resources from every resource tile.",
 
         effect: {
             type: "resource_multiplier",
@@ -196,7 +196,7 @@ const specialCards = [
         kingdom: "all",
         name: "Overtime",
         category: "special",
-        image: "overtime.webp",
+        image: "assets/cardImages/specialImages/overtime.jpg",
 
         cost: {
             food: 3,
@@ -204,7 +204,7 @@ const specialCards = [
         },
 
         description:
-            "One more shift.",
+            "Your Workers may gather resources one additional time this turn, creating a powerful one-turn economy boost.",
 
         effect: {
             type: "extra_worker_action",
@@ -222,7 +222,7 @@ const specialCards = [
         kingdom: "all",
         name: "Kingdom Census",
         category: "special",
-        image: "kingdom_census.webp",
+        image: "assets/cardImages/specialImages/kingdomCensus.jpg",
 
         cost: {
             food: 4,
@@ -230,7 +230,7 @@ const specialCards = [
         },
 
         description:
-            "Every pair of hands strengthens the kingdom.",
+            "Recruit new citizens into service. Summon 3 Workers directly at your Capital to expand your workforce immediately.",
 
         effect: {
             type: "summon_workers",
@@ -247,14 +247,14 @@ const specialCards = [
         kingdom: "all",
         name: "Divine Intervention",
         category: "special",
-        image: "divine_intervention.webp",
+        image: "assets/cardImages/specialImages/divineIntervention.jpg",
 
         cost: {
             magic: 6
         },
 
         description:
-            "When all hope is lost...",
+            "Choose one blessing: fully heal your Champion, fully heal up to 3 friendly units, or remove all status effects from your army.",
 
         effect: {
             type: "choose_recovery",
@@ -282,5 +282,7 @@ const specialCards = [
     }
 
 ];
+
+
 
 export default specialCards;
