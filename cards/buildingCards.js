@@ -225,7 +225,7 @@ const buildingCards = [
         name: "Royal Treasury",
         category: "building",
         image: "assets/CardImages/buildingImages/royalTreasury.jpg",
-
+                
         cost: {
             gold: 5,
             magic: 2
