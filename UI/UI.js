@@ -15,7 +15,7 @@ import waterUnits from "../data/units/waterUnits.json" with { type: "json" };
 import workers from "../data/units/workers.json" with { type: "json" };
 import { zoomIn, zoomOut, teleportToCapital } from "../mapGenerator.js";
 import { cardLookup, getPlayerHand, getCard } from "../cards/cards.js";
-import { endCurrentPhase } from "../turnHandler.js";
+import { endCurrentPhase } from "../gameHandlers/turnHandler.js";
 
 // =============================
 // CREATE UI

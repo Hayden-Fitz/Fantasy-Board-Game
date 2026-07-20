@@ -3,7 +3,7 @@ import {
     ref,
     get,
     update
-} from "./firebase/firebase.js";
+} from "../firebase/firebase.js";
 
 
 
@@ -95,64 +95,6 @@ export async function endCurrentPhase(gameCode, playerID){
 
 }
 
-
-async function nextPlayer(gameCode, game){
-
-
-    const players =
-    Object.values(game.players);
-
-
-    let currentIndex =
-    players.findIndex(
-        p => p.id === game.turn.currentPlayer
-    );
-
-
-    let nextIndex =
-    currentIndex + 1;
-
-
-
-    // End of player list = new round
-
-    let newRound =
-    game.turn.round;
-
-
-    if(nextIndex >= players.length){
-
-        nextIndex = 0;
-
-        newRound++;
-
-    }
-
-
-
-    const nextPlayer =
-    players[nextIndex];
-
-
-
-    await update(
-        ref(database,"games/"+gameCode),
-        {
-
-            "turn/currentPlayer":
-            nextPlayer.id,
-
-            "turn/currentPhase":
-            phases[0],
-
-            "turn/round":
-            newRound
-
-        }
-    );
-
-
-}
 
 
 // ==========================
