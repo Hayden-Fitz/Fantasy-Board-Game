@@ -4,8 +4,8 @@ import {
     get,
     update
 } from "../firebase/firebase.js";
-
-
+import { collectResources } from "./resourceHandler.js";
+import { produceResources } from "./resourceHandler.js";
 
 const phases = [
     "feed",
@@ -91,7 +91,7 @@ export async function endCurrentPhase(gameCode, playerID){
     // Finished movement phase
     // Move to next player
 
-    nextPlayer(gameCode, game);
+    await nextPlayer(gameCode, game);
 
 }
 
@@ -170,6 +170,15 @@ async function nextPlayer(gameCode, game){
 
     if(!nextKingdom)
         return;
+    
+
+
+    console.log("MAP:", game.map);
+    console.log("PLAYER:", nextKingdom);
+
+
+
+
 
 
 
@@ -208,5 +217,16 @@ async function nextPlayer(gameCode, game){
         }
     );
 
+
+    await produceResources(
+        gameCode,
+        nextKingdom.id,
+        game
+    );
+
+    console.log(
+        "Resources produced for:",
+    nextKingdom.username
+);
 
 }

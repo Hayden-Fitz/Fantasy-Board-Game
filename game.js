@@ -10,7 +10,7 @@ import {
 } from "./firebase/firebase.js";
 
 import { generateMap, renderMap, setCurrentGame } from "./mapGenerator.js";
-import { createUI, updateTurnUI } from "./UI/UI.js";
+import { createUI, updateTurnUI, updateResourceBar } from "./UI/UI.js";
 
 import {
     createPlayerDeck,
@@ -312,7 +312,48 @@ function waitForMap(game){
 
 }
 
+function watchGame(){
 
+    const gameRef =
+        ref(database, `games/${gameCode}`);
+
+
+    onValue(gameRef, (snapshot)=>{
+
+        if(!snapshot.exists())
+            return;
+
+
+        const updatedGame = snapshot.val();
+
+
+        createUI({
+
+            ...updatedGame,
+
+            map: updatedGame.map,
+
+            hand: getPlayerHand()
+
+        });
+
+
+        const player =
+            updatedGame.players[playerID];
+
+
+        if(player?.resources){
+
+            updateResourceBar(
+                player.resources
+            );
+
+        }
+
+
+    });
+
+}
 
 
 
@@ -362,13 +403,23 @@ async function startGame(map, game){
 
     // Create UI
 
+    let currentPlayerData =
+        game.players[playerID];
+
+
     createUI({
+
         ...game,
+
         map: map,
-        hand: getPlayerHand()
+
+        hand: getPlayerHand(),
+
+        currentPlayerData: currentPlayerData
+
     });
 
-    
+    watchGame();
 
     const turnRef =
     ref(database, "games/" + gameCode + "/turn");

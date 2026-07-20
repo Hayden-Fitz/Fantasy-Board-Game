@@ -115,7 +115,18 @@ window.createGame = async function(){
 
         host: true,
 
-        connected: true
+        connected: true,
+
+        resources: {
+
+            wood: 0,
+            stone: 0,
+            metal: 0,
+            gold: 0,
+            magic: 0,
+            food: 0
+
+        },
 
     };
 
@@ -245,7 +256,18 @@ window.joinGame = async function(){
 
         host: false,
 
-        connected: true
+        connected: true,
+
+        resources: {
+
+            wood: 0,
+            stone: 0,
+            metal: 0,
+            gold: 0,
+            magic: 0,
+            food: 5
+
+        },
 
     };
 

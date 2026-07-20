@@ -16,6 +16,7 @@ import workers from "../data/units/workers.json" with { type: "json" };
 import { zoomIn, zoomOut, teleportToCapital } from "../mapGenerator.js";
 import { cardLookup, getPlayerHand, getCard } from "../cards/cards.js";
 import { endCurrentPhase } from "../gameHandlers/turnHandler.js";
+import { database, ref, onValue } from "../firebase/firebase.js";
 
 // =============================
 // CREATE UI
@@ -49,124 +50,6 @@ export function createUI(gameState){
 
 }
 
-
-
-
-
-function createTopBar(game){
-
-    // Remove old UI if it exists
-    let oldBar = document.getElementById("top-bar");
-
-    if(oldBar){
-        oldBar.remove();
-    }
-
-
-    let topBar = document.createElement("div");
-
-    topBar.id = "top-bar";
-
-
-    document.body.appendChild(topBar);
-
-
-
-    // ==========================
-    // RESOURCE SECTION
-    // ==========================
-
-    let resourceBar = document.createElement("div");
-
-    resourceBar.id = "resourceBar";
-
-
-    let resources = [
-        "wood",
-        "stone",
-        "metal",
-        "gold",
-        "magic",
-        "food"
-    ];
-
-
-    resources.forEach(resource=>{
-
-        let box = document.createElement("div");
-
-        box.className = "resource";
-
-
-        box.innerHTML = `
-            <span>${resource}</span>
-            <span>x0</span>
-        `;
-
-
-        resourceBar.appendChild(box);
-
-    });
-
-
-
-    topBar.appendChild(resourceBar);
-
-
-
-
-    // ==========================
-    // OBJECTIVE
-    // ==========================
-
-    let objective = document.createElement("div");
-
-    objective.id = "objectiveProgress";
-
-
-    objective.innerHTML = `
-
-        <span>Objective</span>
-
-        <div class="progressBar">
-
-            <div class="progressFill"></div>
-
-        </div>
-
-        <span>0%</span>
-
-    `;
-
-
-    topBar.appendChild(objective);
-
-
-
-
-
-    // ==========================
-    // ROUND COUNTER
-    // ==========================
-
-
-    let round = document.createElement("div");
-
-    round.id="roundCounter";
-
-
-    round.innerHTML = `
-
-        Round:
-        ${game.turn?.round || 1}
-
-    `;
-
-
-    topBar.appendChild(round);
-
-
-}
 
 
 
@@ -420,7 +303,6 @@ function updateCurrentPlayer(name){
     }
 
 }
-
 function updateCurrentPhase(phase){
 
     const element =
@@ -441,8 +323,10 @@ function updateCurrentPhase(phase){
     element.textContent =
         names[phase] || "Waiting...";
 
-}
 
+    updatePhaseButton(phase);
+
+}
 function getCurrentPlayerName(gameState){
 
     const currentPlayerID =
@@ -462,7 +346,6 @@ function getCurrentPlayerName(gameState){
 
     return player?.username || "Waiting...";
 }
-
 function updateRound(round){
 
     const element =
@@ -476,15 +359,163 @@ function updateRound(round){
     }
 
 }
+function updatePhaseButton(phase){
+
+    const button =
+    document.getElementById("phase-button");
 
 
+    if(!button)
+        return;
+
+
+    if(phase === "movement"){
+
+        button.textContent = "End Turn";
+
+    }
+    else{
+
+        button.textContent = "End Phase";
+
+    }
+
+}
+
+
+
+
+
+
+function createTopBar(game){
+
+    // Remove old UI if it exists
+    let oldBar = document.getElementById("top-bar");
+
+    if(oldBar){
+        oldBar.remove();
+    }
+
+
+    let topBar = document.createElement("div");
+
+    topBar.id = "top-bar";
+
+
+    document.body.appendChild(topBar);
+
+
+
+    // ==========================
+    // RESOURCE SECTION
+    // ==========================
+
+    let resourceBar = document.createElement("div");
+
+    resourceBar.id = "resourceBar";
+
+
+    let resources = [
+        "wood",
+        "stone",
+        "metal",
+        "gold",
+        "magic",
+        "food"
+    ];
+
+
+    resources.forEach(resource=>{
+
+        let box = document.createElement("div");
+
+        box.className = "resource";
+        box.id = `resource-${resource}`;
+
+
+        box.innerHTML = `
+            <span>${resource}</span>
+            <span id="resource-count-${resource}">
+                x0
+            </span>
+        `;
+
+
+        resourceBar.appendChild(box);
+
+    });
+
+
+
+    topBar.appendChild(resourceBar);
+
+
+
+
+    // ==========================
+    // OBJECTIVE
+    // ==========================
+
+    let objective = document.createElement("div");
+
+    objective.id = "objectiveProgress";
+
+
+    objective.innerHTML = `
+
+        <span>Objective</span>
+
+        <div class="progressBar">
+
+            <div class="progressFill"></div>
+
+        </div>
+
+        <span>0%</span>
+
+    `;
+
+
+    topBar.appendChild(objective);
+
+
+
+
+
+    // ==========================
+    // ROUND COUNTER
+    // ==========================
+
+
+    let round = document.createElement("div");
+
+    round.id="roundCounter";
+
+
+    round.innerHTML = `
+
+        Round:
+        ${game.turn?.round || 1}
+
+    `;
+
+
+    topBar.appendChild(round);
+
+
+}
 
 
 
 
 
 function createRightPanel(game){
+    const oldPanel =
+    document.getElementById("right-panel");
 
+    if(oldPanel){
+        oldPanel.remove();
+    }
     const kingdomColors = {
 
         "Crimson Empire":"#c62828",
@@ -539,7 +570,12 @@ function createRightPanel(game){
 
 
 function createInfoPanel(game){
+    const oldPanel =
+    document.getElementById("info-panel");
 
+    if(oldPanel){
+        oldPanel.remove();
+    }
     let panel = document.createElement("div");
 
     panel.id = "info-panel";
@@ -573,7 +609,12 @@ function createInfoPanel(game){
 
 
 function createMapControls() {
+    const oldControls =
+    document.getElementById("map-controls");
 
+    if(oldControls){
+        oldControls.remove();
+    }
     const controls = document.createElement("div");
     controls.id = "map-controls";
 
@@ -853,6 +894,29 @@ export function updateTurnUI(turn, players){
 
     updateRound(
         turn.round
+    );
+
+}
+
+export function updateResourceBar(resources){
+
+    Object.entries(resources).forEach(
+        ([resource, amount])=>{
+
+            const element =
+                document.getElementById(
+                    `resource-count-${resource}`
+                );
+
+
+            if(element){
+
+                element.textContent =
+                    `x${amount}`;
+
+            }
+
+        }
     );
 
 }
