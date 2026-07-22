@@ -1,82 +1,288 @@
 {
-    "capital": {
-        "name": "Capital",
-        "description": "The center of a kingdom. If captured, the kingdom is defeated.",
+  "road": {
+    "name": "Road",
+    "image": "assets/buildingImages/road.png",
 
-        "health": 1000,
-        "defense": 5,
+    "health": 5,
+    "defense": 1,
 
-        "canProduceWorkers": true,
-        "canProduceTroops": true,
-
-        "specialRules": [
-            "champion_healing",
-            "kingdom_center",
-            "boss_location"
-        ]
+    "cost": {
+      "wood": 2,
+      "stone": 1
     },
 
-    "constructionZone": {
-        "name": "Construction Zone",
-        "description": "A production area used to create troops and workers.",
+    "placement": {
+      "allowedTerrains": [
+        "grass"
+      ],
 
-        "health": 300,
-        "defense": 2,
+      "blockedTerrains": [
+        "mountain",
+        "forest",
+        "water"
+      ],
 
-        "canProduceWorkers": false,
-        "canProduceTroops": true,
+      "requiresOwnedTile": true,
 
-        "specialRules": [
-            "unit_production"
-        ]
+      "canPlaceAdjacentToOwned": false,
+
+      "requiresConnection": false
     },
 
-    "greatWall": {
-        "name": "Great Wall Segment",
-        "description": "A defensive structure built by the Crimson Empire.",
-
-        "health": 500,
-        "defense": 5,
-
-        "canProduceWorkers": false,
-        "canProduceTroops": false,
-
-        "specialRules": [
-            "crimson_objective",
-            "defensive_structure"
-        ]
-    },
-
-    "shipyard": {
-        "name": "Shipyard",
-        "description": "A facility used to create and upgrade ships.",
-
-        "health": 400,
-        "defense": 3,
-
-        "canProduceWorkers": false,
-        "canProduceTroops": true,
-
-        "specialRules": [
-            "water_unit_production",
-            "ship_upgrade"
-        ]
-    },
-
-    "bridge" : {
-        "name": "bridge",
-        "description": "A way for land troops to cross water",
-
-        "health": 300,
-        "defense": 5,
-
-        "canProduceWorkers": false,
-        "canProduceTroops": false,
-
-        "specialRules": [
-            "champion_healing",
-            "kingdom_center",
-            "boss_location"
-        ]
+    "effects": {
+      "movementBonus": 1
     }
+  },
+
+  "bridge": {
+    "name": "Bridge",
+    "image": "assets/buildingImages/bridge.png",
+
+    "health": 15,
+    "defense": 3,
+
+    "cost": {
+      "wood": 4,
+      "stone": 2
+    },
+
+    "placement": {
+      "allowedTerrains": [
+        "water"
+      ],
+
+      "blockedTerrains": [
+        "mountain",
+        "grass",
+        "forest"
+      ],
+
+      "requiresOwnedTile": false,
+
+      "canPlaceAdjacentToOwned": true,
+
+      "requiresConnection": false,
+
+      "connectsAcrossWater": true
+    },
+
+    "effects": {
+      "allowsLandMovementAcrossWater": true
+    }
+  },
+
+  "wall": {
+    "name": "Wall",
+    "image": "assets/buildingImages/wall.png",
+
+    "health": 30,
+    "defense": 5,
+
+    "cost": {
+      "stone": 5
+    },
+
+    "placement": {
+      "allowedTerrains": [
+        "grass",
+        "mountain",
+        "forest"
+      ],
+
+      "blockedTerrains": [
+        "water"
+      ],
+
+      "requiresOwnedTile": true,
+
+      "canPlaceAdjacentToOwned": false,
+
+      "requiresConnection": false
+    },
+
+    "effects": {
+      "defenseBonus": 10
+    }
+  },
+
+  "fortress": {
+    "name": "Fortress",
+    "image": "assets/buildingImages/fortress.png",
+
+    "health": 50,
+    "defense": 5,
+
+    "cost": {
+      "stone": 10,
+      "metal": 5
+    },
+
+    "placement": {
+      "allowedTerrains": [
+        "grass",
+        "mountain",
+        "forest"
+      ],
+
+      "blockedTerrains": [
+        "water"
+      ],
+
+      "requiresOwnedTile": true,
+
+      "canPlaceAdjacentToOwned": false,
+
+      "requiresConnection": false
+    },
+
+    "effects": {
+      "defenseBonus": 50,
+      "troopCapacityBonus": 5
+    }
+  },
+
+  "barracks": {
+    "name": "Barracks",
+    "image": "assets/buildingImages/barracks.png",
+
+    "health": 30,
+    "defense": 3,
+
+    "cost": {
+      "wood": 8,
+      "stone": 6
+    },
+
+    "placement": {
+      "allowedTerrains": [
+        "grass"
+      ],
+
+      "blockedTerrains": [
+        "mountain",
+        "water",
+        "forest"
+      ],
+
+      "requiresOwnedTile": true,
+
+      "canPlaceAdjacentToOwned": false,
+
+      "requiresConnection": false
+    },
+
+    "effects": {
+      "unlocksTroops": true
+    }
+  },
+
+  "workshop": {
+    "name": "Workshop",
+    "image": "assets/buildingImages/workshop.png",
+
+    "health": 30,
+    "defense": 3,
+
+    "cost": {
+      "wood": 4,
+      "metal": 8
+    },
+
+    "placement": {
+      "allowedTerrains": [
+        "grass"
+      ],
+
+      "blockedTerrains": [
+        "mountain",
+        "water",
+        "forest"
+      ],
+
+      "requiresOwnedTile": true,
+
+      "canPlaceAdjacentToOwned": false,
+
+      "requiresConnection": false
+    },
+
+    "effects": {
+      "unlocksAdvancedUnits": true
+    }
+  },
+
+  "seaport": {
+    "name": "Seaport",
+    "image": "assets/buildingImages/seaport.png",
+
+    "health": 40,
+    "defense": 3,
+
+    "cost": {
+      "wood": 10,
+      "stone": 5,
+      "metal": 3
+    },
+
+    "placement": {
+      "allowedTerrains": [
+        "grass"
+      ],
+
+      "blockedTerrains": [
+        "mountain",
+        "forest"
+      ],
+
+      "requiresOwnedTile": true,
+
+      "canPlaceAdjacentToOwned": false,
+
+      "requiresWaterAdjacent": true
+    },
+
+    "effects": {
+      "allowsBoatConstruction": true
+    }
+  },
+
+  "town": {
+    "name": "Town",
+    "image": "assets/buildingImages/town.png",
+
+    "health": 30,
+    "defense": 5,
+
+    "cost": {
+      "wood": 15,
+      "stone": 20,
+      "gold": 8
+    },
+
+    "placement": {
+      "allowedTerrains": [
+        "wood",
+        "stone",
+        "metal",
+        "food"
+      ],
+
+      "blockedTerrains": [
+        "mountain",
+        "water",
+        "grass",
+        "forest"
+      ],
+
+      "requiresOwnedTile": true,
+
+      "canPlaceAdjacentToOwned": false,
+
+      "requiresConnection": false
+    },
+
+    "effects": {
+      "resourceBonus": 1
+    }
+  }
 }
