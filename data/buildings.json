@@ -2,7 +2,7 @@
   "road": {
     "name": "Road",
     "image": "assets/buildingImages/road.png",
-
+    "previewScale": 1,
     "health": 5,
     "defense": 1,
 
@@ -37,6 +37,7 @@
   "bridge": {
     "name": "Bridge",
     "image": "assets/buildingImages/bridge.png",
+    "previewScale": 1,
 
     "health": 15,
     "defense": 3,
@@ -74,6 +75,7 @@
   "wall": {
     "name": "Wall",
     "image": "assets/buildingImages/wall.png",
+    "previewScale": 1,
 
     "health": 30,
     "defense": 5,
@@ -108,6 +110,7 @@
   "fortress": {
     "name": "Fortress",
     "image": "assets/buildingImages/fortress.png",
+    "previewScale": 0.75,
 
     "health": 50,
     "defense": 5,
@@ -144,6 +147,7 @@
   "barracks": {
     "name": "Barracks",
     "image": "assets/buildingImages/barracks.png",
+    "previewScale": 0.75,
 
     "health": 30,
     "defense": 3,
@@ -179,6 +183,7 @@
   "workshop": {
     "name": "Workshop",
     "image": "assets/buildingImages/workshop.png",
+    "previewScale": 0.75,
 
     "health": 30,
     "defense": 3,
@@ -214,6 +219,7 @@
   "seaport": {
     "name": "Seaport",
     "image": "assets/buildingImages/seaport.png",
+    "previewScale": 0.75,
 
     "health": 40,
     "defense": 3,
@@ -249,6 +255,7 @@
   "town": {
     "name": "Town",
     "image": "assets/buildingImages/town.png",
+    "previewScale": 0.75,
 
     "health": 30,
     "defense": 5,

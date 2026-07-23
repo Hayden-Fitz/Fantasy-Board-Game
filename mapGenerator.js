@@ -2,6 +2,7 @@ import mapSettings from "./data/mapSettings.json" with { type: "json" };
 import kingdoms from "./data/kingdoms.json" with { type: "json" };
 import resources from "./data/resources.json" with { type: "json" };
 import { generateTerrain } from "./terrain.js";
+import { updateBuildingPreviewScale } from "./gameHandlers/buildingHandler.js";
 
 let board = null;
 
@@ -18,58 +19,55 @@ export function generateMap(players){
     let map = {
 
         settings: structuredClone(mapSettings),
+
         kingdoms: structuredClone(kingdoms),
-        resources: structuredClone(resources),
 
-        tiles:{},
-
-        playerCount: players.length,
-
-        activeKingdoms: players.map(player => {
-
-            let kingdom = player.kingdom.toLowerCase();
-
-            // Convert display names into IDs
-            for(let id in kingdoms){
-
-                if(
-                    kingdoms[id].name.toLowerCase() === kingdom
-                ){
-
-                    return id;
-
-                }
-
-            }
-
-            // Already an ID
-            return kingdom;
-
-        })
+        tiles:{}
 
     };
 
-generateCenter(map);
 
-generateLand(map);
+    map.activeKingdoms = players.map(player => {
 
-makeCenterGrass(map);
-
-placeCapitals(map);
-
-expandKingdoms(map);
-
-convertUnusedKingdoms(map)
-
-generateBorderWaters(map);
-
-fillUnusedLandWithWater(map);
-
-removeIsolatedLand(map);
-
-generateTerrain(map);
+        let kingdom = player.kingdom.toLowerCase();
 
 
+        for(let id in kingdoms){
+
+            if(
+                kingdoms[id].name.toLowerCase() === kingdom
+            ){
+
+                return id;
+
+            }
+
+        }
+
+        return kingdom;
+
+    });
+
+
+    generateCenter(map);
+
+    generateLand(map);
+
+    makeCenterGrass(map);
+
+    placeCapitals(map);
+
+    expandKingdoms(map);
+
+    convertUnusedKingdoms(map);
+
+    generateBorderWaters(map);
+
+    fillUnusedLandWithWater(map);
+
+    removeIsolatedLand(map);
+
+    generateTerrain(map);
 
 
     return map;
@@ -89,28 +87,85 @@ function addTile(
     kingdom = "neutral"
 ){
 
-    let id = `${x},${y}`;
+    const id = `${x},${y}`;
 
     map.tiles[id] = {
 
-        x: x,
-        y: y,
+        id:id,
 
-        terrain: terrain,
+        x:x,
+        y:y,
 
-        // Original kingdom (never changes)
-        kingdom: kingdom,
+        terrain:terrain,
 
-        // Current owner (changes during the game)
-        owner: kingdom,
+        kingdom:kingdom,
 
-        resource: null,
+        owner:kingdom,
 
-        building: null,
+        resource:null,
 
-        unit: null,
+        building:null,
+        /*
+        building example:
 
-        worker: null
+        {
+            type: "wall",
+                if type is wall then also connecting tile
+
+            owner: "crimson",
+
+            hp: 30,
+
+            maxHp: 30,
+
+            defense: 5
+        }
+
+        */
+
+
+        troop: null,
+
+        /*
+        Example:
+
+        troop: {
+            type: "infantry",
+            category: "land",
+
+            owner: "crimson",
+
+            hp: 100,
+            maxHp: 100,
+
+            defense: 2,
+
+            movementRemaining: 3,
+
+            effects: []
+        }
+
+        */
+
+        worker: null,
+
+        /*
+        Example:
+
+        worker: {
+
+            owner: "crimson",
+
+            hp: 10,
+            maxHp: 10,
+
+            defense: 1
+
+        }
+
+        */
+
+        walls:[]
 
     };
 
@@ -1064,7 +1119,23 @@ function renderMap(map){
 
     element.className = "tile";
 
+    element.onclick = () => {
 
+        if(currentGame){
+
+            import("./gameHandlers/buildingHandler.js")
+            .then(module => {
+
+                module.placeBuilding(
+                    tile,
+                    currentGame
+                );
+
+            });
+
+        }
+
+    };
 
     // -------------------------
     // COLORS
@@ -1485,12 +1556,13 @@ function updateZoom(){
     `;
 
 }
-
 export function zoomIn(){
 
     scale = Math.min(scale + 0.1, 5);
 
     updateZoom();
+
+    updateBuildingPreviewScale();
 
 }
 export function zoomOut(){
@@ -1499,8 +1571,14 @@ export function zoomOut(){
 
     updateZoom();
 
-}
+    updateBuildingPreviewScale();
 
+}
+export function getZoomScale(){
+
+    return scale;
+
+}
 
 // ==========================
 // UI BUTTON LISTENERS
@@ -1567,6 +1645,7 @@ function teleportToCapital() {
 
     updateZoom();
 }
+
 
 
 // export { renderMap };

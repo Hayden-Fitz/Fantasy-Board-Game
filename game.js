@@ -209,6 +209,10 @@ async function loadGame(){
 
             let map = generateMap(players);
 
+
+            console.log("Generated map:", map);
+
+
             await set(
                 ref(database, "games/" + gameCode + "/map"),
                 map

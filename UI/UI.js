@@ -17,7 +17,13 @@ import { zoomIn, zoomOut, teleportToCapital } from "../mapGenerator.js";
 import { cardLookup, getPlayerHand, getCard } from "../cards/cards.js";
 import { endCurrentPhase } from "../gameHandlers/turnHandler.js";
 import { database, ref, onValue } from "../firebase/firebase.js";
-
+import { 
+    startBuilding, 
+    cancelBuilding, 
+    isBuildingMode, 
+    getSelectedBuilding,
+    changeBuildPanelToCancel
+} from "../gameHandlers/buildingHandler.js";
 // =============================
 // CREATE UI
 // =============================
@@ -131,7 +137,9 @@ function createLeftPanel(game){
                         Wall
                     </span>
 
-                    <button class="build-button">
+                    <button 
+                        class="build-button"
+                        data-building="wall">
                         +
                     </button>
 
@@ -145,7 +153,9 @@ function createLeftPanel(game){
                         Road
                     </span>
 
-                    <button class="build-button">
+                    <button 
+                        class="build-button"
+                        data-building="road">
                         +
                     </button>
 
@@ -159,7 +169,9 @@ function createLeftPanel(game){
                         Bridge
                     </span>
 
-                    <button class="build-button">
+                    <button 
+                        class="build-button"
+                        data-building="bridge">
                         +
                     </button>
 
@@ -173,10 +185,11 @@ function createLeftPanel(game){
                         Fortress
                     </span>
 
-                    <button class="build-button">
+                    <button 
+                        class="build-button"
+                        data-building="fortress">
                         +
                     </button>
-
                 </div>
 
 
@@ -187,7 +200,9 @@ function createLeftPanel(game){
                         Barracks
                     </span>
 
-                    <button class="build-button">
+                    <button 
+                        class="build-button"
+                        data-building="barracks">
                         +
                     </button>
 
@@ -201,7 +216,9 @@ function createLeftPanel(game){
                         Workshop
                     </span>
 
-                    <button class="build-button">
+                    <button 
+                        class="build-button"
+                        data-building="workshop">
                         +
                     </button>
 
@@ -215,7 +232,9 @@ function createLeftPanel(game){
                         Seaport
                     </span>
 
-                    <button class="build-button">
+                    <button 
+                        class="build-button"
+                        data-building="seaport">
                         +
                     </button>
 
@@ -229,7 +248,9 @@ function createLeftPanel(game){
                         Town
                     </span>
 
-                    <button class="build-button">
+                    <button 
+                        class="build-button"
+                        data-building="town">
                         +
                     </button>
 
@@ -288,7 +309,51 @@ function createLeftPanel(game){
 
     });
 
+    const buildButtons =
+    document.querySelectorAll(".build-button");
+
+    buildButtons.forEach(button=>{
+
+        button.addEventListener("click", ()=>{
+
+            const building =
+            button.dataset.building;
+
+
+            // Remove old selection
+            buildButtons.forEach(btn=>{
+                btn.classList.remove("selected");
+            });
+
+
+            if(
+                isBuildingMode() &&
+                getSelectedBuilding() === building
+            ){
+
+                cancelBuilding();
+
+            }
+            else{
+
+                startBuilding(building);
+
+                button.classList.add("selected");
+
+                changeBuildPanelToCancel();
+
+            }
+
+        });
+
+    });
+
 }
+
+
+
+
+
 
 
 function updateCurrentPlayer(name){
