@@ -3,6 +3,9 @@ import kingdoms from "./data/kingdoms.json" with { type: "json" };
 import resources from "./data/resources.json" with { type: "json" };
 import { generateTerrain } from "./terrain.js";
 import { updateBuildingPreviewScale } from "./gameHandlers/buildingHandler.js";
+import buildings from "../data/buildings.json" with { type:"json" };
+import { database, ref, get } from "./firebase/firebase.js";
+
 
 let board = null;
 
@@ -1075,9 +1078,18 @@ function renderMap(map){
 
 
     board.id = "board";
+    board.style.transform =
+    `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
 
 
     display.appendChild(board);
+
+
+    board.style.transform =
+    `
+    translate(${offsetX}px, ${offsetY}px)
+    scale(${scale})
+    `;
     setupTileHighlight(display);
 
 
@@ -1115,120 +1127,145 @@ function renderMap(map){
     .forEach(tile=>{
 
 
-    let element = document.createElement("div");
+        let element = document.createElement("div");
 
-    element.className = "tile";
+        element.className = "tile";
 
-    element.onclick = () => {
+        element.onclick = async () => {
 
-        if(currentGame){
+            if(currentGame){
 
-            import("./gameHandlers/buildingHandler.js")
-            .then(module => {
+                const snapshot =
+                    await get(
+                        ref(
+                            database,
+                            `games/${localStorage.getItem("gameCode")}`
+                        )
+                    );
 
-                module.placeBuilding(
-                    tile,
-                    currentGame
-                );
 
-            });
+                const freshGame =
+                    snapshot.val();
+
+
+                import("./gameHandlers/buildingHandler.js")
+                .then(module => {
+
+                    module.placeBuilding(
+                        tile,
+                        freshGame
+                    );
+
+                });
+
+            }
+
+        };
+
+        // -------------------------
+        // COLORS
+        // -------------------------
+
+        const kingdomBorder = {
+
+            crimson:"#c50303",
+            tide:"#0818aa",
+            culinary:"#a33400",
+            viking:"#fffb00",
+            shadow:"#7B1FA2",
+
+        };
+
+
+        const terrainColors = {
+
+            grass:"#7CB342",
+
+            forest:"#2E7D32",
+
+            mountain:"#757575",
+
+            water:"#1565C0",
+
+
+
+            construction_zone:"#8D6E63",
+
+            capital:"#FFD700"
+
+        };
+
+
+
+        // -------------------------
+        // IMAGE
+        // -------------------------
+
+        let image;
+
+        if(tile.building?.type){
+
+            image =
+            tile.resource 
+            ? tileImages[tile.resource]
+            : tileImages[tile.terrain];
+
+        }
+        else if(tile.building === "capital"){
+
+            image = tileImages.capital;
+
+        }
+        else if(tile.building === "constructionZone"){
+
+            image = tileImages.constructionZone;
+
+        }
+        else if(tile.resource){
+
+            image = tileImages[tile.resource];
+
+        }
+        else{
+
+            image = tileImages[tile.terrain];
 
         }
 
-    };
-
-    // -------------------------
-    // COLORS
-    // -------------------------
-
-    const kingdomBorder = {
-
-        crimson:"#c50303",
-        tide:"#0818aa",
-        culinary:"#a33400",
-        viking:"#fffb00",
-        shadow:"#7B1FA2",
-
-    };
 
 
-    const terrainColors = {
+        // Border uses kingdom color
 
-        grass:"#7CB342",
-
-        forest:"#2E7D32",
-
-        mountain:"#757575",
-
-        water:"#1565C0",
+        let borderColor =
+        map.kingdoms[tile.kingdom]?.color || "#777777";
 
 
 
-        construction_zone:"#8D6E63",
+        // Display text
 
-        capital:"#FFD700"
+        let label = tile.terrain;
 
-    };
+        if(tile.resource){
 
+            label = tile.resource;
 
+        }
 
-    // -------------------------
-    // IMAGE
-    // -------------------------
+        if(tile.building?.type){
 
-    let image;
+            label = tile.building.type;
 
-    if(tile.building === "capital"){
+        }
+        else if(tile.building){
 
-        image = tileImages.capital;
+            label = tile.building;
 
-    }
-    else if(tile.building === "constructionZone"){
-
-        image = tileImages.constructionZone;
-
-    }
-    else if(tile.resource){
-
-        image = tileImages[tile.resource];
-
-    }
-    else{
-
-        image = tileImages[tile.terrain];
-
-    }
+        }
 
 
-
-    // Border uses kingdom color
-
-    let borderColor =
-    map.kingdoms[tile.kingdom]?.color || "#777777";
-
-
-
-    // Display text
-
-    let label = tile.terrain;
-
-    if(tile.resource){
-
-        label = tile.resource;
-
-    }
-
-    if(tile.building){
-
-        label = tile.building;
-
-    }
-
-
-
-    // -------------------------
-    // TILE APPEARANCE
-    // -------------------------
+        // -------------------------
+        // TILE APPEARANCE
+        // -------------------------
 
         element.innerHTML = `
 
@@ -1243,33 +1280,48 @@ function renderMap(map){
 
 
         <div 
-        class="hexCenter ${tile.building || tile.resource || tile.terrain}"
+        class="hexCenter ${tile.resource || tile.terrain}"
         style="
         background-image:url('${image}');
         ">
         </div>
 
+
+        ${
+        tile.building?.type
+        ?
+        `
+        <div class="building-wrapper">
+            <img 
+            class="building-image"
+            src="${buildings[tile.building.type].image}">
+        </div>
+        `
+        :
+        ""
+        }
+
         `;
 
 
 
-    // -------------------------
-    // POSITION
-    // -------------------------
+        // -------------------------
+        // POSITION
+        // -------------------------
 
-    let x =
-    Math.sqrt(3) *
-    hexSize *
-    (tile.x + tile.y / 2);
+        let x =
+        Math.sqrt(3) *
+        hexSize *
+        (tile.x + tile.y / 2);
 
-    let y =
-    1.5 *
-    hexSize *
-    tile.y;
-    element.style.left = `${x}px`;
-    element.style.top = `${y}px`;
+        let y =
+        1.5 *
+        hexSize *
+        tile.y;
+        element.style.left = `${x}px`;
+        element.style.top = `${y}px`;
 
-    board.appendChild(element);
+        board.appendChild(element);
 
     });
 
@@ -1330,6 +1382,16 @@ function renderMap(map){
 
     });
 
+
+
+
+
+
+
+
+
+
+
     // =====================
     // CAMERA CONTROLS
     // =====================
@@ -1339,12 +1401,6 @@ function renderMap(map){
 
     let startX;
     let startY;
-
-
-
-
-    
-
 
     display.addEventListener("mousedown", (e)=>{
 

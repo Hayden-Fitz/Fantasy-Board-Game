@@ -6,12 +6,13 @@ import {
 } from "../firebase/firebase.js";
 import { collectResources } from "./resourceHandler.js";
 import { produceResources } from "./resourceHandler.js";
+import { updateTurnUI } from "../UI/ui.js";
 
 const phases = [
     "feed",
     "cards",
-    "construction",
-    "movement"
+    "movement",
+    "construction"
 ];
 
 
@@ -69,16 +70,34 @@ export async function endCurrentPhase(gameCode, playerID){
 
 
     // Move to next phase
-
     if(currentPhaseIndex < phases.length - 1){
+
+        const newPhase =
+            phases[currentPhaseIndex + 1];
+
+
+        console.log(
+            "Changing phase:",
+            turn.currentPhase,
+            "->",
+            newPhase
+        );
 
 
         await update(
             ref(database, `games/${gameCode}/turn`),
             {
-                currentPhase:
-                    phases[currentPhaseIndex + 1]
+                currentPhase: newPhase
             }
+        );
+
+
+        updateTurnUI(
+            {
+                ...turn,
+                currentPhase: newPhase
+            },
+            game.players
         );
 
 
@@ -88,8 +107,15 @@ export async function endCurrentPhase(gameCode, playerID){
 
 
 
-    // Finished movement phase
+    // Finished construction phase
     // Move to next player
+    
+    await update(
+        ref(database, `games/${gameCode}/turn`),
+        {
+            currentPhase: "feed"
+        }
+    );
 
     await nextPlayer(gameCode, game);
 

@@ -1,6 +1,10 @@
 import buildings from "../data/buildings.json" with { type: "json" };
 import { getZoomScale } from "../mapGenerator.js";
-
+import {
+    database,
+    ref,
+    update
+} from "../firebase/firebase.js";
 
 
 
@@ -15,7 +19,7 @@ let buildingPreview = null;
 // START BUILDING
 // ==========================
 
-export function startBuilding(type){
+export function startBuilding(type, game){
 
     if(!buildings[type]){
         console.error("Building does not exist:", type);
@@ -23,14 +27,37 @@ export function startBuilding(type){
     }
 
 
+    const playerID = localStorage.getItem("playerID");
+
+
+    // phase check
+    if(game.turn.currentPhase !== "construction"){
+
+        console.log("Cannot build. Not construction phase.");
+        return;
+
+    }
+
+
+    // player turn check
+    if(game.turn.currentPlayer !== playerID){
+
+        console.log("Cannot build. Not your turn.");
+        return;
+
+    }
+
+
     selectedBuilding = type;
     buildMode = true;
-
+    console.log("Preview should now be created...");
 
     console.log("Building selected:", type);
 
 
     createBuildingPreview(type);
+
+    console.log("Preview object:", buildingPreview);
 
 }
 
@@ -65,8 +92,12 @@ export function cancelBuilding(){
 // PLACE BUILDING
 // ==========================
 
-export function placeBuilding(tile, game){
+export async function placeBuilding(tile, game){
 
+    console.log(
+        "BUILD PHASE CHECK:",
+        game.turn.currentPhase
+    );
 
     if(!buildMode)
         return;
@@ -76,46 +107,100 @@ export function placeBuilding(tile, game){
         return;
 
 
-
-    let building =
-    buildings[selectedBuilding];
-
+    const playerID =
+    localStorage.getItem("playerID");
 
 
-    if(!canPlaceBuilding(tile, building, game)){
-
-        console.log(
-            "Cannot place building here"
-        );
-
+    if(game.turn.currentPhase !== "construction"){
+        console.log("Not construction phase");
         return;
-
     }
 
 
+    if(game.turn.currentPlayer !== playerID){
+        console.log("Not your turn");
+        return;
+    }
 
-    const playerID = localStorage.getItem("playerID");
 
-    tile.building = createBuildingObject(
+    const building =
+    buildings[selectedBuilding];
+
+
+    if(!canPlaceBuilding(tile, building, game)){
+        console.log("Cannot place building here");
+        return;
+    }
+
+
+    if(!hasResources(game, building.cost)){
+        console.log("Not enough resources");
+        return;
+    }
+
+
+    const buildingObject =
+    createBuildingObject(
         selectedBuilding,
         playerID
     );
 
 
+    // update local tile
+    tile.building = buildingObject;
 
+
+    // remove resources locally
     removeResources(
         game,
         building.cost
     );
+    await update(
+        ref(
+            database,
+            `games/${localStorage.getItem("gameCode")}/players/${playerID}/resources`
+        ),
+        game.players[playerID].resources
+    );
 
 
-    cancelBuilding();
+
 
 
     console.log(
-        "Placed:",
-        selectedBuilding
+        "SAVING BUILDING TO:",
+        `map/tiles/${tile.x},${tile.y}`,
+        buildingObject
     );
+    // update Firebase tile
+    await update(
+        ref(
+            database,
+            `games/${localStorage.getItem("gameCode")}/map/tiles/${tile.x},${tile.y}`
+        ),
+        {
+            building: buildingObject,
+            lastUpdated: Date.now()
+        }
+    );
+
+    // update Firebase resources
+    await update(
+        ref(
+            database,
+            `games/${localStorage.getItem("gameCode")}/players/${playerID}/resources`
+        ),
+        game.players[playerID].resources
+    );
+
+    // remove preview
+    removeBuildingPreview();
+
+    // immediately allow placing another copy
+    createBuildingPreview(selectedBuilding);
+
+
+    
 
 }
 
@@ -127,12 +212,49 @@ export function placeBuilding(tile, game){
 
 function canPlaceBuilding(tile, building, game){
 
+    // ==========================
+    // PHASE CHECK
+    // ==========================
 
-    // Must be construction phase
+    if(tile.building){
+        console.log("Tile already has a building");
+        return false;
+    }
 
-    if(
-        game.turn.currentPhase !== "construction"
-    ){
+    if(game.turn.currentPhase !== "construction"){
+
+        console.log("Not construction phase");
+        return false;
+
+    }
+
+
+
+
+
+    // ==========================
+    // TERRAIN CHECK
+    // ==========================
+
+    const terrain =
+    tile.resource ? tile.resource : tile.terrain;
+
+
+    const allowed =
+    building.placement.allowedTerrains;
+
+
+    const blocked =
+    building.placement.blockedTerrains;
+
+
+
+    if(!allowed.includes(terrain)){
+
+        console.log(
+            "Terrain not allowed:",
+            terrain
+        );
 
         return false;
 
@@ -140,25 +262,12 @@ function canPlaceBuilding(tile, building, game){
 
 
 
-    // Terrain check
+    if(blocked.includes(terrain)){
 
-    if(
-        !building.placement.allowedTerrains
-        .includes(tile.terrain)
-    ){
-
-        return false;
-
-    }
-
-
-
-    // Blocked terrain
-
-    if(
-        building.placement.blockedTerrains
-        .includes(tile.terrain)
-    ){
+        console.log(
+            "Terrain blocked:",
+            terrain
+        );
 
         return false;
 
@@ -166,14 +275,50 @@ function canPlaceBuilding(tile, building, game){
 
 
 
-    // Ownership
+    // ==========================
+    // OWNERSHIP CHECK
+    // ==========================
+    console.log("TILE KINGDOM:", tile.kingdom);
+    console.log(
+        "PLAYER DATA:",
+        Object.values(game.players)
+    );
 
-    if(
-        building.placement.requiresOwnedTile &&
-        tile.owner !== game.currentPlayer
-    ){
 
-        return false;
+    if(building.placement.requiresOwnedTile){
+
+        const playerID =
+        localStorage.getItem("playerID");
+
+
+        const kingdomOwnerEntry =
+        Object.entries(game.players)
+        .find(
+            ([id, player]) =>
+                player.kingdom
+                .toLowerCase()
+                .startsWith(tile.kingdom.toLowerCase())
+        );
+
+
+        if(!kingdomOwnerEntry){
+
+            console.log("No player owns this kingdom");
+            return false;
+
+        }
+
+
+        const kingdomOwnerID =
+        kingdomOwnerEntry[0];
+
+
+        if(kingdomOwnerID !== playerID){
+
+            console.log("You do not own this kingdom");
+            return false;
+
+        }
 
     }
 
@@ -192,14 +337,71 @@ function canPlaceBuilding(tile, building, game){
 
 function removeResources(game, cost){
 
-    console.log(
-        "Need to remove:",
-        cost
-    );
+    const playerID =
+    localStorage.getItem("playerID");
+
+
+    const player =
+    game.players[playerID];
+
+
+    for(const resource in cost){
+
+        player.resources[resource] -= cost[resource];
+
+    }
 
 }
+function hasResources(game, cost){
+
+    const playerID =
+    localStorage.getItem("playerID");
 
 
+    const player =
+    game.players[playerID];
+
+
+    if(!player){
+
+        console.log(
+            "Player not found:",
+            playerID
+        );
+
+        return false;
+
+    }
+
+
+    console.log(
+        "CURRENT PLAYER RESOURCES:",
+        player.resources
+    );
+
+
+    for(const resource in cost){
+
+        if(
+            (player.resources?.[resource] || 0)
+            < cost[resource]
+        ){
+
+            console.log(
+                "Not enough",
+                resource
+            );
+
+            return false;
+
+        }
+
+    }
+
+
+    return true;
+
+}
 
 
 

@@ -331,15 +331,16 @@ function watchGame(){
         const updatedGame = snapshot.val();
 
 
-        createUI({
+        window.currentGame = updatedGame;
 
-            ...updatedGame,
+        updateTurnUI(
+            updatedGame.turn,
+            updatedGame.players
+        );
 
-            map: updatedGame.map,
-
-            hand: getPlayerHand()
-
-        });
+        updateResourceBar(
+            updatedGame.players[playerID].resources
+        );
 
 
         const player =
@@ -395,15 +396,6 @@ async function startGame(map, game){
         console.error("Card sync failed:", error);
 
     }
-
-    await update(
-        ref(database, "games/" + gameCode + "/turn"),
-        {
-            currentPlayer: Object.values(game.players)[0].id,
-            currentPhase: "feed",
-            round: 1
-        }
-    );
 
     // Create UI
 

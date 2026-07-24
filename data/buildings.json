@@ -271,7 +271,9 @@
         "wood",
         "stone",
         "metal",
-        "food"
+        "food",
+        "magic",
+        "gold"
       ],
 
       "blockedTerrains": [

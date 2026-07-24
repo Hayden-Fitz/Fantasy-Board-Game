@@ -78,7 +78,7 @@ export function collectResources(player, map){
             "fish",
             "fruit",
             "spice",
-            "dessert"
+            "cake"
         ];
 
         if (foodResources.includes(resource)) {
@@ -99,6 +99,23 @@ export function collectResources(player, map){
         "Resources gained JSON:",
         JSON.stringify(gainedResources, null, 2)
     );
+
+
+
+
+    Object.values(map.tiles).forEach(tile => {
+
+        if(tile.resource){
+
+            console.log(
+                "RESOURCE TILE:",
+                tile.resource,
+                tile.kingdom
+            );
+
+        }
+
+    });
     return gainedResources;
 
 }

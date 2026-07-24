@@ -21,14 +21,15 @@ import {
     startBuilding, 
     cancelBuilding, 
     isBuildingMode, 
-    getSelectedBuilding,
-    changeBuildPanelToCancel
+    getSelectedBuilding
 } from "../gameHandlers/buildingHandler.js";
 // =============================
 // CREATE UI
 // =============================
 
 export function createUI(gameState){
+
+    window.currentGame = gameState;
 
     createTopBar(gameState);
 
@@ -300,14 +301,18 @@ function createLeftPanel(game){
     document.getElementById("phase-button");
 
 
-    phaseButton.addEventListener("click", ()=>{
+    if(phaseButton){
 
-        endCurrentPhase(
-            localStorage.getItem("gameCode"),
-            localStorage.getItem("playerID")
-        );
+        phaseButton.addEventListener("click", ()=>{
 
-    });
+            endCurrentPhase(
+                localStorage.getItem("gameCode"),
+                localStorage.getItem("playerID")
+            );
+
+        });
+
+    }
 
     const buildButtons =
     document.querySelectorAll(".build-button");
@@ -316,11 +321,37 @@ function createLeftPanel(game){
 
         button.addEventListener("click", ()=>{
 
+            const currentPhase =
+                window.currentGame?.turn?.currentPhase;
+
+            const playerID =
+                localStorage.getItem("playerID");
+
+            const currentPlayer =
+                window.currentGame?.turn?.currentPlayer;
+
+
+            if(currentPhase !== "construction"){
+
+                console.log("Not construction phase");
+                return;
+
+            }
+
+
+            if(playerID !== currentPlayer){
+
+                console.log("Not your turn");
+                return;
+
+            }
+
+
+
             const building =
             button.dataset.building;
 
 
-            // Remove old selection
             buildButtons.forEach(btn=>{
                 btn.classList.remove("selected");
             });
@@ -336,11 +367,9 @@ function createLeftPanel(game){
             }
             else{
 
-                startBuilding(building);
+                startBuilding(building, window.currentGame);
 
                 button.classList.add("selected");
-
-                changeBuildPanelToCancel();
 
             }
 
@@ -410,6 +439,7 @@ function getCurrentPlayerName(gameState){
 
 
     return player?.username || "Waiting...";
+
 }
 function updateRound(round){
 
@@ -434,7 +464,7 @@ function updatePhaseButton(phase){
         return;
 
 
-    if(phase === "movement"){
+    if(phase === "construction"){
 
         button.textContent = "End Turn";
 
@@ -735,7 +765,9 @@ function createCardPanel(gameState){
     */
 
 
-    const hand = getPlayerHand();
+    const hand = getPlayerHand(
+        localStorage.getItem("playerID")
+    );
 
 
     hand.forEach(cardID => {
