@@ -4,114 +4,236 @@
 
 <head>
 
-<title>Fantasy Board Game</title>
+    <title>Fantasy Board Game</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 
 <body>
 
-<div class="game-container">
 
-    <div class="main-panel">
+<!-- ======================
+     MAIN MENU
+====================== -->
 
-        <h1>Fantasy Board Game</h1>
+<div id="mainMenu">
 
-
-        <h2>Join Game</h2>
-
-
-        <input id="playerName" placeholder="Your name">
+    <h1>Fantasy Board Game</h1>
 
 
-        <select id="kingdom" onchange="changeKingdom()">
-
-            <option>Crimson Empire</option>
-            <option>Tide Kingdom</option>
-            <option>Culinary Kingdom</option>
-            <option>Viking Kingdom</option>
-            <option>Shadow Kingdom</option>
-
-        </select>
+    <input 
+    id="playerName"
+    placeholder="Your name"
+    >
 
 
-        <br><br>
+    <br><br>
 
 
-        <button onclick="createGame()">
-            Create Game
-        </button>
-
-        <input 
-        id="gameCode" 
-        placeholder="Game Code"
-        style="text-transform:uppercase;"
-        oninput="this.value=this.value.toUpperCase()"
->
+    <button onclick="createGame()">
+        Create Game
+    </button>
 
 
-        <button onclick="joinGame()">
-            Join Game
-        </button>
+    <button onclick="showJoinScreen()">
+        Join Game
+    </button>
 
 
-        <br>
+</div>
 
 
-        <button onclick="readyUp()">
-            I'm Ready
-        </button>
 
 
-        <button onclick="deleteGame()">
-            Delete Game
-        </button>
+<!-- ======================
+     JOIN SCREEN
+====================== -->
 
-        <button onclick="checkStartGame()">
-        Start Game
-        </button>
+
+<div id="joinScreen" style="display:none">
+
+
+    <h1>Join Game</h1>
+
+
+    <input
+    id="gameCode"
+    placeholder="Game Code"
+    oninput="this.value=this.value.toUpperCase()"
+    >
+
+
+    <button onclick="joinGame()">
+        Join
+    </button>
+
+
+
+    <h2>
+        Public Games
+    </h2>
+
+
+    <div id="publicGames">
+
+    </div>
+
+
+
+    <br>
+
+
+    <button onclick="returnMainMenu()">
+        Return
+    </button>
+
+
+</div>
+
+
+
+
+
+<!-- ======================
+     LOBBY
+====================== -->
+
+
+<div id="lobbyScreen" style="display:none">
+
+
+
+    <div id="lobbyLeft">
+
+
+        <h1>
+            Lobby
+        </h1>
 
 
         <h3 id="status"></h3>
 
 
-    </div>
+
+        <select 
+        id="kingdom"
+        onchange="changeKingdom()">
+
+
+            <option>
+                Crimson Empire
+            </option>
+
+
+            <option>
+                Tide Kingdom
+            </option>
+
+
+            <option>
+                Culinary Kingdom
+            </option>
+
+
+            <option>
+                Viking Kingdom
+            </option>
+
+
+            <option>
+                Shadow Kingdom
+            </option>
+
+
+        </select>
 
 
 
-    <div class="player-panel">
+        <br><br>
 
-        <h2>Players</h2>
 
-        <div id="playerList">
-            Waiting for players...
+
+        <button onclick="readyUp()">
+
+            I'm Ready
+
+        </button>
+
+
+
+
+        <div id="hostControls" style="display:none">
+
+
+            <br>
+
+
+            <label>
+
+                <input 
+                type="checkbox"
+                id="publicGame"
+                onchange="updatePublicSetting()"
+                >
+
+                Public Game
+
+            </label>
+
+
+
+            <br><br>
+
+
+
+            <button onclick="checkStartGame()">
+
+                Start Game
+
+            </button>
+
+
+
+            <button onclick="deleteGame()">
+
+                Delete Game
+
+            </button>
+
+
         </div>
 
+
+
     </div>
 
 
+
+
+    <div id="lobbyPlayers">
+
+
+        <h2>
+            Players
+        </h2>
+
+
+
+        <div id="playerList">
+
+        </div>
+
+
+
+    </div>
+
+
+
 </div>
 
 
-<div id="gameScreen" style="display:none;">
-
-    <h1>Entering the World...</h1>
-
-    <h2 id="countdown"></h2>
-
-</div>
-
-<div id="mapDisplay">
-
-</div>
-
-
-<div id="loadingScreen" style="display:none;">
-    <h1>Starting Game</h1>
-    <h1 id="countdown">5</h1>
-</div>
 
 
 <script type="module" src="lobby.js"></script>

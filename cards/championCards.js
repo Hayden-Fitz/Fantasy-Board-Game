@@ -9,7 +9,7 @@ const championCards = [
         kingdom: "all",
         name: "Heroic Charge",
         category: "champion",
-        image: "assets/CardImages/championImages/heroicCharge.jpg",
+        image: "assets/CardImages/championImages/heroicCharge.webp",
 
         cost: {
             gold: 2,
@@ -35,7 +35,7 @@ const championCards = [
         kingdom: "all",
         name: "Champion's Feast",
         category: "champion",
-        image: "assets/CardImages/championImages/championsFeast.jpg",
+        image: "assets/CardImages/championImages/championsFeast.webp",
 
         cost: {
             food: 4
@@ -59,7 +59,7 @@ const championCards = [
         kingdom: "all",
         name: "Unbreakable Resolve",
         category: "champion",
-        image: "assets/CardImages/championImages/unbreakableResolve.jpg",
+        image: "assets/CardImages/championImages/unbreakableResolve.webp",
 
         cost: {
             stone: 3,
@@ -85,7 +85,7 @@ const championCards = [
         kingdom: "all",
         name: "Inspire the Army",
         category: "champion",
-        image: "assets/CardImages/championImages/inspireTheArmy.jpg",
+        image: "assets/CardImages/championImages/inspireTheArmy.webp",
 
         cost: {
             gold: 2,
@@ -113,7 +113,7 @@ const championCards = [
         kingdom: "all",
         name: "Heroic Leap",
         category: "champion",
-        image: "assets/CardImages/championImages/heroicLeap.jpg",
+        image: "assets/CardImages/championImages/heroicLeap.webp",
 
         cost: {
             magic: 3
@@ -146,7 +146,7 @@ const championCards = [
         kingdom: "all",
         name: "Heroic Leap",
         category: "champion",
-        image: "assets/CardImages/championImages/heroicLeapAdvanced.jpg",
+        image: "assets/CardImages/championImages/heroicLeapAdvanced.webp",
 
         cost: {
             magic: 3,
@@ -178,7 +178,7 @@ const championCards = [
         kingdom: "all",
         name: "Duel Challenge",
         category: "champion",
-        image: "assets/CardImages/championImages/duelChallenge.jpg",
+        image: "assets/CardImages/championImages/duelChallenge.webp",
 
         cost: {
             metal: 3,
@@ -206,7 +206,7 @@ const championCards = [
         kingdom: "all",
         name: "Guardian's Return",
         category: "champion",
-        image: "assets/CardImages/championImages/guardiansReturn.jpg",
+        image: "assets/CardImages/championImages/guardiansReturn.webp",
 
         cost: {
             gold: 3,
@@ -231,7 +231,7 @@ const championCards = [
         kingdom: "all",
         name: "Legendary Strike",
         category: "champion",
-        image: "assets/CardImages/championImages/legendaryStrike.jpg",
+        image: "assets/CardImages/championImages/legendaryStrike.webp",
 
         cost: {
             metal: 4,
@@ -256,7 +256,7 @@ const championCards = [
         kingdom: "all",
         name: "Rally the Champion",
         category: "champion",
-        image: "assets/CardImages/championImages/rallyTheChampion.jpg",
+        image: "assets/CardImages/championImages/rallyTheChampion.webp",
 
         cost: {
             food: 2,

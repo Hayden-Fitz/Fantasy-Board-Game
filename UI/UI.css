@@ -525,7 +525,7 @@
 
     position:fixed;
 
-    top:95px;
+    top:60px;
 
     right:-10px;
 
@@ -631,17 +631,16 @@
     position:fixed;
 
     right:-5px;
-    bottom:20px;
+    bottom:-5px;
 
-    width:220px;
-
-    min-height:180px;
+    width:240px;
+    height:240px;
 
     background:#6b3f1d;
 
     border:3px solid #2b1608;
 
-    border-radius: 15px 0px 0px 15px;
+    border-radius:15px 0px 0px 0px;
 
     color:#f5deb3;
 
@@ -654,6 +653,8 @@
     box-shadow:
     0 6px 15px black,
     inset 0 0 15px rgba(0,0,0,.5);
+
+    overflow:hidden;
 
 }
 
@@ -701,6 +702,59 @@
 
 }
 
+#info-content-wrapper{
+
+    height:170px;
+
+    overflow-y:auto;
+
+}
+
+
+.info-line{
+
+    margin:3px 0;
+
+    font-size:13px;
+
+}
+
+
+.info-label{
+
+    font-weight:bold;
+
+    display:inline-block;
+
+    width:85px;
+
+}
+
+#info-scroll{
+
+    height:180px;
+
+    overflow-y:auto;
+
+    padding-right:5px;
+
+}
+
+
+#info-scroll::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+#info-scroll::-webkit-scrollbar-thumb{
+
+    background:#2b1608;
+
+    border-radius:10px;
+
+}
 
 
 
@@ -849,8 +903,7 @@
 
     width:120px;
 
-    height:100px;
-
+    height:90px;
 
     background:#6b3f1d;
 
@@ -1026,9 +1079,9 @@
 
 .card-container:hover .card{
 
-    width:240px;
+    width:245px;
 
-    height:340px;
+    height:350px;
 
     z-index:10000;
 

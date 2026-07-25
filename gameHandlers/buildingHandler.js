@@ -7,7 +7,7 @@ import {
 } from "../firebase/firebase.js";
 
 
-
+let previewTile = null;
 let previewMouseX = 0;
 let previewMouseY = 0;
 let selectedBuilding = null;
@@ -236,8 +236,24 @@ function canPlaceBuilding(tile, building, game){
     // TERRAIN CHECK
     // ==========================
 
-    const terrain =
+    let terrain =
     tile.resource ? tile.resource : tile.terrain;
+
+
+    // Convert resource categories
+    const foodResources = [
+        "bread",
+        "fish",
+        "fruit",
+        "meat",
+        "cake",
+        "spice"
+    ];
+
+
+    if(foodResources.includes(terrain)){
+        terrain = "food";
+    }
 
 
     const allowed =
@@ -270,6 +286,31 @@ function canPlaceBuilding(tile, building, game){
         );
 
         return false;
+
+    }
+
+    // ==========================
+    // WATER ADJACENCY CHECK
+    // ==========================
+
+    if(building.placement.requiresWaterAdjacent){
+
+        const adjacentWater =
+            getAdjacentTiles(tile)
+            .some(t =>
+                t.terrain === "water"
+            );
+
+
+        if(!adjacentWater){
+
+            console.log(
+                "Building requires adjacent water"
+            );
+
+            return false;
+
+        }
 
     }
 
@@ -516,10 +557,34 @@ function resetBuildPanel(){
 
 
 
+function getAdjacentTiles(tile){
+
+    const tiles =
+        Object.values(window.currentGame.map.tiles);
 
 
+    return tiles.filter(t=>{
 
-function removeBuildingPreview(){
+
+        const dx =
+            Math.abs(t.x - tile.x);
+
+        const dy =
+            Math.abs(t.y - tile.y);
+
+
+        return (
+            dx <= 1 &&
+            dy <= 1 &&
+            !(dx === 0 && dy === 0)
+        );
+
+
+    });
+
+}
+
+export function removeBuildingPreview(){
 
     if(buildingPreview){
 
@@ -533,6 +598,11 @@ function removeBuildingPreview(){
     document.removeEventListener(
         "mousemove",
         moveBuildingPreview
+    );
+
+    document.removeEventListener(
+        "mouseover",
+        hidePreviewOverUI
     );
 
 }
@@ -592,6 +662,42 @@ function createBuildingPreview(type){
         moveBuildingPreview
     );
 
+    document.addEventListener(
+        "mousemove",
+        hidePreviewOverUI
+    );
+
+}
+
+function hidePreviewOverUI(event){
+
+    if(!buildingPreview)
+        return;
+
+
+    const target =
+    event.target;
+
+
+    // If mouse is over UI, hide preview
+    if(
+        target.closest("#left-panel") ||
+        target.closest("#right-panel") ||
+        target.closest("#top-bar") ||
+        target.closest("#info-panel") ||
+        target.closest("#map-controls") ||
+        target.closest("#card-hand")
+    ){
+
+        buildingPreview.style.display = "none";
+
+    }
+    else{
+
+        buildingPreview.style.display = "block";
+
+    }
+
 }
 
 function moveBuildingPreview(event){
@@ -600,11 +706,125 @@ function moveBuildingPreview(event){
         return;
 
 
-    previewMouseX = event.clientX;
-    previewMouseY = event.clientY;
+    previewTile =
+        getClosestTile(
+            event.clientX,
+            event.clientY
+        );
+
+
+    if(!previewTile)
+        return;
+
+
+    const rect =
+        previewTile
+        .querySelector(".hexCenter")
+        .getBoundingClientRect();
+
+
+    previewMouseX =
+        rect.left + rect.width / 2;
+
+
+    previewMouseY =
+        rect.top + rect.height / 2;
 
 
     updateBuildingPreviewPosition();
+
+
+    updatePreviewValidity();
+
+}
+
+function getClosestTile(mouseX, mouseY){
+
+    let closestTile = null;
+
+    let closestDistance = Infinity;
+
+
+    document
+    .querySelectorAll(".tile")
+    .forEach(tile=>{
+
+
+        const hex =
+        tile.querySelector(".hexCenter");
+
+
+        if(!hex)
+            return;
+
+
+        const rect =
+        hex.getBoundingClientRect();
+
+
+        const centerX =
+        rect.left + rect.width / 2;
+
+
+        const centerY =
+        rect.top + rect.height / 2;
+
+
+        const distance =
+        Math.hypot(
+            mouseX - centerX,
+            mouseY - centerY
+        );
+
+
+        if(distance < closestDistance){
+
+            closestDistance = distance;
+
+            closestTile = tile;
+
+        }
+
+
+    });
+
+
+    return closestTile;
+
+}
+
+function updatePreviewValidity(){
+
+    if(!previewTile || !buildingPreview)
+        return;
+
+
+    const game =
+        window.currentGame;
+
+
+    const building =
+        buildings[selectedBuilding];
+
+
+    if(
+        canPlaceBuilding(
+            previewTile.__tileData,
+            building,
+            game
+        )
+    ){
+
+        buildingPreview.style.filter =
+        "none";
+
+    }
+    else{
+
+        buildingPreview.style.filter =
+        "brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(5000%) hue-rotate(350deg)";
+
+    }
 
 }
 

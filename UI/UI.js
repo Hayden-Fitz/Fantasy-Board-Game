@@ -55,6 +55,7 @@ export function createUI(gameState){
         gameState.turn?.round || 1
     );
 
+
 }
 
 
@@ -665,13 +666,19 @@ function createRightPanel(game){
 
 
 function createInfoPanel(game){
+
     const oldPanel =
     document.getElementById("info-panel");
+
 
     if(oldPanel){
         oldPanel.remove();
     }
-    let panel = document.createElement("div");
+
+
+    let panel =
+    document.createElement("div");
+
 
     panel.id = "info-panel";
 
@@ -679,18 +686,33 @@ function createInfoPanel(game){
     panel.innerHTML = `
 
         <h2 id="info-title">
-            Select something
+            Information
         </h2>
 
 
-        <div id="info-content">
+        <div id="info-scroll">
 
-            Click a tile, unit, or champion.
+            <div id="troop-info-section">
 
-        </div>
+            </div>
 
 
-        <div id="info-actions">
+            <hr>
+
+
+            <div id="building-info-section">
+
+            </div>
+
+
+            <hr>
+
+
+            <div id="tile-info-section">
+
+                Select a tile.
+
+            </div>
 
         </div>
 
@@ -700,6 +722,7 @@ function createInfoPanel(game){
     document.body.appendChild(panel);
 
 }
+
 
 
 
@@ -719,7 +742,7 @@ function createMapControls() {
         <button id="zoomOut">−</button>
 
         <button id="centerCapital">
-            <img src="assets/tiles/capital-removebg-preview.png" alt="Center Capital">
+            <img src="assets/tiles/capital-removebg-preview.webp" alt="Center Capital">
         </button>
     `;
 
@@ -1015,5 +1038,323 @@ export function updateResourceBar(resources){
 
         }
     );
+
+}
+
+export function showTileInfo(tile){
+
+    const tileSection =
+    document.getElementById(
+        "tile-info-section"
+    );
+
+
+    const buildingSection =
+    document.getElementById(
+        "building-info-section"
+    );
+
+
+    const troopSection =
+    document.getElementById(
+        "troop-info-section"
+    );
+
+
+    if(!tileSection)
+        return;
+
+
+
+    tileSection.innerHTML = `
+
+        <h3>Tile</h3>
+
+        <p>
+        Coordinates:
+        (${tile.x}, ${tile.y})
+        </p>
+
+        <p>
+        Terrain:
+        ${tile.terrain}
+        </p>
+
+        ${
+            tile.resource
+            ?
+            `
+            <p>
+            Resource:
+            ${tile.resource}
+            </p>
+            `
+            :
+            ""
+        }
+
+
+        ${
+            tile.kingdom
+            ?
+            `
+            <p>
+            Kingdom:
+            ${tile.kingdom}
+            </p>
+            `
+            :
+            ""
+        }
+
+    `;
+
+
+
+    // BUILDING
+
+
+    if(tile.building?.type){
+
+        const building =
+        tile.building;
+
+
+        buildingSection.innerHTML = `
+
+        <h3>Building</h3>
+
+
+        <p>
+        Type:
+        ${building.type}
+        </p>
+
+
+        <p>
+        Owner:
+        ${building.owner}
+        </p>
+
+
+        <p>
+        HP:
+        ${building.hp}/${building.maxHp}
+        </p>
+
+
+        <p>
+        Defense:
+        ${building.defense}
+        </p>
+
+        `;
+
+    }
+    else{
+
+        buildingSection.innerHTML =
+        "";
+
+    }
+
+
+
+    // TROOPS
+
+
+    if(tile.troops){
+
+        troopSection.innerHTML = `
+
+        <h3>Troops</h3>
+
+        ${tile.troops.map(troop=>`
+
+            <div class="troop-info">
+
+                <p>
+                ${troop.name}
+                </p>
+
+                <p>
+                Type:
+                ${troop.type}
+                </p>
+
+                <p>
+                HP:
+                ${troop.hp}/${troop.maxHp}
+                </p>
+
+                <p>
+                Defense:
+                ${troop.defense}
+                </p>
+
+            </div>
+
+        `).join("")}
+
+        `;
+
+    }
+    else{
+
+        troopSection.innerHTML =
+        "";
+
+    }
+
+}
+
+export function updateInfoPanel(tile, game){
+
+    const troopSection =
+    document.getElementById("troop-info-section");
+
+    const buildingSection =
+    document.getElementById("building-info-section");
+
+    const tileSection =
+    document.getElementById("tile-info-section");
+
+
+    if(!tile)
+        return;
+
+
+
+    // =====================
+    // TROOP INFO
+    // =====================
+
+    if(tile.troop){
+
+        const troop =
+        tile.troop;
+
+
+        troopSection.innerHTML = `
+
+            <b>Troop</b><br>
+
+            Name: ${troop.name}<br>
+            Type: ${troop.type}<br>
+            HP: ${troop.hp}/${troop.maxHp}<br>
+            Defense: ${troop.defense}<br>
+
+            ${
+                troop.range
+                ?
+                `Range: ${troop.range}<br>`
+                :
+                ""
+            }
+
+            ${
+                troop.abilities?.length
+                ?
+                `Abilities: ${troop.abilities.join(", ")}`
+                :
+                ""
+            }
+
+        `;
+
+    }
+    else{
+
+        troopSection.innerHTML = "";
+
+    }
+
+
+
+
+
+    // =====================
+    // BUILDING INFO
+    // =====================
+
+    if(tile.building?.type){
+
+        const building =
+        tile.building;
+
+
+        const owner =
+        Object.values(game.players)
+        .find(
+            player => player.id === building.owner
+        );
+
+
+        buildingSection.innerHTML = `
+
+            <b>Building</b><br>
+
+            Name: ${building.type}<br>
+
+            Owner:
+            ${owner?.username || "Unknown"}<br>
+
+            HP:
+            ${building.hp}/${building.maxHp}<br>
+
+            Defense:
+            ${building.defense}
+
+        `;
+
+    }
+    else{
+
+        buildingSection.innerHTML = "";
+
+    }
+
+
+
+
+
+    // =====================
+    // TILE INFO
+    // =====================
+
+
+    const owner =
+    Object.values(game.players)
+    .find(
+        player =>
+        player.kingdom === tile.kingdom
+    );
+
+
+    tileSection.innerHTML = `
+
+        <b>Tile</b><br>
+
+        Coordinates:
+        ${tile.x}, ${tile.y}<br>
+
+        Terrain:
+        ${tile.terrain}<br>
+
+        ${
+            tile.resource
+            ?
+            `Resource: ${tile.resource}<br>`
+            :
+            ""
+        }
+
+        Kingdom:
+        ${tile.kingdom || "Neutral"}<br>
+
+        Owner:
+        ${owner?.username || "None"}
+
+    `;
 
 }

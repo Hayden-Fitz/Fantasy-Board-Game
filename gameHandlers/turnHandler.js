@@ -7,6 +7,7 @@ import {
 import { collectResources } from "./resourceHandler.js";
 import { produceResources } from "./resourceHandler.js";
 import { updateTurnUI } from "../UI/ui.js";
+import { removeBuildingPreview } from "./buildingHandler.js";
 
 const phases = [
     "feed",

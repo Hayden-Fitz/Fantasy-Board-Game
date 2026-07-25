@@ -1,7 +1,7 @@
 {
   "road": {
     "name": "Road",
-    "image": "assets/buildingImages/road.png",
+    "image": "assets/buildingImages/road.webp",
     "previewScale": 1,
     "health": 5,
     "defense": 1,
@@ -36,7 +36,7 @@
 
   "bridge": {
     "name": "Bridge",
-    "image": "assets/buildingImages/bridge.png",
+    "image": "assets/buildingImages/bridge.webp",
     "previewScale": 1,
 
     "health": 15,
@@ -74,7 +74,7 @@
 
   "wall": {
     "name": "Wall",
-    "image": "assets/buildingImages/wall.png",
+    "image": "assets/buildingImages/wall.webp",
     "previewScale": 1,
 
     "health": 30,
@@ -109,7 +109,7 @@
 
   "fortress": {
     "name": "Fortress",
-    "image": "assets/buildingImages/fortress.png",
+    "image": "assets/buildingImages/fortress.webp",
     "previewScale": 0.75,
 
     "health": 50,
@@ -122,13 +122,13 @@
 
     "placement": {
       "allowedTerrains": [
-        "grass",
-        "mountain",
-        "forest"
+        "grass"
       ],
 
       "blockedTerrains": [
-        "water"
+        "water",
+        "mountain",
+        "forest"
       ],
 
       "requiresOwnedTile": true,
@@ -146,7 +146,7 @@
 
   "barracks": {
     "name": "Barracks",
-    "image": "assets/buildingImages/barracks.png",
+    "image": "assets/buildingImages/barracks.webp",
     "previewScale": 0.75,
 
     "health": 30,
@@ -182,7 +182,7 @@
 
   "workshop": {
     "name": "Workshop",
-    "image": "assets/buildingImages/workshop.png",
+    "image": "assets/buildingImages/workshop.webp",
     "previewScale": 0.75,
 
     "health": 30,
@@ -218,7 +218,7 @@
 
   "seaport": {
     "name": "Seaport",
-    "image": "assets/buildingImages/seaport.png",
+    "image": "assets/buildingImages/seaport.webp",
     "previewScale": 0.75,
 
     "health": 40,
@@ -254,7 +254,7 @@
 
   "town": {
     "name": "Town",
-    "image": "assets/buildingImages/town.png",
+    "image": "assets/buildingImages/town.webp",
     "previewScale": 0.75,
 
     "health": 30,

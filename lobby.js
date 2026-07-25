@@ -24,7 +24,6 @@ function generateGameCode(){
 let currentGameCode = "";
 let currentPlayerID = "";
 
-let countdownStarted = false;
 // ==========================
 // DELETE EMPTY GAMES
 // ==========================
@@ -71,12 +70,116 @@ async function cleanupDeadGames(){
 }
 
 
+function watchPublicGames(){
+
+
+    onValue(
+    ref(database,"games"),
+    (snapshot)=>{
+
+
+    let games =
+    snapshot.val();
+
+
+    let list =
+    document.getElementById("publicGames");
+
+
+    list.innerHTML="";
+
+
+    Object.entries(games || {})
+    .forEach(([code,game])=>{
+
+
+    let players =
+    Object.keys(game.players || {}).length;
+
+
+    let host =
+    Object.values(game.players || {})
+    .find(player => player.host);
+
+
+    if(
+    game.public &&
+    game.status==="lobby" &&
+    players < game.maxPlayers
+    ){
+
+
+    list.innerHTML += `
+
+    <div class="public-game">
+
+    <h3>${code}</h3>
+
+    <p>
+    Host: ${host ? host.username : "Unknown"}
+    </p>
+
+    <p>
+    ${players}/${game.maxPlayers} Players
+    </p>
+
+
+    <button onclick="quickJoin('${code}')">
+    Join
+    </button>
+
+
+    </div>
+
+    `;
+
+    }
+
+
+    });
+
+
+    });
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+window.showJoinScreen = function(){
+
+    document.getElementById("mainMenu").style.display="none";
+
+    document.getElementById("joinScreen").style.display="block";
+
+};
+
+
+window.returnMainMenu = function(){
+
+    document.getElementById("joinScreen").style.display="none";
+
+    document.getElementById("mainMenu").style.display="block";
+
+};
+
+
 // ==========================
 // CREATE GAME
 // ==========================
 
 
 window.createGame = async function(){
+
+    let publicSetting = false;
 
 
     let playerName =
@@ -130,7 +233,10 @@ window.createGame = async function(){
 
     };
 
-
+    console.log(
+        "Public checkbox:",
+        document.getElementById("publicGame").checked
+    );
 
     await set(
         ref(database,"games/" + gameCode),
@@ -139,7 +245,11 @@ window.createGame = async function(){
 
             host: playerID,
 
-            players: {},
+            players:{},
+
+            public: publicSetting,
+
+            maxPlayers:5,
 
             turn: {
                 currentPlayer: null,
@@ -168,7 +278,7 @@ window.createGame = async function(){
         connected:false
     });
 
-console.log("Lobby disconnect registered");
+    console.log("Lobby disconnect registered");
 
     savePlayerData();
 
@@ -182,9 +292,9 @@ console.log("Lobby disconnect registered");
 
     watchGameStatus();
 
-   
+    enterLobby();
 
-
+    document.getElementById("publicGame").onchange = updatePublicSetting;
 };
 
 
@@ -202,10 +312,8 @@ window.joinGame = async function(){
     document.getElementById("gameCode").value.toUpperCase();
 
 
-
     let playerName =
     document.getElementById("playerName").value;
-
 
 
     let kingdom =
@@ -231,6 +339,31 @@ window.joinGame = async function(){
     }
 
 
+    let game =
+    gameSnapshot.val();
+
+    if(game.host === currentPlayerID){
+
+        document.getElementById("status").innerHTML =
+        "You are already the host.";
+
+        return;
+
+    }
+
+    let playerCount =
+    Object.keys(game.players || {}).length;
+
+
+
+    if(playerCount >= game.maxPlayers){
+
+        document.getElementById("status").innerHTML =
+        "Game is full.";
+
+        return;
+
+    }
 
     currentGameCode = gameCode;
 
@@ -265,7 +398,7 @@ window.joinGame = async function(){
             metal: 0,
             gold: 0,
             magic: 0,
-            food: 5
+            food: 0
 
         },
 
@@ -306,6 +439,7 @@ window.joinGame = async function(){
     watchGameStatus();
 
 
+    enterLobby();
 
 };
 
@@ -331,9 +465,19 @@ function savePlayerData(){
 }
 
 
+function enterLobby(){
 
 
+    document.getElementById("mainMenu").style.display="none";
 
+
+    document.getElementById("joinScreen").style.display="none";
+
+
+    document.getElementById("lobbyScreen").style.display="flex";
+
+
+}
 
 // ==========================
 // DELETE GAME
@@ -342,10 +486,8 @@ function savePlayerData(){
 
 window.deleteGame = async function(){
 
-
     if(currentGameCode==="")
         return;
-
 
 
     await remove(
@@ -353,13 +495,13 @@ window.deleteGame = async function(){
     );
 
 
-
-    document.getElementById("status").innerHTML =
-    "Game deleted.";
-
-
-
     currentGameCode="";
+    currentPlayerID="";
+
+
+    document.getElementById("lobbyScreen").style.display="none";
+
+    document.getElementById("mainMenu").style.display="block";
 
 };
 
@@ -375,68 +517,88 @@ window.deleteGame = async function(){
 
 function watchPlayers(){
 
+    onValue(
 
-onValue(
+    ref(database,"games/"+currentGameCode+"/players"),
 
-ref(database,"games/"+currentGameCode+"/players"),
-
-(snapshot)=>{
-
-
-let players=snapshot.val();
+    (snapshot)=>{
 
 
-let list=document.getElementById("playerList");
+        let players=snapshot.val();
+        updateKingdomPicker(players || {});
+
+        let list=document.getElementById("playerList");
 
 
-list.innerHTML="";
+        list.innerHTML="";
 
 
+        let hostControls = document.getElementById("hostControls");
 
-if(players){
-
-
-Object.values(players).forEach(player=>{
-
-
-list.innerHTML += `
-
-<div class="player-card">
-
-<b>${player.username}</b>
-
-<br>
-
-Kingdom:
-${player.kingdom}
-
-<br>
-
-${
-player.ready
-?
-"<span class='ready'>READY</span>"
-:
-"<span class='not-ready'>Not Ready</span>"
-}
-
-${player.host ? "<br>HOST" : ""}
-
-
-</div>
-
-
-`;
-
-
-});
-
-
-}
+        if(hostControls){
+            hostControls.style.display="none";
+        }
 
 
 
-});
+        if(players){
+
+
+            Object.values(players).forEach(player=>{
+
+
+                // Show host controls only for host
+                if(
+                    player.id === currentPlayerID &&
+                    player.host
+                ){
+
+                    let hostControls = document.getElementById("hostControls");
+
+                    if(hostControls){
+                        hostControls.style.display="block";
+                    }
+
+                }
+
+
+
+                list.innerHTML += `
+
+                <div class="player-card">
+
+                <b>${player.username}</b>
+
+                <br>
+
+                Kingdom:
+                ${player.kingdom}
+
+                <br>
+
+                ${
+                player.ready
+                ?
+                "<span class='ready'>READY</span>"
+                :
+                "<span class='not-ready'>Not Ready</span>"
+                }
+
+                ${player.host ? "<br>HOST" : ""}
+
+                </div>
+
+                `;
+
+
+            });
+
+
+        }
+
+
+
+    });
 
 
 }
@@ -485,30 +647,77 @@ true
 window.changeKingdom = async function(){
 
 
-let kingdom =
-document.getElementById("kingdom").value;
+    let dropdown = document.getElementById("kingdom");
+
+    let kingdom = dropdown.value;
+
+
+    let game =
+    (await get(
+        ref(database,"games/"+currentGameCode)
+    )).val();
 
 
 
-await set(
+    let taken =
+    Object.values(game.players || {})
+    .filter(player => player.id !== currentPlayerID)
+    .map(player => player.kingdom);
 
-ref(
-database,
-"games/"+currentGameCode+
-"/players/"+currentPlayerID+
-"/kingdom"
 
-),
 
-kingdom
+    if(taken.includes(kingdom)){
 
-);
+        alert("That kingdom is already taken.");
 
+        return;
+
+    }
+
+
+
+    await set(
+
+        ref(
+        database,
+        "games/"+currentGameCode+
+        "/players/"+currentPlayerID+
+        "/kingdom"
+        ),
+
+        kingdom
+
+    );
 
 };
 
 
+function updateKingdomPicker(players){
 
+
+    let dropdown =
+    document.getElementById("kingdom");
+
+
+    let taken =
+    Object.values(players)
+    .filter(player=>player.id !== currentPlayerID)
+    .map(player=>player.kingdom);
+
+
+
+    Array.from(dropdown.options)
+    .forEach(option=>{
+
+
+        option.hidden =
+        taken.includes(option.value);
+
+
+    });
+
+
+}
 
 
 
@@ -613,74 +822,32 @@ window.checkStartGame = async function(){
 
 };
 
+window.quickJoin = async function(code){
+
+    document.getElementById("gameCode").value = code;
+
+    await window.joinGame();
+
+};
 
 
 
 
 
-// ==========================
-// COUNTDOWN
-// ==========================
+window.updatePublicSetting = async function(){
+
+    let isPublic =
+    document.getElementById("publicGame").checked;
 
 
-function startCountdown(){
-
-    if(countdownStarted)
-        return;
-
-
-    countdownStarted=true;
-
-
-    // Hide everything else
-    document.body.innerHTML = `
-    
-    <div id="loadingScreen">
-
-        <h1>Starting Game</h1>
-
-        <h1 id="countdown">5</h1>
-
-    </div>
-
-    `;
-
-
-
-    let time = 5;
-
-
-    let countdown =
-    document.getElementById("countdown");
-
-
-    countdown.innerHTML=time;
-
-
-
-    let timer=setInterval(()=>{
-
-
-        time--;
-
-
-        countdown.innerHTML=time;
-
-
-
-        if(time<=0){
-            clearInterval(timer);
-            window.location.href="game.html";
+    await update(
+        ref(database,"games/"+currentGameCode),
+        {
+            public:isPublic
         }
+    );
 
-
-    },1000);
-
-
-}
-
-
-
+};
 
 
 
@@ -692,28 +859,26 @@ function startCountdown(){
 function watchGameStatus(){
 
 
-onValue(
+    onValue(
 
-ref(database,"games/"+currentGameCode+"/status"),
+        ref(database,"games/"+currentGameCode+"/status"),
 
-(snapshot)=>{
-
-
-let status=snapshot.val();
+    (snapshot)=>{
 
 
-
-if(status==="starting"){
-
-
-startCountdown();
-
-
-}
+        let status=snapshot.val();
 
 
 
-});
+        if(status==="starting"){
+
+            window.location.href="game.html";
+
+        }
+
+
+
+    });
 
 
 }
@@ -726,12 +891,13 @@ startCountdown();
 
 
 
+
+cleanupDeadGames();
+watchPublicGames();
 
 setInterval(()=>{
     cleanupDeadGames();
 },30000);
-
-cleanupDeadGames();
 
 window.createGame = createGame;
 window.joinGame = joinGame;

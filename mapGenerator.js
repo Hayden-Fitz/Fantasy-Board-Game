@@ -281,59 +281,59 @@ function generateBorderWaters(map){
 
 
 
-// ==========================
-// WATER BETWEEN KINGDOMS
-// ==========================
+    // ==========================
+    // WATER BETWEEN KINGDOMS
+    // ==========================
 
-Object.values(map.tiles).forEach(tile=>{
-
-
-    // Only kingdom land
-    if(
-        tile.kingdom === "neutral" ||
-        tile.kingdom === "unclaimed" ||
-        tile.terrain !== "grass"
-    )
-        return;
+    Object.values(map.tiles).forEach(tile=>{
 
 
-
-    neighbors.forEach(direction=>{
-
-
-        let neighbor =
-        map.tiles[
-            `${tile.x + direction[0]},${tile.y + direction[1]}`
-        ];
-
-
-
-        if(!neighbor)
+        // Only kingdom land
+        if(
+            tile.kingdom === "neutral" ||
+            tile.kingdom === "unclaimed" ||
+            tile.terrain !== "grass"
+        )
             return;
 
 
 
-        // If next to another kingdom
-        if(
-            neighbor.kingdom !== tile.kingdom &&
-            neighbor.kingdom !== "neutral" &&
-            neighbor.kingdom !== "unclaimed" &&
-            neighbor.terrain === "grass"
-        ){
+        neighbors.forEach(direction=>{
 
 
-            waterTiles.add(
-                `${tile.x},${tile.y}`
-            );
+            let neighbor =
+            map.tiles[
+                `${tile.x + direction[0]},${tile.y + direction[1]}`
+            ];
 
 
-        }
+
+            if(!neighbor)
+                return;
+
+
+
+            // If next to another kingdom
+            if(
+                neighbor.kingdom !== tile.kingdom &&
+                neighbor.kingdom !== "neutral" &&
+                neighbor.kingdom !== "unclaimed" &&
+                neighbor.terrain === "grass"
+            ){
+
+
+                waterTiles.add(
+                    `${tile.x},${tile.y}`
+                );
+
+
+            }
+
+
+        });
 
 
     });
-
-
-});
 
 
 
@@ -739,7 +739,7 @@ function expandKingdoms(map){
 
             // Prefer connected expansion
 
-// Prefer tiles that continue the kingdom shape
+            // Prefer tiles that continue the kingdom shape
 
         options.sort((a,b)=>{
 
@@ -1122,16 +1122,50 @@ function renderMap(map){
     };
 
 
+    let tilesToRender;
 
-    Object.values(map.tiles)
-    .forEach(tile=>{
 
+    if(scale <= 1){
+
+        // zoomed out - render everything
+        tilesToRender = Object.values(map.tiles);
+
+    }
+    else{
+
+        // zoomed in - only render visible tiles
+        tilesToRender =
+        Object.values(map.tiles)
+        .filter(tile => isTileVisible(tile));
+
+    }
+
+
+    tilesToRender.forEach(tile=>{
 
         let element = document.createElement("div");
 
         element.className = "tile";
 
+        element.__tileData = tile;
         element.onclick = async () => {
+
+
+            import("./UI/UI.js")
+            .then(module=>{
+
+                module.showTileInfo(tile);
+
+            });
+            import("./UI/UI.js")
+            .then(module=>{
+
+                module.updateInfoPanel(
+                    tile,
+                    window.currentGame
+                );
+
+            });
 
             if(currentGame){
 
@@ -1322,6 +1356,7 @@ function renderMap(map){
         element.style.top = `${y}px`;
 
         board.appendChild(element);
+        tile.element = element;
 
     });
 
@@ -1611,6 +1646,9 @@ function updateZoom(){
     scale(${scale})
     `;
 
+
+    updateTileVisibility();
+
 }
 export function zoomIn(){
 
@@ -1633,6 +1671,44 @@ export function zoomOut(){
 export function getZoomScale(){
 
     return scale;
+
+}
+function updateTileVisibility(){
+
+    if(!currentMap)
+        return;
+
+
+    Object.values(currentMap.tiles)
+    .forEach(tile=>{
+
+
+        if(!tile.element)
+            return;
+
+
+        if(scale <= 1){
+
+            tile.element.style.display = "block";
+            return;
+
+        }
+
+
+
+        if(isTileVisible(tile)){
+
+            tile.element.style.display = "block";
+
+        }
+        else{
+
+            tile.element.style.display = "none";
+
+        }
+
+
+    });
 
 }
 
@@ -1702,7 +1778,48 @@ function teleportToCapital() {
     updateZoom();
 }
 
+function isTileVisible(tile){
 
+    const hexSize = 20;
+
+
+    const x =
+    Math.sqrt(3) *
+    hexSize *
+    (tile.x + tile.y / 2);
+
+
+    const y =
+    1.5 *
+    hexSize *
+    tile.y;
+
+
+
+    const screenX =
+    x * scale + offsetX;
+
+
+    const screenY =
+    y * scale + offsetY;
+
+
+
+    const buffer = 300;
+
+
+    const display =
+    document.getElementById("mapDisplay");
+
+
+    return (
+        screenX > -buffer &&
+        screenX < display.clientWidth + buffer &&
+        screenY > -buffer &&
+        screenY < display.clientHeight + buffer
+    );
+
+}
 
 // export { renderMap };
 

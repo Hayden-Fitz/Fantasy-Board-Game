@@ -9,7 +9,7 @@ import {
     update
 } from "./firebase/firebase.js";
 
-import { generateMap, renderMap, setCurrentGame } from "./mapGenerator.js";
+import { generateMap, renderMap, setCurrentGame, teleportToCapital } from "./mapGenerator.js";
 import { createUI, updateTurnUI, updateResourceBar } from "./UI/UI.js";
 
 import {
@@ -248,6 +248,7 @@ async function loadGame(){
     waitForMap(game);
 
 
+
 }
 
 
@@ -308,7 +309,7 @@ function waitForMap(game){
 
 
                 startGame(map, game);
-
+                
             }
 
         }
@@ -361,7 +362,8 @@ function watchGame(){
 }
 
 
-
+let gameInitialized = false;
+let teleportHomeIndex = 0
 async function startGame(map, game){
 
     renderMap(map);
@@ -371,29 +373,33 @@ async function startGame(map, game){
 
     // ==========================
     // CREATE PLAYER CARD DECK
+    // ONLY ON FIRST LOAD
     // ==========================
 
-    createPlayerDeck();
+    if (!gameInitialized) {
 
-    drawStartingHand();
+        createPlayerDeck();
 
+        drawStartingHand();
 
-    // Sync cards to Firebase
+        try {
 
-    try {
+            await syncPlayerCards(
+                gameCode,
+                playerID,
+                getPlayerHand(),
+                getDiscardPile(),
+                getDeckSize()
+            );
 
-        await syncPlayerCards(
-            gameCode,
-            playerID,
-            getPlayerHand(),
-            getDiscardPile(),
-            getDeckSize()
-        );
+        }
+        catch (error) {
 
-    }
-    catch(error){
+            console.error("Card sync failed:", error);
 
-        console.error("Card sync failed:", error);
+        }
+
+        gameInitialized = true;
 
     }
 
@@ -436,7 +442,25 @@ async function startGame(map, game){
             game.players
         );
 
+
+        // Remove building preview when leaving construction
+        if(turn.currentPhase !== "construction"){
+
+            import("./gameHandlers/buildingHandler.js")
+            .then(module=>{
+
+                module.cancelBuilding();
+
+            });
+
+        }
+
     });
+
+    if(teleportHomeIndex === 0){
+        teleportToCapital();
+        teleportHomeIndex += 1;
+    }
 
 }
 

@@ -45,14 +45,124 @@ border-radius:10px;
 }
 .ready{
 
-color:#55ff55;
+    color:#55ff55;
 
 }
 .not-ready{
 
-color:#ff5555;
+    color:#ff5555;
 
 }
+#lobbyScreen {
+
+
+    display:flex;
+
+
+    flex-direction:row;
+
+
+    justify-content:center;
+
+
+    gap:80px;
+
+
+    width:1200px;
+
+
+    margin:auto;
+
+
+}
+#lobbyLeft {
+
+
+    width:400px;
+
+
+}
+#lobbyPlayers {
+
+
+    width:400px;
+
+
+}
+#playerList {
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+}
+.player-card {
+
+
+    background:#222;
+
+
+    border-radius:10px;
+
+
+    padding:15px;
+
+
+    margin-bottom:15px;
+
+
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+
+
+}
+.public-game {
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:space-between;
+
+
+    background:#222;
+
+
+    padding:12px;
+
+
+    margin:10px;
+
+
+    border-radius:8px;
+
+
+}
+.public-game h3 {
+
+
+    margin:0;
+
+
+}
+.public-game p {
+
+
+    margin:0 15px;
+
+
+}
+
+
+
+
+
+
 #loadingScreen {
 
     position: fixed;
@@ -93,6 +203,17 @@ overflow:hidden;
     left: 0;
     top: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
