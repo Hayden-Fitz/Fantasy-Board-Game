@@ -9,9 +9,9 @@ import {
     update
 } from "./firebase/firebase.js";
 
-import { generateMap, renderMap, setCurrentGame, teleportToCapital } from "./mapGenerator.js";
+import { generateMap, renderMap, setCurrentGame, teleportToCapital, renderWorkers } from "./mapGenerator.js";
 import { createUI, updateTurnUI, updateResourceBar } from "./UI/UI.js";
-
+import { spawnStartingWorkers, watchWorkers } from "./gameHandlers/workerHandler.js";
 import {
     createPlayerDeck,
     drawStartingHand,
@@ -207,16 +207,42 @@ async function loadGame(){
 
         if (game.host === playerID) {
 
-            let map = generateMap(players);
+let map = generateMap(players);
 
+console.log("Generated map:", map);
 
-            console.log("Generated map:", map);
+await set(
+    ref(database, "games/" + gameCode + "/map"),
+    map
+);
 
+// NOW spawn workers
+for(const player of players){
 
-            await set(
-                ref(database, "games/" + gameCode + "/map"),
-                map
-            );
+    const kingdomID = Object.keys(map.kingdoms).find(
+        id => map.kingdoms[id].name === player.kingdom
+    );
+
+    if(!kingdomID)
+        continue;
+
+    const capitalTile = Object.values(map.tiles).find(
+        tile =>
+            tile.building === "capital" &&
+            tile.kingdom === kingdomID
+    );
+
+    if(!capitalTile)
+        continue;
+
+    await spawnStartingWorkers(
+        gameCode,
+        player.id,
+        capitalTile,
+        map
+    );
+
+}
 
 
             // ==========================
@@ -370,7 +396,14 @@ async function startGame(map, game){
 
     setCurrentGame(game);
 
+    watchWorkers(
+        gameCode,
+        (workers)=>{
 
+            renderWorkers(workers);
+
+        }
+    );
     // ==========================
     // CREATE PLAYER CARD DECK
     // ONLY ON FIRST LOAD

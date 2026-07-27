@@ -5,7 +5,7 @@ import { generateTerrain } from "./terrain.js";
 import { updateBuildingPreviewScale } from "./gameHandlers/buildingHandler.js";
 import buildings from "../data/buildings.json" with { type:"json" };
 import { database, ref, get } from "./firebase/firebase.js";
-
+import { watchWorkers, moveWorker } from "./gameHandlers/workerHandler.js";
 
 let board = null;
 
@@ -1821,6 +1821,226 @@ function isTileVisible(tile){
 
 }
 
+
+
+
+
+
+
+
+
+
+// ==========================
+// RENDER WORKERS
+// ==========================
+
+export function renderWorkers(workers){
+
+    if(!currentMap)
+        return;
+
+
+    const board =
+    document.getElementById("board");
+
+
+    if(!board)
+        return;
+
+
+    Object.values(workers).forEach(worker=>{
+
+
+        let tile =
+        currentMap.tiles[
+            `${worker.x},${worker.y}`
+        ];
+
+
+        if(!tile)
+            return;
+
+
+        // prevent duplicate images
+        if(document.getElementById("worker-"+worker.id))
+            return;
+
+
+
+        let image =
+        document.createElement("img");
+
+
+        image.id =
+        "worker-"+worker.id;
+
+
+        image.src =
+        "assets/units/worker.webp";
+
+
+        image.className =
+        "worker-image";
+
+        image.onclick = function(e){
+
+            e.stopPropagation();
+
+            selectWorker(worker);
+
+        };
+
+        // Same hex positioning as tiles
+
+        const hexSize = 20;
+
+
+        let x =
+        Math.sqrt(3) *
+        hexSize *
+        (tile.x + tile.y / 2);
+
+
+        let y =
+        1.5 *
+        hexSize *
+        tile.y;
+
+
+
+        // Slightly left of center
+        image.style.left =
+        `${x - 10}px`;
+
+
+        image.style.top =
+        `${y}px`;
+
+
+
+        board.appendChild(image);
+
+
+    });
+
+}
+
+
+let selectedWorker = null;
+
+
+// ==========================
+// SELECT WORKER
+// ==========================
+
+function selectWorker(worker){
+
+    selectedWorker = worker;
+
+    console.log(
+        "Selected worker:",
+        worker
+    );
+
+
+    highlightWorkerMoves(worker);
+
+}
+
+function highlightWorkerMoves(worker){
+
+    clearWorkerHighlights();
+
+
+    const directions = [
+
+        [1,0],
+        [1,-1],
+        [0,-1],
+        [-1,0],
+        [-1,1],
+        [0,1]
+
+    ];
+
+
+    directions.forEach(dir=>{
+
+
+        let tile =
+        currentMap.tiles[
+            `${worker.x + dir[0]},${worker.y + dir[1]}`
+        ];
+
+
+        if(!tile)
+            return;
+
+
+        if(tile.terrain==="water")
+            return;
+
+
+
+        if(tile.element){
+
+            tile.element.classList.add(
+                "worker-move"
+            );
+
+
+            tile.element.onclick = ()=>{
+
+                moveSelectedWorker(
+                    worker,
+                    tile
+                );
+
+            };
+
+        }
+
+
+    });
+
+}
+
+
+
+function clearWorkerHighlights(){
+
+    document
+    .querySelectorAll(".worker-move")
+    .forEach(tile=>{
+
+        tile.classList.remove(
+            "worker-move"
+        );
+
+    });
+
+}
+
+
+async function moveSelectedWorker(worker,tile){
+
+    let gameCode =
+    localStorage.getItem("gameCode");
+
+
+    await moveWorker(
+        gameCode,
+        worker.id,
+        tile.x,
+        tile.y
+    );
+
+
+    selectedWorker=null;
+
+    clearWorkerHighlights();
+
+}
 // export { renderMap };
 
 export {

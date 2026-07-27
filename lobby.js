@@ -186,8 +186,7 @@ window.createGame = async function(){
     document.getElementById("playerName").value;
 
 
-    let kingdom =
-    document.getElementById("kingdom").value;
+    let kingdom = getFirstAvailableKingdom({});
 
 
 
@@ -316,20 +315,12 @@ window.joinGame = async function(){
     document.getElementById("playerName").value;
 
 
-    let kingdom =
-    document.getElementById("kingdom").value;
-
-
-
     let gameSnapshot =
     await get(
         ref(database,"games/"+gameCode)
     );
 
-
-
     if(!gameSnapshot.exists()){
-
 
         document.getElementById("status").innerHTML =
         "Game not found.";
@@ -338,9 +329,11 @@ window.joinGame = async function(){
 
     }
 
-
     let game =
     gameSnapshot.val();
+
+    let kingdom =
+    getFirstAvailableKingdom(game.players);
 
     if(game.host === currentPlayerID){
 
@@ -440,6 +433,7 @@ window.joinGame = async function(){
 
 
     enterLobby();
+    document.getElementById("kingdom").value = kingdom;
 
 };
 
@@ -479,6 +473,28 @@ function enterLobby(){
 
 }
 
+
+function getFirstAvailableKingdom(players){
+
+    const kingdoms = [
+        "Crimson Empire",
+        "Tide Kingdom",
+        "Culinary Kingdom",
+        "Viking Kingdom",
+        "Shadow Kingdom"
+    ];
+
+    const taken =
+    Object.values(players || {})
+    .map(player => player.kingdom);
+
+    const kingdom =
+    kingdoms.find(
+        kingdom => !taken.includes(kingdom)
+    );
+
+    return kingdom;
+}
 // ==========================
 // DELETE GAME
 // ==========================

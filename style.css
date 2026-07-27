@@ -451,3 +451,29 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+
+
+
+
+
+.worker-image {
+
+    position:absolute;
+
+    width:25px;
+
+    height:25px;
+
+    object-fit:contain;
+
+    z-index:20;
+
+    pointer-events:none;
+
+}
+
+.worker-move .hexCenter {
+
+    filter: brightness(1.5);
+
+}
